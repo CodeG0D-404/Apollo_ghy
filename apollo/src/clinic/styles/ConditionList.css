@@ -1,0 +1,240 @@
+/* =========================================
+   Condition Page — Scoped CSS
+   Will NOT affect any other page
+   ========================================= */
+
+.condition-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+
+/* HEADER */
+
+.condition-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ADD FORM */
+
+.condition-add-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.condition-add-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+.condition-add-form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.condition-add-form button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.condition-add-form button:hover {
+  background: #1e40af;
+}
+
+/* SEARCH */
+
+.condition-search {
+  width: 100%;
+  max-width: 520px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  background: #ffffff;
+  margin: 0 auto 18px auto;
+  display: block;
+}
+
+.condition-search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* TABLE */
+
+.condition-table {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  table-layout: fixed;
+}
+
+.condition-table tr {
+  height: 38px;
+}
+
+.condition-table td {
+  padding: 0 12px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  border-top: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+/* KEY FIX — define column widths */
+
+.condition-name {
+  width: calc(100% - 90px);
+  padding: 9px 12px;
+  border-top: 1px solid #e5e7eb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.condition-action {
+  width: 90px;
+  text-align: right;
+}
+
+/* DELETE BUTTON — NOW ALWAYS VISIBLE */
+
+/* =========================================
+   DELETE BUTTON — FIXED (MATCHES SPECIALTY)
+   ========================================= */
+
+/* Reserve space for action column */
+.condition-table td:last-child {
+  width: 90px;
+  text-align: right;
+}
+
+/* Name column stays fluid */
+.condition-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Delete button styling */
+.condition-delete-btn {
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.condition-delete-btn:hover {
+  background: #b91c1c;
+}
+
+
+/* STATES */
+
+.condition-empty {
+  text-align: center;
+  padding: 14px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.condition-loading {
+  text-align: center;
+  margin-top: 20px;
+  color: #6b7280;
+}
+
+/* 2 column layout */
+
+.condition-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Pagination */
+
+.condition-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.condition-pagination button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.condition-pagination button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* TOP BAR */
+
+.condition-topbar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.condition-topbar .condition-add-form {
+  flex: 1;
+  max-width: 420px;
+  margin: 0;
+}
+
+.condition-topbar .condition-search {
+  flex: 1;
+  max-width: 420px;
+  margin: 0;
+}
+
+.condition-empty-row {
+  height: 38px;
+  border-top: 1px solid #f1f5f9;
+  background: #fff;
+}

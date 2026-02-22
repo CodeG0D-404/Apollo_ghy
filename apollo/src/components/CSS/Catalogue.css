@@ -1,0 +1,73 @@
+/* =========================================
+   Catalogue Section — Homepage Services
+   Scoped, modern medical UI
+   Matches doctor & admin design language
+   ========================================= */
+
+.catalogue-section {
+  background: #ffffff;
+  padding: 50px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* CONTAINER */
+
+.catalogue-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* GRID */
+
+.catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+
+.catalogue-card {
+  background: #f7f9fc;
+  border-radius: 16px;
+  padding: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+
+.catalogue-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+}
+
+/* ICON */
+
+.catalogue-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* TEXT */
+
+.catalogue-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogue-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 4px;
+}
+
+.catalogue-cta {
+  font-size: 13px;
+  color: #facc15;
+  font-weight: 600;
+}

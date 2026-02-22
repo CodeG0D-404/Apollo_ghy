@@ -1,0 +1,201 @@
+/* =========================================
+   SUPPORT SERVICES — Apollo UI System
+   Scoped: supp2-*
+   Brand: #0f4b5f + #facc15
+   ========================================= */
+
+.supp2-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.supp2-container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+.supp2-center {
+  text-align: center;
+}
+
+/* HERO */
+
+.supp2-hero {
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.supp2-hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.supp2-hero-content h1 {
+  font-size: 36px;
+  color: #0f4b5f;
+}
+
+.supp2-hero-content p {
+  color: #475569;
+}
+
+.supp2-hero-image img {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* SECTION */
+
+.supp2-section {
+  padding: 72px 0;
+}
+
+.supp2-soft {
+  background: #f1f5f9;
+}
+
+/* CARD */
+
+.supp2-card {
+  background: white;
+  padding: 34px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+}
+
+.supp2-divider {
+  width: 60px;
+  height: 4px;
+  background: #facc15;
+  margin: 14px auto 20px;
+}
+
+/* SERVICE WRAPPER */
+
+.supp2-service-wrapper {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+}
+
+/* HEADER */
+
+.supp2-service-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.supp2-service-header h2 {
+  color: #0f4b5f;
+  font-size: 28px;
+}
+
+.supp2-service-header p {
+  color: #64748b;
+}
+
+/* GRID */
+
+.supp2-service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.supp2-reverse {
+  direction: rtl;
+}
+
+.supp2-reverse > * {
+  direction: ltr;
+}
+
+/* BOXES */
+
+.supp2-content-box {
+  background: #f8fafc;
+  padding: 26px;
+  border-radius: 14px;
+}
+
+.supp2-how-box {
+  background: #f1f5f9;          /* same as soft sections */
+  padding: 26px;
+  border-radius: 14px;
+  border-top: 4px solid #facc15; /* brand accent */
+}
+
+/* LIST */
+
+.supp2-list {
+  padding-left: 18px;
+}
+
+.supp2-list li {
+  margin-bottom: 10px;
+}
+
+/* CTA */
+/* =========================================
+   OPD CTA SECTION (Hospital style)
+   ========================================= */
+
+.opd2-cta {
+  background: #0f4b5f;
+  color: white;
+  padding: 70px 0;
+}
+
+/* center content */
+.opd2-center {
+  text-align: center;
+}
+
+
+/* =========================================
+   BUTTON STYLES
+   ========================================= */
+
+/* 1️⃣ View OPD + 3️⃣ Inquiry (yellow primary) */
+.opd2-btn-primary,
+.inq-btn-primary {
+  background: #facc15;
+  color: #0f4b5f;
+}
+
+/* 2️⃣ Call Clinic (outline style) */
+.callcta-btn-primary {
+  border: 1px solid #facc15;
+  color: #facc15;
+  background: transparent;
+}
+
+/* hover polish */
+.opd2-btn-primary:hover,
+.inq-btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.callcta-btn-primary:hover {
+  background: rgba(255,255,255,0.08);
+}
+.inq-phone-group input {
+  margin-top: 0;
+}
+.inq-phone-group span {
+  color:#222;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .supp2-hero-inner,
+  .supp2-service-grid {
+    grid-template-columns: 1fr;
+  }
+}

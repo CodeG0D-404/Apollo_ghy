@@ -1,0 +1,81 @@
+/* =========================================
+   Blog View Page — Scoped Admin Style
+   Compact centered like BlogCreate
+   ========================================= */
+
+.blog-view-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* CARD */
+
+.blog-view-card {
+  max-width: 820px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 22px;
+}
+
+/* ACTIONS */
+
+.blog-view-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* BUTTON BASE */
+
+.blog-view-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* TYPES */
+
+.blog-view-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.blog-view-primary:hover {
+  background: #1e40af;
+}
+
+.blog-view-danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.blog-view-danger:hover {
+  background: #b91c1c;
+}
+
+.blog-view-neutral {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.blog-view-neutral:hover {
+  background: #d1d5db;
+}
+
+/* STATES */
+
+.blog-view-state {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}

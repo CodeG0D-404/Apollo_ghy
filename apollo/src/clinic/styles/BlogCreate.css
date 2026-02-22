@@ -1,0 +1,110 @@
+/* =========================================
+   Blog Create — Scoped Admin Style
+   Compact centered form (like Specialty)
+   ========================================= */
+
+.blog-create-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* CARD */
+
+.blog-create-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 22px;
+}
+
+/* TITLE */
+
+.blog-create-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+/* FORM */
+
+.blog-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* FIELD */
+
+.blog-create-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.blog-create-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* INPUTS */
+
+.blog-create-field input,
+.blog-create-field textarea,
+.blog-create-field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  outline: none;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.blog-create-field input:focus,
+.blog-create-field textarea:focus,
+.blog-create-field select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ROW (IMAGE + STATUS) */
+
+.blog-create-row {
+  display: flex;
+  gap: 14px;
+}
+
+.blog-create-row .blog-create-field {
+  flex: 1;
+}
+
+/* SUBMIT */
+
+.blog-create-submit {
+  margin-top: 6px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.blog-create-submit:hover {
+  background: #1e40af;
+}
+
+.blog-create-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

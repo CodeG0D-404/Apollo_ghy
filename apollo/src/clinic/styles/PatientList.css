@@ -1,0 +1,214 @@
+/* =========================================
+   Patient Page — Scoped CSS
+   No leakage to Doctor / Booking / Others
+   ========================================= */
+
+.patient-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* HEADER */
+
+.patient-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 18px;
+}
+
+/* TOOLBAR (search + buttons row) */
+
+.patient-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.patient-toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* SEARCH */
+
+.patient-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+.patient-search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* BUTTONS */
+
+.patient-add-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.patient-add-btn:hover {
+  background: #15803d;
+}
+
+.patient-archive-toggle-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #111827;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.patient-archive-toggle-btn:hover {
+  background: #000000;
+}
+
+/* TABLE */
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+
+.patient-table th {
+  background: #f3f4f6;
+  text-align: left;
+  padding: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.patient-table td {
+  padding: 14px;
+  border-top: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.patient-table tr:hover {
+  background: #fafafa;
+}
+
+/* ACTION BUTTONS */
+
+.patient-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.patient-view-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.patient-view-btn:hover {
+  background: #1e40af;
+}
+
+.patient-edit-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #059669;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.patient-edit-btn:hover {
+  background: #047857;
+}
+
+.patient-archive-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #ef4444;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.patient-archive-btn:hover {
+  background: #b91c1c;
+}
+
+/* PAGINATION */
+
+.patient-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.patient-pagination button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.patient-pagination button:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.patient-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.patient-pagination span {
+  font-size: 14px;
+  color: #374151;
+}
+
+/* STATES */
+
+.patient-error {
+  color: #dc2626;
+  margin-bottom: 10px;
+}
+
+.patient-loading {
+  color: #6b7280;
+}
+
+.patient-empty {
+  text-align: center;
+  padding: 16px;
+  color: #6b7280;
+}

@@ -1,0 +1,108 @@
+/* =========================================
+   Service Timeline — Grid Layout
+   Centered, no scroll, clean medical UI
+   ========================================= */
+
+.st-grid-container {
+  padding: 60px 20px;
+  background: #f7f9fc;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* TITLE */
+
+.st-grid-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 34px;
+}
+
+/* TABS */
+
+.st-grid-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.st-grid-tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.st-grid-tab.active {
+  background: #0f4b5f;
+  color: #ffffff;
+  border-color: #0f4b5f;
+}
+
+/* GRID */
+
+.st-grid-steps {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+
+.st-grid-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+/* STEP NUMBER */
+
+.st-grid-number {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #facc15;
+  color: #0f4b5f;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+
+.st-grid-card h4 {
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #111827;
+}
+
+.st-grid-card p {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* NOTE */
+
+.st-grid-note {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #047857;
+  background: #ecfdf5;
+  padding: 4px 8px;
+  border-radius: 6px;
+}

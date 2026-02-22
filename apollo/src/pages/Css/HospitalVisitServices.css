@@ -1,0 +1,189 @@
+/* =========================================
+   HOSPITAL VISIT SERVICES — Calm Modern UI
+   Scoped: hosp2-* (no bleed)
+   Brand: #0f4b5f + #facc15
+   ========================================= */
+
+.hosp2-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* CONTAINER */
+
+.hosp2-container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+.hosp2-center {
+  text-align: center;
+}
+
+/* HERO */
+
+.hosp2-hero {
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.hosp2-hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hosp2-hero-content h1 {
+  font-size: 36px;
+  color: #0f4b5f;
+  margin-bottom: 12px;
+}
+
+.hosp2-hero-content p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.hosp2-hero-image img {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* SECTION */
+
+.hosp2-section {
+  padding: 72px 0;
+}
+
+.hosp2-soft {
+  background: #f1f5f9;
+}
+
+.hosp2-section-header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.hosp2-section-header h2 {
+  color: #0f4b5f;
+  font-size: 28px;
+}
+
+.hosp2-section-header p {
+  color: #64748b;
+}
+
+/* CARD */
+
+.hosp2-card {
+  background: white;
+  padding: 34px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+}
+
+.hosp2-divider {
+  width: 60px;
+  height: 4px;
+  background: #facc15;
+  margin: 14px auto 20px;
+}
+
+.hosp2-lead {
+  font-weight: 600;
+  color: #0f4b5f;
+}
+
+/* SERVICES */
+
+.hosp2-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.hosp2-service {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  border: 1px solid #e6edf3;
+}
+
+.hosp2-service h3 {
+  color: #0f4b5f;
+}
+
+/* PROCESS */
+
+.hosp2-process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.hosp2-step {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  border-top: 4px solid #facc15;
+}
+
+.hosp2-step span {
+  font-weight: 700;
+  color: #0f4b5f;
+}
+
+/* LIST */
+
+.hosp2-list {
+  text-align: left;
+  padding-left: 18px;
+}
+
+.hosp2-list li {
+  margin-bottom: 10px;
+}
+
+/* CTA */
+
+.hosp2-cta {
+  background: #0f4b5f;
+  color: white;
+  padding: 70px 0;
+}
+
+.hosp2-cta-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.hosp2-btn-primary {
+  background: #facc15;
+  color: #0f4b5f;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.hosp2-btn-secondary {
+  border: 1px solid #facc15;
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: #facc15;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hosp2-hero-inner,
+  .hosp2-services-grid,
+  .hosp2-process {
+    grid-template-columns: 1fr;
+  }
+}

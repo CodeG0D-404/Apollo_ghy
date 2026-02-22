@@ -1,0 +1,214 @@
+/* =========================================
+   Doctor Details Page — Modern Admin UI
+   Matches AddDoctor / SpecialtyList design
+   Scoped + production ready
+   ========================================= */
+
+.doctor-details-page {
+  padding: 28px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* =============================
+   TOP CARD
+============================= */
+
+.doctor-details-top {
+  display: flex;
+  gap: 24px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+/* PHOTO */
+
+.doctor-details-photo img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.doctor-details-no-photo {
+  width: 170px;
+  height: 170px;
+  border-radius: 14px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* INFO */
+
+.doctor-details-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.doctor-details-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.doctor-details-info p {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* =============================
+   EXTRA INFO CARD
+============================= */
+
+.doctor-details-extra {
+  margin-top: 20px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+/* OPD BADGES */
+
+.doctor-details-opd-badge {
+  display: inline-block;
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 6px 10px;
+  margin: 4px 6px 0 0;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* BIO */
+
+.doctor-details-bio {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* =============================
+   CONDITIONS
+============================= */
+
+.doctor-details-conditions h3 {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.doctor-details-conditions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.doctor-details-condition-badge {
+  background: #f3f4f6;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #374151;
+  transition: 0.2s ease;
+}
+
+.doctor-details-condition-badge:hover {
+  background: #e5e7eb;
+}
+
+/* SHOW MORE */
+
+.doctor-details-show-btn {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.doctor-details-show-btn:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   ACTION BAR
+============================= */
+
+.doctor-details-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+}
+
+/* BUTTON BASE */
+
+.doctor-details-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* BUTTON TYPES */
+
+.doctor-details-edit {
+  background: #2563eb;
+  color: #fff;
+}
+
+.doctor-details-edit:hover {
+  background: #1e40af;
+}
+
+.doctor-details-delete {
+  background: #dc2626;
+  color: #fff;
+}
+
+.doctor-details-delete:hover {
+  background: #b91c1c;
+}
+
+.doctor-details-back {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.doctor-details-back:hover {
+  background: #d1d5db;
+}
+
+/* =============================
+   STATES
+============================= */
+
+.doctor-details-loading,
+.doctor-details-error {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}

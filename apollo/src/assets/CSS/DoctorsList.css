@@ -1,0 +1,69 @@
+/* 📁 src/assets/CSS/DoctorsList.css */
+
+/* Container for the entire page */
+.doctor-card-innr {
+  display: flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.doctors-page-container {
+  display: flex;
+  flex-wrap: wrap; /* allows responsiveness on smaller screens */
+  padding: 20px 5%;
+  gap: 20px;
+  box-sizing: border-box;
+  background-color: #f4f4f5; /* subtle light gray background */
+  min-height: 100vh; /* ensures it fills the viewport */
+}
+
+/* Doctors list section */
+.doctors-list {
+  flex: 1 1 70%; /* grows and shrinks, base 70% width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 10px;
+}
+
+/* Dynamic heading for doctor list */
+.doctors-list h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937; /* elegant dark gray */
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb; /* subtle divider */
+  padding-bottom: 10px;
+}
+
+/* Right sidebar section */
+.right-sidebar {
+  flex: 0 0 25%; /* fixed width ~25% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #facc15; /* bright accent */
+  padding: 20px;
+  border-left: 1px solid #ddd;
+  box-sizing: border-box;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start; /* ensures sticky works inside flex container */
+  min-height: calc(100vh - 40px); /* full viewport minus padding */
+  border-radius: 8px; /* rounded edges for elegance */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* subtle shadow */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 900px) {
+  .doctors-page-container {
+    flex-direction: column;
+    padding: 10px 3%;
+  }
+
+  .doctors-list,
+  .right-sidebar {
+    flex: 1 1 100%;
+    min-height: auto;
+    position: relative; /* remove sticky on mobile */
+  }
+}

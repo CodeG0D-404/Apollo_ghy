@@ -1,0 +1,148 @@
+/* =========================================
+   Doctor Row — Apollo Style
+   Scoped CSS (No bleed)
+   ========================================= */
+
+.doctor-row {
+  display: flex;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  border-left: 4px solid #facc15;
+}
+
+/* PHOTO */
+
+.doctor-row-photo img {
+  width: 60px;
+  height:60px;        
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* MAIN AREA */
+
+.doctor-row-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP LINE */
+
+.doctor-row-topline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* NAME */
+
+.doctor-row-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f4b5f;
+}
+
+/* SPECIALTY */
+
+.doctor-row-specialty {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* OPD */
+
+.doctor-row-opd {
+  background: #fff9db;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+/* EXPERIENCE */
+
+.doctor-row-exp {
+  font-size: 13px;
+  color: #374151;
+}
+
+/* LANGUAGE */
+
+.doctor-row-lang {
+  font-size: 13px;
+  color: #374151;
+}
+
+/* VIEW BUTTON */
+
+.doctor-row-view {
+  margin-left: auto;
+  font-size: 13px;
+  color: #0f4b5f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* SECOND LINE */
+
+.doctor-row-bottomline {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* QUALIFICATION */
+
+.doctor-row-qualification {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* BOOK BUTTON */
+
+.doctor-row-book {
+  margin-left: auto;
+  background: #0f4b5f;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.doctor-row-book:hover {
+  background: #083642;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .doctor-row {
+    flex-direction: column;
+  }
+
+  .doctor-row-view,
+  .doctor-row-book {
+    margin-left: 0;
+  }
+
+  .doctor-row-topline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctor-row-bottomline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

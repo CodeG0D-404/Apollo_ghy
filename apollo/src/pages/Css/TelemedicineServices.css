@@ -1,0 +1,236 @@
+/* =========================================
+   TELEMEDICINE SERVICES — Calm Modern UI
+   Scoped: tele2-* (no bleed)
+   Brand: #0f4b5f + #facc15
+   ========================================= */
+
+.tele2-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* CONTAINER */
+
+.tele2-container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+.tele2-center {
+  text-align: center;
+}
+
+/* HERO */
+
+.tele2-hero {
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.tele2-hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.tele2-hero-content h1 {
+  font-size: 36px;
+  color: #0f4b5f;
+  margin-bottom: 12px;
+}
+
+.tele2-hero-content p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.tele2-hero-image img {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* SECTION */
+
+.tele2-section {
+  padding: 72px 0;
+}
+
+.tele2-soft {
+  background: #f1f5f9;
+}
+
+.tele2-section-header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.tele2-section-header h2 {
+  color: #0f4b5f;
+  font-size: 28px;
+}
+
+.tele2-section-header p {
+  color: #64748b;
+}
+
+/* CARD */
+
+.tele2-card {
+  background: white;
+  padding: 34px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+}
+
+.tele2-divider {
+  width: 60px;
+  height: 4px;
+  background: #facc15;
+  margin: 14px auto 20px;
+}
+
+.tele2-lead {
+  font-weight: 600;
+  color: #0f4b5f;
+}
+
+/* SERVICES */
+
+.tele2-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.tele2-service {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  border: 1px solid #e6edf3;
+}
+
+.tele2-service h3 {
+  color: #0f4b5f;
+}
+
+/* PROCESS */
+
+.tele2-process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.tele2-step {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  border-top: 4px solid #facc15;
+}
+
+.tele2-step span {
+  font-weight: 700;
+  color: #0f4b5f;
+}
+
+/* LIST */
+
+.tele2-list {
+  text-align: left;
+  padding-left: 18px;
+}
+
+.tele2-list li {
+  margin-bottom: 10px;
+}
+
+
+.opd2-cta {
+  background: #0f4b5f;
+  color: white;
+  padding: 70px 0;
+}
+
+/* center content */
+.opd2-center {
+  text-align: center;
+}
+
+/* =========================================
+   CTA ACTION BUTTONS CONTAINER
+   ========================================= */
+
+.opd2-cta-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* make all children behave like buttons */
+.opd2-cta-actions a,
+.opd2-cta-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* =========================================
+   BUTTON STYLES
+   ========================================= */
+
+/* 1️⃣ View OPD + 3️⃣ Inquiry (yellow primary) */
+.opd2-btn-primary,
+.inq-btn-primary {
+  background: #facc15;
+  color: #0f4b5f;
+}
+
+/* 2️⃣ Call Clinic (outline style) */
+.callcta-btn-primary {
+  border: 1px solid #facc15;
+  color: facc15;
+  background: transparent;
+}
+
+/* hover polish */
+.opd2-btn-primary:hover,
+.inq-btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.callcta-btn-primary:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =========================================
+   Make CallCTA + Inquiry match height
+   ========================================= */
+
+.callcta-btn-primary,
+.inq-btn-primary {
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+}  
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .tele2-hero-inner,
+  .tele2-services-grid,
+  .tele2-process {
+    grid-template-columns: 1fr;
+  }
+}
+

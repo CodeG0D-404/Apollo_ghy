@@ -1,0 +1,198 @@
+/* =========================================
+   Specialty Page — Fully Scoped
+   Matches Conditions UI
+   Wider Tables + Right-aligned Actions
+   ========================================= */
+
+.specialty-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* HEADER */
+
+.specialty-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ADD BOX */
+
+.specialty-add-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.specialty-add-box input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px; /* same as conditions */
+  background: #ffffff;
+}
+
+.specialty-add-box input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ADD BUTTON */
+
+.specialty-add-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.specialty-add-btn:hover {
+  background: #1e40af;
+}
+
+/* =========================================
+   2 COLUMN LAYOUT
+   Wider than before
+   ========================================= */
+
+.specialty-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 1100px;   /* wider */
+  margin: 0 auto;
+}
+
+/* TABLE */
+
+.specialty-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;   /* match conditions */
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ROW HEIGHT LOCK */
+
+.specialty-table tr {
+  height: 38px;
+}
+
+/* CELLS */
+
+.specialty-table td {
+  padding: 0 12px;
+  height: 38px;
+  line-height: 38px;
+  vertical-align: middle;
+  border-top: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+/* specialty name cell */
+
+.specialty-name {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ACTION CELL → PUSH RIGHT */
+
+.specialty-table td:last-child {
+  width: 90px;
+  text-align: right;
+}
+
+/* hover */
+
+.specialty-table tr:hover {
+  background: #fafafa;
+}
+
+/* EMPTY PLACEHOLDER */
+
+.specialty-empty-row {
+  height: 38px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+/* DELETE BUTTON */
+
+.specialty-delete-btn {
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.specialty-delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* STATES */
+
+.specialty-empty {
+  text-align: center;
+  padding: 14px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.specialty-loading {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+/* =========================================
+   PAGINATION
+   ========================================= */
+
+.specialty-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.specialty-pagination button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.specialty-pagination button:hover {
+  background: #1e40af;
+}
+
+.specialty-pagination button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}

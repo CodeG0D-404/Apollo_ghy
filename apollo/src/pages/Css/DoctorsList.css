@@ -1,0 +1,76 @@
+/* =========================================
+   Doctors Page — Apollo Row Layout
+   Single doctor per row
+   ========================================= */
+
+.doctors-page {
+  display: flex;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding-top: 70px;
+}
+
+/* CONTENT AREA */
+
+.doctors-content {
+  flex: 1;
+  padding: 24px;
+}
+
+/* HEADER */
+
+.doctors-header {
+  margin-bottom: 16px;
+}
+
+.doctors-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f4b5f;
+}
+
+/* CARD WRAPPER */
+
+.doctors-card-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* SINGLE ROW STACK */
+
+.doctors-list-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* STATES */
+
+.doctors-state {
+  padding: 30px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.doctors-error {
+  color: #b91c1c;
+}
+
+/* BRAND ACCENT STRIP */
+
+.doctors-card-wrapper::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #facc15,
+    #0f4b5f
+  );
+  border-radius: 6px;
+  margin-bottom: 14px;
+}

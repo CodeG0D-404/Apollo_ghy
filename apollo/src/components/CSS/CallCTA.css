@@ -1,0 +1,19 @@
+/* =========================================
+   CALL CTA BUTTON
+   Brand aligned with OPD system
+   ========================================= */
+
+.callcta-btn-primary {
+  background: #facc15;
+  color: #0f4b5f;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.callcta-btn-primary:hover {
+  transform: translateY(-1px);
+}

@@ -1,0 +1,105 @@
+/* =========================================
+   Testimonial View — Admin Style
+   Compact centered card
+   ========================================= */
+
+.testimonial-view-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* CARD */
+
+.testimonial-view-card {
+  max-width: 620px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 22px;
+}
+
+/* NAME */
+
+.testimonial-view-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 14px;
+}
+
+/* IMAGE */
+
+.testimonial-view-image {
+  margin-bottom: 14px;
+}
+
+.testimonial-view-image img {
+  max-width: 260px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* MESSAGE */
+
+.testimonial-view-message strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.testimonial-view-message p {
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* ACTIONS */
+
+.testimonial-view-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+/* BUTTON BASE */
+
+.testimonial-view-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* TYPES */
+
+.testimonial-view-danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.testimonial-view-danger:hover {
+  background: #b91c1c;
+}
+
+.testimonial-view-neutral {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.testimonial-view-neutral:hover {
+  background: #d1d5db;
+}
+
+/* STATES */
+
+.testimonial-view-state {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}

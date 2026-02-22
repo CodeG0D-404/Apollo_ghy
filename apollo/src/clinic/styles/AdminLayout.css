@@ -1,0 +1,30 @@
+/* =========================================
+   Admin Layout — Dashboard System
+   Works with fixed sidebar
+   ========================================= */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+/* ================================
+   CONTENT AREA
+   Push content after fixed sidebar
+================================ */
+
+.admin-content {
+  margin-left: 250px;              /* sidebar width */
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  padding: 24px;
+  background: #f7f9fc;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll issues */
+.admin-content * {
+  max-width: 100%;
+}
+    

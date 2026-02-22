@@ -1,0 +1,170 @@
+/* =========================================
+   Booking Page — Scoped CSS
+   Table always starts from TOP
+   No center alignment even if empty
+   ========================================= */
+
+.booking-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: block; /* critical: prevents vertical centering */
+}
+
+/* HEADER */
+
+.booking-header {
+  margin-bottom: 14px;
+}
+
+.booking-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* TABLE WRAPPER */
+
+.booking-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* TABLE */
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+
+.booking-table th {
+  background: #f3f4f6;
+  text-align: left;
+  padding: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.booking-table td {
+  padding: 14px;
+  border-top: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.booking-table tr:hover {
+  background: #fafafa;
+}
+
+.booking-empty {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+}
+
+/* PAYMENT */
+
+.booking-payment-cell {
+  cursor: pointer;
+  text-align: center;
+}
+
+.booking-payment-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* EMAIL */
+
+.booking-email-cell {
+  text-align: center;
+}
+
+/* ACTION BUTTONS */
+
+.booking-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.booking-confirm-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.booking-confirm-btn:hover {
+  background: #15803d;
+}
+
+.booking-archive-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #6b7280;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.booking-archive-btn:hover {
+  background: #374151;
+}
+
+/* MODAL */
+
+.booking-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.booking-modal {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.booking-input {
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.booking-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.booking-save-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.booking-save-btn:hover {
+  background: #1e40af;
+}

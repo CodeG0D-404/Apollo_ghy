@@ -1,0 +1,494 @@
+.aboutus {
+    padding-top: 4rem;
+}
+.aboutus .container {
+    background:transparent;
+}
+.contactBanner h2 {
+    text-align: left!important;
+    color: #222;
+    font-weight: bold!important;
+    font-size: 30px;
+    line-height: 35px;
+    margin-bottom: 10px!important;
+}
+.contactBanner p,.cntRw p,.cntRw a {
+    font-size: 16px;
+    color: #4b4a48;
+    margin-bottom: 0;
+    line-height: 25px;
+}
+.aboutus .contactBanner .col-md-7 {
+    text-align: center;
+}
+.aboutus .contactBanner .col-md-7 img {
+    height: 400px;
+}
+
+/* ================= Who We Are Section ================= */
+
+.whoWeAre {
+  padding: 3rem 0 0;
+  text-align: center;
+}
+
+.whoCard h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+}
+
+.whoDivider {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #facc15;
+  border-radius: 4px;
+  margin: 0 auto 20px;
+  display: none;
+}
+
+.whoCard p {
+  font-size: 16px;
+  color: #4b4a48;
+  line-height: 26px;
+  margin-bottom: 15px;
+}
+
+.whoLead {
+  font-weight: 600;
+  color: #222;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+  .whoWeAre {
+    padding: 3rem 1rem;
+  }
+
+  .whoCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .whoCard h3 {
+    font-size: 22px;
+  }
+}
+
+
+/* ================= Medical & Consultation Services ================= */
+
+.medicalServices {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.sectionTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+}
+
+.sectionIntro {
+  font-size: 16px;
+  color: #4b4a48;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 26px;
+}
+
+.serviceCard {
+  background: #f9fbfc;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 100%;
+  border: 1px solid #eef1f3;
+  transition: transform 0.2s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+}
+
+.serviceCard h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.serviceCard h4::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #facc15;
+  margin-top: 6px;
+  border-radius: 3px;
+}
+
+.serviceCard p {
+  font-size: 15px;
+  color: #4b4a48;
+  line-height: 25px;
+  margin-top: 12px;
+}
+
+.medicalNote {
+  background: #f1f7f9;
+  border-left: 4px solid #0f4b5f;
+  padding: 15px 20px;
+  border-radius: 6px;
+}
+
+.medicalNote p {
+  font-size: 14.5px;
+  color: #333;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+  .medicalServices {
+    padding: 3rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+  }
+
+  .serviceCard {
+    margin-bottom: 20px;
+  }
+}
+
+/* ================= Travel, Accommodation & Diagnostic Support ================= */
+
+.supportServices {
+  padding: 4.5rem 0;
+  background-color: #f8fafb;
+}
+
+.supportBlock {
+  background: #ffffff;
+  padding: 2rem 2.2rem;
+  border-radius: 12px;
+  height: 100%;
+  border-left: 4px solid #0f4b5f;
+}
+
+.supportBlock h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0f4b5f;
+  margin-bottom: 8px;
+}
+
+.supportBlock p {
+  font-size: 15px;
+  color: #4b4a48;
+  line-height: 25px;
+  margin-bottom: 0;
+}
+
+.supportNote {
+  background: #eef6f8;
+  padding: 14px 18px;
+  border-radius: 6px;
+}
+
+.supportNote p {
+  font-size: 14.5px;
+  color: #333;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+  .supportServices {
+    padding: 3rem 1rem;
+  }
+
+  .supportBlock {
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ================= How We Work ================= */
+
+.howWeWork {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.timelineWrapper {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #0f4b5f, #b6d7df);
+  z-index: 1;
+}
+
+.timelineSteps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.timelineStep {
+  width: 23%;
+  text-align: center;
+}
+
+.stepCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0f4b5f;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  box-shadow: 0 6px 18px rgba(15, 75, 95, 0.25);
+}
+
+.timelineStep h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f4b5f;
+  margin-bottom: 8px;
+}
+
+.timelineStep p {
+  font-size: 14.5px;
+  color: #4b4a48;
+  line-height: 24px;
+}
+
+.processNote {
+  background: #f3f8fa;
+  padding: 16px 22px;
+  border-radius: 6px;
+}
+
+.processNote p {
+  font-size: 14.5px;
+  color: #333;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 992px) {
+  .timelineSteps {
+    flex-direction: column;
+  }
+
+  .timelineLine {
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: auto;
+  }
+
+  .timelineStep {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    margin-bottom: 30px;
+    padding-left: 70px;
+    position: relative;
+  }
+
+  .stepCircle {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+
+/* ================= Our Commitment & Medical Transparency ================= */
+
+.commitmentSection {
+  padding: 5rem 0;
+  background-color: #f8fafb;
+}
+
+.commitmentCard {
+  background: #ffffff;
+  padding: 3rem 3.2rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.commitmentCard h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+}
+
+.commitmentDivider {
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: #facc15;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.commitmentLead {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: #333;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.commitmentList {
+  padding-left: 18px;
+  margin-bottom: 25px;
+}
+
+.commitmentList li {
+  font-size: 15.5px;
+  color: #4b4a48;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.commitmentNote {
+  background: #eef6f8;
+  border-left: 4px solid #0f4b5f;
+  padding: 16px 20px;
+  border-radius: 6px;
+}
+
+.commitmentNote p {
+  font-size: 14.5px;
+  color: #333;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+  .commitmentSection {
+    padding: 3.5rem 1rem;
+  }
+
+  .commitmentCard {
+    padding: 2.2rem 1.8rem;
+  }
+
+  .commitmentCard h3 {
+    font-size: 22px;
+  }
+}
+
+/* ================= Call to Action ================= */
+
+.aboutCTA {
+  padding: 4.5rem 0;
+  background: linear-gradient(135deg, #0f4b5f, #124e63);
+}
+
+.aboutCTA h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.aboutCTA p {
+  font-size: 16px;
+  color: #e6f2f5;
+  line-height: 26px;
+  margin-bottom: 30px;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  background-color: #facc15;
+  color: #0f4b5f;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ctaPrimary:hover {
+  background-color: #e6b800;
+  color: #0f4b5f;
+}
+
+.ctaSecondary {
+  background-color: transparent;
+  border: 1.5px solid #ffffff;
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ctaSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 768px) {
+  .aboutCTA {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .aboutCTA h3 {
+    font-size: 22px;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+

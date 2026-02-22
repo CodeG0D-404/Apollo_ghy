@@ -1,0 +1,86 @@
+/* =========================================
+   Browse Specialist — Public Section
+   Centered grid, medical UI
+   No Bootstrap dependency
+   ========================================= */
+
+.browse-spec-section {
+  background: #f7f9fc;
+  padding: 60px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* CONTAINER */
+
+.browse-spec-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TITLE */
+
+.browse-spec-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 32px;
+}
+
+/* GRID */
+
+.browse-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+
+.browse-spec-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 14px;
+  text-decoration: none;
+  color: #111827;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.browse-spec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+/* ICON */
+
+.browse-spec-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+/* NAME */
+
+.browse-spec-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f4b5f;
+  text-align: center;
+}
+
+/* STATES */
+
+.browse-spec-state {
+  padding: 30px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.browse-spec-error {
+  color: #b91c1c;
+}

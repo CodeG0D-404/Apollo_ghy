@@ -1,0 +1,61 @@
+/* ==== Global Reset CSS ==== */
+
+/* Remove default margin & padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set default font */
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.5;
+  top: 0;
+}
+
+/* Make links inherit color and remove underline */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Images scale down properly */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Buttons clean style */
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+
+/* ==== FIX FOR FLOATING COMPONENTS (Chat, Modals, etc.) ==== */
+
+html, body {
+  overflow-x: hidden;
+}
+
+#root {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Force floating chat to stay above all layouts */
+.floating-chat {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+}

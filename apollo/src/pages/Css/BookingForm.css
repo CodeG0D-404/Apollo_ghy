@@ -1,0 +1,174 @@
+/* =============================================
+   Booking Page — Production Layout
+   Matches DoctorsList / Site Container
+============================================= */
+
+.booking-page {
+  border-top: 20%;
+  width: 100%;
+  background: #f2f5f9;
+  padding: 32px 0;
+}
+
+/* centered container like other pages */
+.booking-container {
+  border-top: 70px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* main card */
+.booking-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* =============================================
+   LEFT PANEL
+============================================= */
+
+.booking-info {
+  padding: 32px;
+  background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+}
+
+.doctor-card {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.doctor-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.doctor-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #0b2c4d;
+}
+
+.visit-info {
+  margin-top: 14px;
+}
+
+.opd-date {
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.trust-points {
+  margin-top: 22px;
+  padding-left: 16px;
+}
+
+.trust-points li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* =============================================
+   FORM SIDE
+============================================= */
+
+.booking-form {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-scroll {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* input styles */
+.form-scroll input,
+.form-scroll textarea,
+.form-scroll select {
+  padding: 11px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #d6dbe1;
+  background: #fff;
+}
+
+.form-scroll textarea {
+  grid-column: span 2;
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* consent */
+.consent-box {
+  grid-column: span 2;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* submit */
+.booking-form button {
+  margin-top: 20px;
+  padding: 13px;
+  background: #0b2c4d;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.booking-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-message {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+/* honeypot */
+.hp-field {
+  display: none;
+}
+
+/* =============================================
+   MOBILE
+============================================= */
+
+@media (max-width: 991px) {
+  .booking-card {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-info {
+    padding: 24px;
+  }
+
+  .booking-form {
+    padding: 24px;
+  }
+
+  .form-scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .form-scroll textarea,
+  .consent-box {
+    grid-column: span 1;
+  }
+}

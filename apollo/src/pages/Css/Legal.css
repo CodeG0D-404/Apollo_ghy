@@ -1,0 +1,99 @@
+/* ================================
+   Medical Disclaimer – Site Style
+   Matches Home / Catalogue Layout
+================================ */
+
+.legal-page {
+  padding: 60px 0;
+  background-color: #f8f9fb;
+}
+
+.legal-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 6px;
+}
+
+.legal-content h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #0b2c4d;
+}
+
+.updated-date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.legal-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0b2c4d;
+}
+
+.legal-content p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.legal-content ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.legal-content ul li {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.legal-content hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 30px 0;
+}
+
+/* ================================
+   Responsive Styles
+================================ */
+
+/* Tablet */
+@media (max-width: 991px) {
+  .legal-content {
+    padding: 30px;
+  }
+
+  .legal-content h1 {
+    font-size: 26px;
+  }
+
+  .legal-content h2 {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .legal-page {
+    padding: 40px 0;
+  }
+
+  .legal-content {
+    padding: 20px;
+  }
+
+  .legal-content h1 {
+    font-size: 22px;
+  }
+
+  .legal-content h2 {
+    font-size: 17px;
+  }
+
+  .legal-content p,
+  .legal-content ul li {
+    font-size: 14px;
+  }
+}

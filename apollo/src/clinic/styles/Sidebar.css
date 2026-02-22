@@ -1,0 +1,110 @@
+/* =========================================
+   Admin Sidebar — Fixed Layout (Production)
+   ========================================= */
+
+.admin-sidebar {
+  position: fixed;      /* 🔥 IMPORTANT */
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;        /* full screen height */
+  background: #111827;
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;     /* scroll sidebar independently */
+  z-index: 1000;
+}
+
+/* HEADER */
+
+.admin-sidebar-header {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* NAV */
+
+.admin-sidebar-nav {
+  list-style: none;
+  padding: 12px 0;
+  margin: 0;
+  flex: 1;
+}
+
+/* ITEMS */
+
+.admin-nav-item {
+  width: 100%;
+  padding: 10px 16px;
+  color: #e5e7eb;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.admin-nav-item:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.admin-nav-item.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* DROPDOWN */
+
+.admin-dropdown {
+  justify-content: space-between;
+}
+
+.admin-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-arrow {
+  font-size: 12px;
+}
+
+/* SUBMENU */
+
+.admin-submenu {
+  list-style: none;
+  padding-left: 34px;
+  margin: 4px 0;
+}
+
+.admin-submenu li a {
+  display: block;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.admin-submenu li a.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* FOOTER */
+
+.admin-sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.admin-nav-item.logout {
+  color: #f87171;
+}

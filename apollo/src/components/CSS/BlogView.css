@@ -1,0 +1,150 @@
+/* =========================================
+   Blog View — Editorial Reader Layout
+   Modern, clean, SEO-friendly
+   ========================================= */
+
+.blog-view {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* HEADER */
+
+.blog-header {
+  margin-bottom: 22px;
+}
+
+.blog-title {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* STATUS */
+
+.blog-status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.blog-status-published {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.blog-status-draft {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.blog-reading-time {
+  color: #6b7280;
+}
+
+/* COVER IMAGE */
+
+.blog-cover {
+  margin: 18px 0 22px;
+}
+
+.blog-cover img {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* EXCERPT */
+
+.blog-excerpt {
+  font-size: 18px;
+  color: #374151;
+  font-style: italic;
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+
+/* CONTENT */
+
+.blog-content {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #1f2937;
+  white-space: pre-wrap;
+}
+
+.blog-content p {
+  margin-bottom: 18px;
+}
+
+.blog-content h2 {
+  font-size: 26px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #0f4b5f;
+}
+
+.blog-content h3 {
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.blog-content ul {
+  padding-left: 18px;
+  margin-bottom: 18px;
+}
+
+.blog-content li {
+  margin-bottom: 8px;
+}
+
+/* FOOTER */
+
+.blog-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.blog-share {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-share span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.blog-share-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.blog-share-actions a {
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.blog-share-actions a:hover {
+  background: #e5e7eb;
+}

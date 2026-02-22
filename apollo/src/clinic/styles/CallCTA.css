@@ -1,0 +1,116 @@
+/* =========================================
+   Call CTA Admin Page — Fully Scoped
+   Will NOT affect any other screen
+   ========================================= */
+
+.callcta-page {
+  padding: 24px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* TITLE */
+
+.callcta-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* CARD */
+
+.callcta-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  max-width: 520px;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* LABEL */
+
+.callcta-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+/* CURRENT NUMBER */
+
+.callcta-current-number {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* INPUT GROUP */
+
+.callcta-input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.callcta-prefix {
+  padding: 10px 12px;
+  background: #e5e7eb;
+  border-radius: 8px 0 0 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.callcta-input-group input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 0 8px 8px 0;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+.callcta-input-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* BUTTON */
+
+.callcta-save-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.callcta-save-btn:hover {
+  background: #1e40af;
+}
+
+/* STATES */
+
+.callcta-success {
+  margin-top: 10px;
+  color: #059669;
+  font-size: 13px;
+}
+
+.callcta-error {
+  margin-top: 10px;
+  color: #dc2626;
+  font-size: 13px;
+}

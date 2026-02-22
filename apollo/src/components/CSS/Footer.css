@@ -1,0 +1,138 @@
+/* ================= DESKTOP FOOTER ================= */
+
+.footer {
+  width: 100%;
+  background: linear-gradient(180deg, #06162a 0%, #124e63 100%);
+  color: #e6eef7;
+  padding: 72px 0 28px;
+}
+
+/* replaces Bootstrap container */
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px;
+  margin-bottom: 42px;
+}
+
+.footer h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #b8c7d9;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer li {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  font-size: 14px;
+  color: #b8c7d9;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+  color: #0b5ed7;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #9fb2c7;
+}
+
+/* ================= iOS STYLE MOBILE FOOTER ================= */
+
+.mobile-footer {
+  position: fixed;
+  left: 50%;
+  bottom: -140px;
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition:
+    bottom 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+  opacity: 0;
+  z-index: 999;
+}
+
+.mobile-footer.show {
+  bottom: 16px;
+  opacity: 1;
+}
+
+.mobile-footer a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  font-size: 11px;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.mobile-footer svg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 3px;
+}
+
+/* Active tab (iOS style lift) */
+.mobile-footer a.active {
+  color: #0b5ed7;
+}
+
+.mobile-footer a.active svg {
+  transform: translateY(-2px) scale(1.08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .desktop-footer {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-footer {
+    display: none;
+  }
+}

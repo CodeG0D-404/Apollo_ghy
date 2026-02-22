@@ -1,0 +1,218 @@
+/* =========================================
+   Edit Patient Page — Modern Admin UI
+   Matches EditDoctor / Clinic design system
+   Scoped + production ready
+   ========================================= */
+
+.edit-patient-page {
+  padding: 28px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* HEADER */
+
+.edit-patient-page h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+
+.edit-patient-form {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* GRID */
+
+.edit-patient-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* INPUTS */
+
+.edit-patient-form input,
+.edit-patient-form select,
+.edit-patient-form textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.edit-patient-form input:focus,
+.edit-patient-form select:focus,
+.edit-patient-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+  outline: none;
+}
+
+/* TEXTAREA */
+
+.edit-patient-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* SECTION TITLES */
+
+.edit-patient-form h3 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* CHIP LIST (phones/emails) */
+
+.edit-patient-chips {
+  margin: 10px 0 18px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.edit-patient-chips span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+/* Primary star */
+.edit-patient-chips span strong {
+  color: #f59e0b;
+}
+
+/* chip buttons */
+
+.edit-patient-chips button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  color: #111827;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: 0.15s ease;
+}
+
+.edit-patient-chips button:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* ADD BUTTON */
+
+.edit-patient-chips > button {
+  background: #2563eb;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.edit-patient-chips > button:hover {
+  background: #1e40af;
+}
+
+/* ACTION BUTTONS */
+
+.edit-patient-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.edit-patient-actions button {
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* SAVE */
+
+.edit-patient-actions button[type="submit"] {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.edit-patient-actions button[type="submit"]:hover {
+  background: #1e40af;
+}
+
+/* CANCEL */
+
+.edit-patient-actions button[type="button"] {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.edit-patient-actions button[type="button"]:hover {
+  background: #d1d5db;
+}
+
+/* LOADING */
+
+.edit-patient-loading {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.notice {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notice.success {
+  background: #e6f7ed;
+  color: #1f7a4d;
+}
+
+.notice.error {
+  background: #fdecea;
+  color: #b42318;
+}
+
+.notice.info {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.notice button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
