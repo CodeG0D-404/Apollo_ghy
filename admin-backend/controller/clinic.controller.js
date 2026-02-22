@@ -14,7 +14,7 @@
 
 
 const Clinic = require("../models/Clinic");
-const nodemailer = require("nodemailer");
+const { sendOtpEmail } = require("../services/emailService");
 const jwt = require("jsonwebtoken");
 const isProduction = process.env.NODE_ENV === "production";
 const validate = require("../middleware/validate");
@@ -68,22 +68,8 @@ exports.requestOTP = async (req, res) => {
     clinic.otpExpires = otpExpires;
     await clinic.save();
 
-    // 📧 Configure email sender (Gmail SMTP)
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    // 📩 Send OTP email
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: "Your OTP for Clinic Login",
-      text: `Your OTP is: ${otp}`,
-    });
+// 📩 Send OTP via Resend
+await sendOtpEmail(email, otp);
 
     res.json({ message: "OTP sent to email" });
 
