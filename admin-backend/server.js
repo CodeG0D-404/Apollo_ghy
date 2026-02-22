@@ -91,7 +91,7 @@ app.use((req, res, next) => {
 
 const allowedOrigins = [
   "http://localhost:5173", // 🔹 LOCAL DEV (KEEP)
-  "https://your-vercel-domain.vercel.app", // 🔹 PRODUCTION (CHANGE THIS)
+  "https://apollo-ghy.vercel.app/", // 🔹 PRODUCTION (CHANGE THIS)
 ];
 
 app.use(
