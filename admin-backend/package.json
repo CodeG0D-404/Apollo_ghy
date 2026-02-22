@@ -1,4 +1,11 @@
 {
+  "name": "apollo-backend",
+  "version": "1.0.0",
+  "description": "Hospital backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "cloudinary": "^2.9.0",
     "cookie-parser": "^1.4.7",
