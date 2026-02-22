@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/sidebar.css";
+import "../styles/Sidebar.css";
 
 import {
   Home,
