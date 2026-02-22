@@ -12,7 +12,7 @@ import LeftSidebar from "../components/LeftSidebar";
 import TestimonialSlider from "../components/TestimonialSlider";
 import CallCTA from "../components/CallCTA";
 
-import "./CSS/DoctorProfile.css";
+import "./Css/DoctorProfile.css";
 
 export default function DoctorProfile() {
   const { id, visitType } = useParams();

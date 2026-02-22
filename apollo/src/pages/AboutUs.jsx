@@ -1,5 +1,5 @@
 import React from "react";
-import "./CSS/AboutUs.css";
+import "./Css/AboutUs.css";
 import bannerBg from "../assets/banner-bg.png";
 import bannerOne from "../assets/banner-one-illustration.png";
 

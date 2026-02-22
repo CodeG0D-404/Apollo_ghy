@@ -21,7 +21,7 @@ import BrowseSpecialist from "../components/BrowseSpecialist";
 import ServiceTimeline from "../components/ServiceTimeline";
 import SocialMediaLinks from "../components/SocialMediaLinks";
 
-import "./CSS/Home.css";
+import "./Css/Home.css";
 
 import bannerBg from "../assets/banner-bg.png";
 import bannerOne from "../assets/banner-one-illustration.png";

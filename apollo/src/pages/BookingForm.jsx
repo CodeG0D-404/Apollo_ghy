@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import "./CSS/BookingForm.css";
+import "./Css/BookingForm.css";
 
 // 🔹 Production base URL
 const API = import.meta.env.VITE_API_BASE_URL || "/api";

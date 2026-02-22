@@ -5,7 +5,7 @@
 // =============================================
 
 import React from "react";
-import "./CSS/ContactUs.css";
+import "./Css/ContactUs.css";
 
 import mapIcon from "../assets/map-icon.png";
 import phoneIcon from "../assets/phone-call.png";
