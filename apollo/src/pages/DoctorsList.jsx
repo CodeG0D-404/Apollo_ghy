@@ -10,7 +10,7 @@ import axios from "axios";
 import DoctorCard from "../components/DoctorCard";
 import LeftSidebar from "../components/LeftSidebar";
 
-import "./CSS/DoctorsList.css";
+import "./Css/DoctorsList.css";
 
 export default function DoctorsList() {
   const { slug } = useParams();
