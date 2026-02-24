@@ -1,4 +1,4 @@
-import api from "../services/api";
+import api from "../../services/api";
 
 const BASE = import.meta.env.VITE_API_URL;
 
