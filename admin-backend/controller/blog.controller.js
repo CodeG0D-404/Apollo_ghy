@@ -1,5 +1,6 @@
 const Blog = require("../models/Blog");
 const slugify = require("slugify");
+const uploadToCloudinary = require("../services/cloudinaryUpload"); // 🔥 added
 
 // ==============================
 // CREATE BLOG (Admin)
@@ -21,12 +22,22 @@ exports.createBlog = async (req, res) => {
     const existing = await Blog.findOne({ slug });
     if (existing) slug = `${slug}-${Date.now()}`;
 
+    // 🔥 CLOUDINARY UPLOAD
+    let coverImageUrl = null;
+    try {
+      const result = await uploadToCloudinary(req.file.buffer, "blogs");
+      coverImageUrl = result.secure_url;
+    } catch (err) {
+      console.error("Cloudinary upload failed:", err);
+      return res.status(500).json({ message: "Image upload failed" });
+    }
+
     const blog = await Blog.create({
       title,
       slug,
       content,
       excerpt,
-      coverImage: `/uploads/blogs/${req.file.filename}`,
+      coverImage: coverImageUrl,
       status: status ? status.toLowerCase() : "draft",
     });
 
@@ -36,7 +47,6 @@ exports.createBlog = async (req, res) => {
     res.status(500).json({ message: "Failed to create blog" });
   }
 };
-
 
 
 // ==============================
@@ -54,7 +64,6 @@ exports.getAllBlogsAdmin = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch blogs" });
   }
 };
-
 
 
 // ==============================
@@ -114,7 +123,6 @@ exports.getBlogBySlug = async (req, res) => {
 };
 
 
-
 // ==============================
 // UPDATE BLOG (Admin)
 // ==============================
@@ -142,8 +150,15 @@ exports.updateBlog = async (req, res) => {
       updateData.slug = slug;
     }
 
+    // 🔥 CLOUDINARY IMAGE UPDATE
     if (req.file) {
-      updateData.coverImage = `/uploads/blogs/${req.file.filename}`;
+      try {
+        const result = await uploadToCloudinary(req.file.buffer, "blogs");
+        updateData.coverImage = result.secure_url;
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        return res.status(500).json({ message: "Image upload failed" });
+      }
     }
 
     const blog = await Blog.findByIdAndUpdate(
@@ -162,7 +177,6 @@ exports.updateBlog = async (req, res) => {
     res.status(500).json({ message: "Failed to update blog" });
   }
 };
-
 
 
 // ==============================

@@ -29,13 +29,13 @@ export default function DoctorCardOPD({ doctor }) {
                     ? `${API_BASE}/${doctor.photo}`
                     : "/default-doctor.png"
                 }
-                alt={doctor.name}
+                alt={doctor.displayName}
                 />
             </div>
             <div>
                 {/* NAME */}
                 <div className="opd-card-name">
-                    {doctor.name}
+                    {doctor.displayName}
                 </div>
 
                 {/* DATE */}

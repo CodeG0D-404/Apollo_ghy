@@ -1,4 +1,5 @@
 const Testimonial = require("../models/Testimonial");
+const uploadToCloudinary = require("../services/cloudinaryUpload"); // 🔥 added
 
 /**
  * =========================
@@ -11,9 +12,18 @@ exports.createTestimonial = async (req, res) => {
   try {
     const data = { ...req.body };
 
-    // Handle image upload
+    // 🔥 Cloudinary image upload
     if (req.file) {
-      data.patientImage = `/uploads/testimonials/${req.file.filename}`;
+      try {
+        const result = await uploadToCloudinary(
+          req.file.buffer,
+          "testimonials"
+        );
+        data.patientImage = result.secure_url;
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        return res.status(500).json({ message: "Image upload failed" });
+      }
     }
 
     const testimonial = await Testimonial.create(data);
@@ -23,6 +33,7 @@ exports.createTestimonial = async (req, res) => {
     res.status(500).json({ message: "Failed to create testimonial" });
   }
 };
+
 
 // 📄 Get All Testimonials (Admin: hidden + published)
 exports.getAllTestimonialsAdmin = async (req, res) => {
@@ -36,6 +47,7 @@ exports.getAllTestimonialsAdmin = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch testimonials" });
   }
 };
+
 
 // ==============================
 // GET SINGLE TESTIMONIAL (Admin)
@@ -64,9 +76,18 @@ exports.updateTestimonial = async (req, res) => {
   try {
     const data = { ...req.body };
 
-    // Replace image if new one uploaded
+    // 🔥 Replace image if new one uploaded (Cloudinary)
     if (req.file) {
-      data.patientImage = `/uploads/testimonials/${req.file.filename}`;
+      try {
+        const result = await uploadToCloudinary(
+          req.file.buffer,
+          "testimonials"
+        );
+        data.patientImage = result.secure_url;
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        return res.status(500).json({ message: "Image upload failed" });
+      }
     }
 
     const testimonial = await Testimonial.findByIdAndUpdate(
@@ -113,6 +134,7 @@ exports.updateTestimonialStatus = async (req, res) => {
   }
 };
 
+
 // 🗑️ Soft Delete Testimonial
 exports.deleteTestimonial = async (req, res) => {
   try {
@@ -132,6 +154,7 @@ exports.deleteTestimonial = async (req, res) => {
     res.status(500).json({ message: "Failed to delete testimonial" });
   }
 };
+
 
 /**
  * =========================

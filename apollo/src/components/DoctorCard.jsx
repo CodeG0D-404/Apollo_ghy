@@ -28,7 +28,7 @@ export default function DoctorCard({ doctor, visitType }) {
               ? `${API_BASE}/${doctor.photo}`
               : "/default-doctor.png"
           }
-          alt={doctor.name}
+          alt={doctor.displayName}
         />
       </div>
 
@@ -39,7 +39,7 @@ export default function DoctorCard({ doctor, visitType }) {
         <div className="doctor-row-topline">
 
           <div className="doctor-row-name">
-            {doctor.name}
+            {doctor.displayName}
           </div>
 
           <div className="doctor-row-specialty">

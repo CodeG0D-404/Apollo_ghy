@@ -152,8 +152,24 @@ doctorSchema.pre("findOneAndUpdate", function (next) {
 doctorSchema.pre("save", syncOPD);
 
 // ============================
+// 🔹 Virtual Display Name
+// Adds "Dr." prefix without modifying DB
+// ============================
+
+doctorSchema.virtual("displayName").get(function () {
+  if (!this.name) return "";
+  return `Dr. ${this.name}`;
+});
+
+// Ensure virtuals are included when sending JSON
+doctorSchema.set("toJSON", { virtuals: true });
+doctorSchema.set("toObject", { virtuals: true });
+
+// ============================
 // END: Doctor Schema
 // ============================
+
+
 
 const Doctor = mongoose.model("Doctor", doctorSchema);
 module.exports = Doctor;

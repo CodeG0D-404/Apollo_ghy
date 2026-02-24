@@ -11,6 +11,7 @@ const Patient = require("../models/Patient");
 const { findOrCreatePatient } = require("../services/patientService");
 const {sendEmailToAdmin } = require("../services/emailService");
 const OpdPaymentRecord = require("../models/OpdPaymentRecord");
+const uploadToCloudinary = require("../services/cloudinaryUpload");
 
 // 🆕 ADD: doctor connection service
 const { updateDoctorConnection } = require("../services/doctorConnectionService");

@@ -88,7 +88,7 @@ const DoctorDetails = () => {
         </div>
 
         <div className="doctor-details-info">
-          <h2 className="doctor-details-name">{name}</h2>
+          <h2 className="doctor-details-name">{doctor.displayName || `Dr. ${name}`}</h2>
 
           <p>
             <strong>Specialty:</strong> {specialty?.name || "N/A"} |{" "}

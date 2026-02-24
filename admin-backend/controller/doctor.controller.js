@@ -6,6 +6,7 @@
 const Doctor = require("../models/Doctor");
 const Specialty = require("../models/Specialty");
 const slugify = require("slugify");
+const uploadToCloudinary = require("../services/cloudinaryUpload"); // 🔥 ADDED
 
 // ---------------------------------------------
 // Helpers
@@ -32,7 +33,6 @@ exports.getDoctorsBySpecialtySlug = async (req, res) => {
     const { slug } = req.params;
     const { visitType } = req.query;
 
-    // 1️⃣ Find active specialty by slug
     const specialty = await Specialty.findOne({
       slug,
       active: true,
@@ -44,7 +44,6 @@ exports.getDoctorsBySpecialtySlug = async (req, res) => {
       });
     }
 
-    // 2️⃣ Find doctors for this specialty
     let doctors = await Doctor.find({ specialty: specialty._id })
       .populate("specialty", "name slug active")
       .populate("conditionsTreated", "name")
@@ -52,19 +51,16 @@ exports.getDoctorsBySpecialtySlug = async (req, res) => {
         "name slug qualification experience bio photo language specialty conditionsTreated visitTypes opdDates"
       );
 
-    // 3️⃣ Reuse existing business rules
     doctors = doctors
       .map(cleanOpdDates)
       .filter((d) => d.specialty?.active);
 
-    // 4️⃣ Optional visitType filter (OPD / Telemedicine / Hospital Visit)
     if (visitType) {
       doctors = doctors.filter((d) =>
         d.visitTypes.includes(visitType)
       );
     }
 
-    // 5️⃣ Response
     res.json({
       specialty: {
         id: specialty._id,
@@ -99,16 +95,36 @@ exports.createDoctor = async (req, res) => {
       opdDates,
     } = req.body;
 
+    let photoUrl = null;
+
+    // 🔥 CLOUDINARY UPLOAD ADDED
+    if (req.file) {
+      try {
+        const result = await uploadToCloudinary(
+          req.file.buffer,
+          "doctors"
+        );
+        photoUrl = result.secure_url;
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        return res.status(500).json({
+          error: "Image upload failed",
+        });
+      }
+    }
+
     const doctor = new Doctor({
       name,
       slug: slugify(name, { lower: true, strict: true }),
       qualification,
       experience,
       bio,
-      photo: req.file ? req.file.path : null,
+      photo: photoUrl,
       language: language ? JSON.parse(language) : [],
       specialty,
-      conditionsTreated: conditionsTreated ? JSON.parse(conditionsTreated) : [],
+      conditionsTreated: conditionsTreated
+        ? JSON.parse(conditionsTreated)
+        : [],
       visitTypes: visitTypes ? JSON.parse(visitTypes) : [],
       opdDates: opdDates ? JSON.parse(opdDates) : [],
     });
@@ -209,7 +225,22 @@ exports.updateDoctor = async (req, res) => {
       update.slug = slugify(update.name, { lower: true, strict: true });
     }
 
-    if (req.file) update.photo = req.file.path;
+    // 🔥 CLOUDINARY UPDATE
+    if (req.file) {
+      try {
+        const result = await uploadToCloudinary(
+          req.file.buffer,
+          "doctors"
+        );
+        update.photo = result.secure_url;
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        return res.status(500).json({
+          error: "Image upload failed",
+        });
+      }
+    }
+
     if (update.language) update.language = JSON.parse(update.language);
     if (update.conditionsTreated)
       update.conditionsTreated = JSON.parse(update.conditionsTreated);
