@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import "./CSS/LeftSidebar.css";
 
 export default function LeftSidebar({ visitType }) {
@@ -33,7 +33,7 @@ export default function LeftSidebar({ visitType }) {
   const [loadingSpecs, setLoadingSpecs] = useState(true);
 
   useEffect(() => {
-    axios
+    api
       .get("/api/specialties")
       .then((res) => setSpecialties(res.data || []))
       .catch(() => setSpecialties([]))

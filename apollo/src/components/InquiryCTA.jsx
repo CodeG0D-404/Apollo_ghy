@@ -5,7 +5,7 @@
 // =============================================
 
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import "./CSS/InquiryCTA.css";
 
 export default function InquiryCTA({
@@ -47,7 +47,7 @@ export default function InquiryCTA({
     setLoading(true);
 
     try {
-      await axios.post(
+      await api.post(
         `${import.meta.env.VITE_API_URL}/api/inquiry`,
         {
           name: sanitize(name),

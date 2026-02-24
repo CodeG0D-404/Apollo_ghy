@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import "./Css/Blogs.css";
 
 export default function Blogs() {
@@ -8,8 +8,8 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/blogs/public`)
+    api
+      .get(`/api/blogs/public`)
       .then((res) => setBlogs(res.data))
       .catch(() => console.error("Failed to load blogs"))
       .finally(() => setLoading(false));

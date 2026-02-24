@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 import "./Css/BookingForm.css";
 
@@ -49,7 +49,7 @@ export default function BookingForm() {
   useEffect(() => {
     async function fetchDoctor() {
       try {
-        const res = await axios.get(`${API}/doctors/${doctorId}`);
+        const res = await api.get(`/doctors/${doctorId}`);
         const doc = res.data;
         setDoctor(doc);
 
@@ -104,7 +104,7 @@ export default function BookingForm() {
     try {
       setSubmitting(true);
 
-      await axios.post(`${API}/bookings`, {
+      await api.post(`/bookings`, {
         doctorId: doctor._id,
         doctorName: doctor.name,
         visitType,

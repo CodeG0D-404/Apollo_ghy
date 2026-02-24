@@ -5,7 +5,7 @@
 // =============================================
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import TestimonialCard from "./TestimonialCard";
 import "./CSS/TestimonialSlider.css";
 
@@ -22,7 +22,7 @@ export default function TestimonialSlider({ title }) {
   const API_BASE = import.meta.env.VITE_API_URL || "";
 
   useEffect(() => {
-    axios
+    api
       .get(`${API_BASE}/api/testimonials/public`)
       .then((res) => setTestimonials(res.data || []))
       .catch(() => setTestimonials([]));

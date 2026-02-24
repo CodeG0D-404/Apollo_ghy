@@ -5,7 +5,7 @@
 // =============================================
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import "./CSS/CallCTA.css";
 
 export default function CallCTA({ label = "Call Clinic" }) {
@@ -16,7 +16,7 @@ export default function CallCTA({ label = "Call Clinic" }) {
 
     const fetchPhone = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/call-cta`, {
+        const res = await api.get(`${import.meta.env.VITE_API_URL}/api/call-cta`, {
           withCredentials: true
         });
 

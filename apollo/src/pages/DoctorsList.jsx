@@ -36,7 +36,8 @@ export default function DoctorsList() {
           url += `?visitType=${visitType}`;
         }
 
-        const res = await axios.get(url);
+        const API = import.meta.env.VITE_API_URL;
+        const res = await axios.get(`${API}${url}`);
 
         if (slug) {
           setDoctors(res.data.doctors || []);

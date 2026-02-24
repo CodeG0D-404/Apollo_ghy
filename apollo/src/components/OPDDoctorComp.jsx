@@ -5,7 +5,7 @@
 // =============================================
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import DoctorCardOPD from "./DoctorCardOPD";
 import "./CSS/OPDDoctorComp.css";
 
@@ -22,7 +22,7 @@ export default function OPDDoctors({ title = "OPD Doctors Available" }) {
   const API_BASE = import.meta.env.VITE_API_URL || "";
 
   useEffect(() => {
-    axios
+    api
       .get(`${API_BASE}/api/doctors?visitType=OPD`)
       .then((res) => setDoctors(res.data || []))
       .catch(() => setDoctors([]));

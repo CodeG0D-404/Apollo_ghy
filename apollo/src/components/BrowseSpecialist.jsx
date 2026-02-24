@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import "./CSS/BrowseSpecialist.css";
 import doctorIcon from "../assets/doctor-icon.png";
 
@@ -20,7 +20,7 @@ export default function BrowseSpecialist() {
   useEffect(() => {
     async function fetchSpecialties() {
       try {
-        const res = await axios.get(`${API_BASE}/api/specialties`);
+        const res = await api.get(`${API_BASE}/api/specialties`);
         setSpecialties(res.data || []);
       } catch {
         setError("Unable to load specialties");
