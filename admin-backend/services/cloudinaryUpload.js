@@ -12,8 +12,6 @@ const uploadToCloudinary = (fileBuffer, folder = "general") =>
       {
         folder,
 
-        // 🔥 AUTO FORMAT → converts JPG/PNG to WebP automatically
-        format: "webp",
 
         // 🔥 SMART COMPRESSION
         quality: "auto:good",
@@ -21,14 +19,7 @@ const uploadToCloudinary = (fileBuffer, folder = "general") =>
         // 🔥 AUTO OPTIMIZATION
         fetch_format: "auto",
 
-        // 🔥 LIMIT IMAGE SIZE (prevents huge uploads)
-        transformation: [
-          {
-            width: 1200,
-            height: 1200,
-            crop: "limit"
-          }
-        ]
+
       },
       (error, result) => {
         if (result) resolve(result);

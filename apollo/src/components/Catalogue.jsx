@@ -32,7 +32,7 @@ export default function Catalogue() {
       link: "/services/hospital-visit",
     },
     {
-      title: "Lab Test",
+      title: "other services",
       icon: labIcon,
       link: "/services/support-services",
     },

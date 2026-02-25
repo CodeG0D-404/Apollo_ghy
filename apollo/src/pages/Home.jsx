@@ -187,7 +187,7 @@ export default function Home() {
                   <img src={circleTick} alt="" />
                   <span>
                     <strong>Travel Support –</strong>
-                    Airport & railway pickup/drop assistance.
+                    Airport & railway pickup assistance.
                   </span>
                 </li>
 
