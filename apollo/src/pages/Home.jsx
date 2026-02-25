@@ -238,8 +238,6 @@ export default function Home() {
       {/* ================= TESTIMONIAL ================= */}
       <TestimonialSlider title="What Our Patients Say" />
 
-      {/* ================= SOCIAL ================= */}
-      <SocialMediaLinks />
 
     </main>
   );
