@@ -55,6 +55,7 @@ export default function InquiryCTA({
           page,
           section
         },
+
       );
 
       setMessage("Request submitted. Our team will contact you.");
