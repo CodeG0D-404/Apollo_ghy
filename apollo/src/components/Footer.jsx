@@ -1,3 +1,9 @@
+// =============================================
+// 📁 src/components/Footer.jsx
+// Apollo Information Centre — Premium Footer
+// Production Ready + SEO Structured
+// =============================================
+
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./CSS/Footer.css";
@@ -15,39 +21,75 @@ export default function Footer() {
 
   useEffect(() => {
     const onScroll = () => {
-      setShowMobileFooter(window.scrollY > 80);
+      setShowMobileFooter(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isActive = (path) => location.pathname === path;
+  // Better active detection (works with nested routes + query params)
+  const isActive = (path) => location.pathname.startsWith(path);
 
   return (
     <>
       {/* ================= DESKTOP FOOTER ================= */}
       <footer className="footer desktop-footer">
         <div className="footer-inner">
+
           <div className="footer-grid">
-            <div>
-              <h4>Apollo Service Centre</h4>
+
+            {/* Brand & Contact */}
+            <div className="footer-brand">
+              <h3>Apollo Information Centre</h3>
               <p>
-                Chennai, Tamil Nadu<br />
-                India – 600001
+                Bora Commercial Complex,<br />
+                Basisthapur Bye Lane 4,<br />
+                Bhabendra Nath Saikia Road,<br />
+                Beltola Tiniali, Guwahati,<br />
+                Assam – 781028
               </p>
+
+              <div className="footer-contact">
+                <p>📞 09678769107</p>
+                <p>✉ info@apolloinfoghy.com</p>
+                <p>🕒 Mon – Sat, 9 AM – 6 PM</p>
+                <p>Sunday Closed (Except OPD Dates)</p>
+              </div>
             </div>
 
+            {/* Services */}
             <div>
-              <h4>Explore</h4>
+              <h4>Services</h4>
               <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/services">Services</Link></li>
-                <li><Link to="/doctors">Doctors</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/services/opd">OPD Consultation</Link></li>
+                <li><Link to="/services/telemedicine">Telemedicine</Link></li>
+                <li><Link to="/services/hospital-visit">Hospital Visit</Link></li>
+                <li><Link to="/services/support-services">Other Services</Link></li>
               </ul>
             </div>
 
+            {/* Booking */}
+            <div>
+              <h4>Book Appointment</h4>
+              <ul>
+                <li><Link to="/doctors?visitType=OPD">Book OPD</Link></li>
+                <li><Link to="/doctors?visitType=Telemedicine">Book Telemedicine</Link></li>
+                <li><Link to="/hospital-request">Hospital Visit (Chennai)</Link></li>
+              </ul>
+            </div>
+
+            {/* Info */}
+            <div>
+              <h4>Information</h4>
+              <ul>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/faqs">FAQs</Link></li>
+                <li><Link to="/blogs">Blog</Link></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
             <div>
               <h4>Legal</h4>
               <ul>
@@ -56,16 +98,20 @@ export default function Footer() {
                 <li><Link to="/medical-disclaimer">Medical Disclaimer</Link></li>
               </ul>
             </div>
+
           </div>
 
           <div className="footer-bottom">
-            © {new Date().getFullYear()} Apollo Service Centre. All rights reserved.
+            © {new Date().getFullYear()} Apollo Information Centre, Guwahati.
+            All Rights Reserved.
           </div>
+
         </div>
       </footer>
 
-      {/* ================= MOBILE iOS FOOTER ================= */}
+      {/* ================= MOBILE iOS STYLE FOOTER ================= */}
       <nav className={`mobile-footer ${showMobileFooter ? "show" : ""}`}>
+
         <Link to="/" className={isActive("/") ? "active" : ""}>
           <Home />
           <span>Home</span>
@@ -83,13 +129,14 @@ export default function Footer() {
 
         <Link to="/doctors" className={isActive("/doctors") ? "active" : ""}>
           <UserRound />
-          <span>Doctor</span>
+          <span>Doctors</span>
         </Link>
 
         <Link to="/contact" className={isActive("/contact") ? "active" : ""}>
           <Phone />
           <span>Contact</span>
         </Link>
+
       </nav>
     </>
   );

@@ -101,7 +101,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/book/hospital-request" onClick={handleLinkClick}>
+                  <Link className="dropdown-item" to="/hospital-request" onClick={handleLinkClick}>
                     Book Hospital Visit (Chennai)
                   </Link>
                 </li>
