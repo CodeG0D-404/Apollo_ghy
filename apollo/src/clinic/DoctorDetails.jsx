@@ -21,7 +21,7 @@ const DoctorDetails = () => {
   const [loading, setLoading] = useState(true);
   const [showAllConditions, setShowAllConditions] = useState(false);
 
-  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     let mounted = true;

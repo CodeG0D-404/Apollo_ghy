@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Css/HospitalRequestForm.css";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_BASE_URL;
 
 export default function HospitalRequestForm() {
   const [message, setMessage] = useState("");
