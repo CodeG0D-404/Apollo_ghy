@@ -4,6 +4,7 @@
 // =============================
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 // =============================
 // 🧭 Layout Components
@@ -110,6 +111,18 @@ import EditPatient from "./clinic/EditPatient";
 // =============================
 import BookingList from "./clinic/BookingList";
 import HospitalBooking from "./clinic/HospitalBooking";
+
+
+      function App() {
+        return (
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              {/* all your routes */}
+            </Routes>
+          </BrowserRouter>
+        );
+      }
 
 
 // ======================================================
@@ -505,6 +518,7 @@ function AppContent() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AppContent />
     </Router>
   );
