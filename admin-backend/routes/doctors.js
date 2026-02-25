@@ -1,5 +1,4 @@
 const express = require("express");
-const multer = require("multer");
 const router = express.Router();
 const controller = require("../controller/doctor.controller");
 const validate = require("../middleware/validate");
