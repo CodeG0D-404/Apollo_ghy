@@ -6,6 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import api from "../services/api";
 import "./CSS/LeftSidebar.css";
 
@@ -117,7 +118,6 @@ export default function LeftSidebar({ visitType }) {
           {[
             { label: "OPD", icon: "🏥" },
             { label: "Telemedicine", icon: "💻" },
-            { label: "Hospital Visit", icon: "🏨" }
           ].map(({ label, icon }) => (
             <button
               key={label}
@@ -130,6 +130,10 @@ export default function LeftSidebar({ visitType }) {
               {!collapsed && label}
             </button>
           ))}
+
+                    <button onClick={() => navigate("/hospital-request")}>
+            🧪 {!collapsed && "Hospital Visit"}
+          </button>
 
         </div>
 

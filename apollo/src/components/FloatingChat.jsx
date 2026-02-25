@@ -9,7 +9,7 @@ export default function FloatingChat() {
       {open && (
         <div className="chat-panel">
           <a
-            href="https://wa.me/919XXXXXXXXX"
+            href="https://wa.me/918134095156"
             target="_blank"
             rel="noopener noreferrer"
             className="chat-option whatsapp"
