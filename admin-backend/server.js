@@ -113,7 +113,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+app.options(/.*/, cors());
 
 // ============================================================
 // 🚦 RATE LIMITER (ANTI-SPAM / ANTI-BOT)
