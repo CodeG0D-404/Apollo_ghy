@@ -150,3 +150,45 @@ a{
 }
 
 
+
+
+/* ================================
+   FIX NAVBAR MENU ALIGNMENT
+================================ */
+
+/* Make navbar items vertically centered */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Uniform height for each menu item */
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  height: 64px;   /* adjust if logo height changes */
+  padding: 0 12px !important;
+}
+
+/* Make all links identical */
+.navbar-nav .nav-item a,
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  padding: 0;
+}
+
+/* Remove Bootstrap uneven spacing */
+.navbar-nav .nav-link {
+  padding: 0 !important;
+}
+
+/* Dropdown caret alignment */
+.navbar-nav .dropdown-toggle::after {
+  margin-left: 6px;
+  vertical-align: middle;
+}

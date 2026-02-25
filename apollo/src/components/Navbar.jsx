@@ -71,23 +71,8 @@ function Navbar() {
         </Link>
       </li>
       <li>
-        <Link className="dropdown-item" to="/book/hospital-visit" onClick={handleLinkClick}>
+        <Link className="dropdown-item" to="/book/hospital-request" onClick={handleLinkClick}>
           Book Hospital Visit (Chennai)
-        </Link>
-      </li>
-      <li>
-        <Link className="dropdown-item" to="/book/diagnostic-tests" onClick={handleLinkClick}>
-          Book Diagnostic Tests
-        </Link>
-      </li>
-      <li>
-        <Link className="dropdown-item" to="/book/accommodation" onClick={handleLinkClick}>
-          Book Accommodation
-        </Link>
-      </li>
-      <li>
-        <Link className="dropdown-item" to="/book/transport" onClick={handleLinkClick}>
-          Book Medical Transport
         </Link>
       </li>
     </ul>
@@ -109,9 +94,7 @@ function Navbar() {
       <li><Link className="dropdown-item" to="/services/opd" onClick={handleLinkClick}>OPD Consultation</Link></li>
       <li><Link className="dropdown-item" to="/services/telemedicine" onClick={handleLinkClick}>Telemedicine</Link></li>
       <li><Link className="dropdown-item" to="/services/hospital-visit" onClick={handleLinkClick}>Hospital Visit</Link></li>
-      <li><Link className="dropdown-item" to="/services/diagnostic-tests" onClick={handleLinkClick}>Diagnostic Tests</Link></li>
-      <li><Link className="dropdown-item" to="/services/accommodation" onClick={handleLinkClick}>Accommodation</Link></li>
-      <li><Link className="dropdown-item" to="/services/transport" onClick={handleLinkClick}>Medical Transport</Link></li>
+      <li><Link className="dropdown-item" to="/services/support-services" onClick={handleLinkClick}>Other Services</Link></li>
     </ul>
   </li>
 
@@ -129,9 +112,7 @@ function Navbar() {
 
     <ul className="dropdown-menu">
       <li><Link className="dropdown-item" to="/about" onClick={handleLinkClick}>About Us</Link></li>
-      <li><Link className="dropdown-item" to="/how-it-works" onClick={handleLinkClick}>How It Works</Link></li>
       <li><Link className="dropdown-item" to="/faqs" onClick={handleLinkClick}>FAQs</Link></li>
-      <li><Link className="dropdown-item" to="/testimonials" onClick={handleLinkClick}>Testimonials</Link></li>
       <li><Link className="dropdown-item" to="/blogs" onClick={handleLinkClick}>Blog</Link></li>
     </ul>
   </li>
