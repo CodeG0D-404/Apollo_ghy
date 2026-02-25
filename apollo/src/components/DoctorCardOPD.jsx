@@ -23,14 +23,16 @@ export default function DoctorCardOPD({ doctor }) {
         <div className="d-flex opd-card-main">
             {/* PHOTO */}
             <div className="opd-card-photo">
-                <img
-                src={
-                    doctor.photo
-                    ? `${API_BASE}/${doctor.photo}`
-                    : "/default-doctor.png"
-                }
-                alt={doctor.displayName}
-                />
+            <img
+              src={
+                doctor.photo
+                  ? doctor.photo.startsWith("http")
+                    ? doctor.photo
+                    : `${API_BASE}/${doctor.photo.replace(/^\/+/, "")}`
+                  : "/default-doctor.png"
+              }
+              alt={doctor.displayName}
+            />
             </div>
             <div>
                 {/* NAME */}

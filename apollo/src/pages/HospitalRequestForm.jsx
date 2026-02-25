@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import "./Css/HospitalRequestForm.css";
 
-const API = import.meta.env.VITE_BASE_URL;
+
 
 export default function HospitalRequestForm() {
   const [message, setMessage] = useState("");
@@ -71,7 +71,7 @@ export default function HospitalRequestForm() {
     try {
       setSubmitting(true);
 
-      await axios.post(`${API}/api/hospital-requests`, {
+        await api.post("/hospital-requests", {
         name: formData.name.trim(),
         gender: formData.gender,
         age: Number(formData.age),

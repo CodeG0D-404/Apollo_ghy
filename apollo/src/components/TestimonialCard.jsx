@@ -19,7 +19,11 @@ export default function TestimonialCard({ item }) {
       {/* AVATAR */}
       {item?.patientImage && (
         <img
-          src={`${API_BASE}${item.patientImage}`}
+          src={
+            item.patientImage.startsWith("http")
+              ? item.patientImage
+              : `${API_BASE}/${item.patientImage.replace(/^\/+/, "")}`
+          }
           alt={item.patientName || "Patient testimonial"}
           className="testimonial-avatar"
           loading="lazy"

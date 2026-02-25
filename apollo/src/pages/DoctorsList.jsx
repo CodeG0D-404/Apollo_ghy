@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 import DoctorCard from "../components/DoctorCard";
 import LeftSidebar from "../components/LeftSidebar";
@@ -36,8 +36,7 @@ export default function DoctorsList() {
           url += `?visitType=${visitType}`;
         }
 
-        const API = import.meta.env.VITE_API_URL;
-        const res = await axios.get(`${API}${url}`);
+        const res = await api.get(url);
 
         if (slug) {
           setDoctors(res.data.doctors || []);

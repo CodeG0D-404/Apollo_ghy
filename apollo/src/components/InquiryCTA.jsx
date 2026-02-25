@@ -47,8 +47,7 @@ export default function InquiryCTA({
     setLoading(true);
 
     try {
-      await api.post(
-        `${import.meta.env.VITE_API_URL}/api/inquiry`,
+          await api.post("/inquiry",
         {
           name: sanitize(name),
           phone,
@@ -56,7 +55,6 @@ export default function InquiryCTA({
           page,
           section
         },
-        { withCredentials: true }
       );
 
       setMessage("Request submitted. Our team will contact you.");

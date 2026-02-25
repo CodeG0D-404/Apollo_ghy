@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 import LeftSidebar from "../components/LeftSidebar";
 import TestimonialSlider from "../components/TestimonialSlider";
@@ -26,7 +26,7 @@ export default function DoctorProfile() {
   useEffect(() => {
     async function fetchDoctor() {
       try {
-        const res = await axios.get(`/api/doctors/${id}`);
+        const res = await api.get(`/doctors/${id}`);
         setDoctor(res.data);
       } catch (err) {
         console.error("Doctor fetch failed:", err);
@@ -83,12 +83,18 @@ export default function DoctorProfile() {
 
               <div className="doctor-details-photo">
                 {photo ? (
-                  <img src={`${API_BASE}/${photo}`} alt={name} />
+                  <img
+                    src={
+                      photo.startsWith("http")
+                        ? photo
+                        : `${API_BASE}/${photo.replace(/^\/+/, "")}`
+                    }
+                    alt={name}
+                  />
                 ) : (
                   <div className="doctor-details-no-photo">No Photo</div>
                 )}
               </div>
-
               <div className="doctor-details-info">
 
                 <h2 className="doctor-details-name">{name}</h2>

@@ -30,7 +30,13 @@ export default function Blogs() {
               className="blog-card"
             >
               <img
-                src={`${import.meta.env.VITE_API_URL}${blog.coverImage}`}
+                src={
+                  blog.coverImage
+                    ? blog.coverImage.startsWith("http")
+                      ? blog.coverImage
+                      : `${import.meta.env.VITE_API_URL}/${blog.coverImage.replace(/^\/+/, "")}`
+                    : "/default-blog.png"
+                }
                 alt={blog.title}
               />
 

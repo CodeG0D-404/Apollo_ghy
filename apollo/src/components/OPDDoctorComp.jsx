@@ -19,14 +19,12 @@ import "swiper/css/pagination";
 export default function OPDDoctors({ title = "OPD Doctors Available" }) {
   const [doctors, setDoctors] = useState([]);
 
-  const API_BASE = import.meta.env.VITE_API_URL || "";
-
-  useEffect(() => {
-    api
-      .get(`${API_BASE}/api/doctors?visitType=OPD`)
-      .then((res) => setDoctors(res.data || []))
-      .catch(() => setDoctors([]));
-  }, [API_BASE]);
+      useEffect(() => {
+        api
+          .get("/api/doctors?visitType=OPD")
+          .then((res) => setDoctors(res.data || []))
+          .catch(() => setDoctors([]));
+      }, []);
 
   if (!doctors.length) return null;
 

@@ -19,14 +19,12 @@ import "swiper/css/pagination";
 export default function TestimonialSlider({ title }) {
   const [testimonials, setTestimonials] = useState([]);
 
-  const API_BASE = import.meta.env.VITE_API_URL || "";
-
-  useEffect(() => {
-    api
-      .get(`${API_BASE}/api/testimonials/public`)
-      .then((res) => setTestimonials(res.data || []))
-      .catch(() => setTestimonials([]));
-  }, [API_BASE]);
+useEffect(() => {
+  api
+    .get("/testimonials/public")
+    .then((res) => setTestimonials(res.data || []))
+    .catch(() => setTestimonials([]));
+}, []);
 
   if (!testimonials.length) return null;
 

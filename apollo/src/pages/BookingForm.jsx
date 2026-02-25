@@ -12,8 +12,6 @@ import api from "../services/api";
 
 import "./Css/BookingForm.css";
 
-// 🔹 Production base URL
-const API = import.meta.env.VITE_API_BASE_URL || "/api";
 
 export default function BookingForm() {
   const { doctorId, visitType } = useParams();
@@ -149,11 +147,17 @@ export default function BookingForm() {
         <div className="booking-info">
 
           <div className="doctor-card">
-            <img
-              src={doctor.photo || "/doctor-placeholder.png"}
-              alt={doctor.name}
-              className="doctor-img"
-            />
+          <img
+            src={
+              doctor.photo
+                ? doctor.photo.startsWith("http")
+                  ? doctor.photo
+                  : `${import.meta.env.VITE_API_URL}/${doctor.photo.replace(/^\/+/, "")}`
+                : "/doctor-placeholder.png"
+            }
+            alt={doctor.name}
+            className="doctor-img"
+          />
             <h3>{doctor.name}</h3>
             <p>{doctor.specialty?.name || "Senior Consultant"}</p>
           </div>
