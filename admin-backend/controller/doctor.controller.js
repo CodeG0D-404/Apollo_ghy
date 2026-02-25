@@ -222,9 +222,19 @@ exports.updateDoctor = async (req, res) => {
   try {
     const update = { ...req.body };
 
-    if (update.name) {
-      update.slug = slugify(update.name, { lower: true, strict: true });
-    }
+      if (update.name) {
+        let slug = slugify(update.name, { lower: true, strict: true });
+
+        // ensure slug stays unique when renaming doctor
+        const exists = await Doctor.findOne({
+          slug,
+          _id: { $ne: req.params.id }, // ignore current doctor
+        });
+
+        if (exists) slug = `${slug}-${Date.now()}`;
+
+        update.slug = slug;
+      }
 
     // 🔥 CLOUDINARY UPDATE
     if (req.file) {

@@ -15,12 +15,12 @@ export default function BrowseSpecialist() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const API_BASE = import.meta.env.VITE_API_URL || "";
+
 
   useEffect(() => {
     async function fetchSpecialties() {
       try {
-        const res = await api.get(`${API_BASE}/api/specialties`);
+        const res = await api.get("/api/specialties");
         setSpecialties(res.data || []);
       } catch {
         setError("Unable to load specialties");

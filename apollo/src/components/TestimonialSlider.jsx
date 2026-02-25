@@ -21,7 +21,7 @@ export default function TestimonialSlider({ title }) {
 
 useEffect(() => {
   api
-    .get("/testimonials/public")
+    .get("/api/testimonials/public")
     .then((res) => setTestimonials(res.data || []))
     .catch(() => setTestimonials([]));
 }, []);
