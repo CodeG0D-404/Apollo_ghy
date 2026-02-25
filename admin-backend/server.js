@@ -13,6 +13,9 @@ const path = require("path");
 
 const app = express();
 
+
+
+
 // 🔐 Hide Express signature header (security hardening)
 app.disable("x-powered-by");
 
@@ -109,6 +112,8 @@ app.use(
     credentials: true, // 🔐 REQUIRED for cookies
   })
 );
+
+app.options("*", cors());
 
 // ============================================================
 // 🚦 RATE LIMITER (ANTI-SPAM / ANTI-BOT)
