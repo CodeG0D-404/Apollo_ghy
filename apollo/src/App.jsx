@@ -113,16 +113,6 @@ import BookingList from "./clinic/BookingList";
 import HospitalBooking from "./clinic/HospitalBooking";
 
 
-      function App() {
-        return (
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              {/* all your routes */}
-            </Routes>
-          </BrowserRouter>
-        );
-      }
 
 
 // ======================================================
