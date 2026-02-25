@@ -3,6 +3,8 @@
 // Purpose: Business logic for Doctor routes
 // =============================================
 
+console.log("BUFFER LENGTH:", req.file?.buffer?.length);
+
 const Doctor = require("../models/Doctor");
 const Specialty = require("../models/Specialty");
 const slugify = require("slugify");

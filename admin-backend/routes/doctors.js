@@ -16,7 +16,7 @@ const {
 // ---------------------------------------------
 const multer = require("multer");
 
-// 🔥 use memory storage for Cloudinary
+// 🔥 MEMORY storage ONLY
 const storage = multer.memoryStorage();
 
 const upload = multer({
