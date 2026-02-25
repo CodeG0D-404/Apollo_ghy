@@ -1,6 +1,6 @@
 // =============================================
 // 📁 services/cloudinaryUpload.js
-// Production Optimized Media Upload
+// Stable Cloudinary Upload (Render-safe)
 // =============================================
 
 const cloudinary = require("../config/cloudinary");
@@ -11,19 +11,19 @@ const uploadToCloudinary = (fileBuffer, folder = "general") =>
     const stream = cloudinary.uploader.upload_stream(
       {
         folder,
+        resource_type: "image",
 
-
-        // 🔥 SMART COMPRESSION
-        quality: "auto:good",
-
-        // 🔥 AUTO OPTIMIZATION
+        // SAFE optimization only
+        quality: "auto",
         fetch_format: "auto",
-
-
       },
       (error, result) => {
-        if (result) resolve(result);
-        else reject(error);
+        if (error) {
+          console.error("Cloudinary upload error:", error);
+          reject(error);
+        } else {
+          resolve(result);
+        }
       }
     );
 
