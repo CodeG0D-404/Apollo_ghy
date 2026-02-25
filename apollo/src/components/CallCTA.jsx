@@ -16,9 +16,7 @@ export default function CallCTA({ label = "Call Clinic" }) {
 
     const fetchPhone = async () => {
       try {
-        const res = await api.get(`${import.meta.env.VITE_API_URL}/api/call-cta`, {
-          withCredentials: true
-        });
+        const res = await api.get("/call-cta");
 
         if (mounted && res.data?.phoneNumber) {
           setPhone(res.data.phoneNumber);

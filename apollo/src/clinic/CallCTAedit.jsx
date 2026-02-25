@@ -5,7 +5,7 @@
 // =============================================
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import adminAxios from "./Services/adminAxios";
 import "./styles/CallCTA.css";
 
 export default function CallCTAedit() {
@@ -21,10 +21,7 @@ export default function CallCTAedit() {
 
   const fetchCurrentNumber = async () => {
     try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/call-cta`,
-        { withCredentials: true }
-      );
+        const res = await adminAxios.get("/call-cta");
 
       if (res.data?.phoneNumber) {
         setCurrentNumber(res.data.phoneNumber);
@@ -55,11 +52,9 @@ export default function CallCTAedit() {
     try {
       const formattedNumber = `91${inputNumber}`;
 
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/call-cta`,
-        { phoneNumber: formattedNumber },
-        { withCredentials: true }
-      );
+      await adminAxios.put("/call-cta", {
+        phoneNumber: formattedNumber,
+      });
 
       setMessage("Number updated successfully");
       setInputNumber("");

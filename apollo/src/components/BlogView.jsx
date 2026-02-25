@@ -49,7 +49,11 @@ export default function BlogView({ blog, showStatus = false }) {
       {blog.coverImage && (
         <div className="blog-cover">
           <img
-            src={`${API_BASE}${blog.coverImage}`}
+          src={
+              blog.coverImage.startsWith("http")
+                ? blog.coverImage
+                : `${API_BASE}/${blog.coverImage.replace(/^\/+/, "")}`
+            }
             alt={blog.title}
             loading="lazy"
           />

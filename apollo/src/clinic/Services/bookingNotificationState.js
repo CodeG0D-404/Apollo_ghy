@@ -5,31 +5,46 @@ export function getNotificationState(booking) {
     return { type: null, disabled: true, reason: "No date assigned" };
   }
 
-  if (new Date(appointmentDate) < new Date()) {
+  // ✅ Compare date only (ignore time)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const appt = new Date(appointmentDate);
+  appt.setHours(0, 0, 0, 0);
+
+  if (appt < today) {
     return { type: null, disabled: true, reason: "Past booking" };
   }
 
-  // detect lifecycle
   let type = null;
+
+  // ✅ Lifecycle priority:
+  // DECLINED > RESCHEDULED > CONFIRMED
 
   if (booking.status === "Declined") {
     type = "DECLINED";
-  }
-
-  if (booking.status === "Confirmed") {
-    const rescheduled = booking.notifications?.find(n => n.type === "CONFIRMED");
-    if (!rescheduled) type = "CONFIRMED";
-  }
-
-  // reschedule detection
-  const rescheduledAlready = booking.notifications?.find(n => n.type === "RESCHEDULED");
-
-  if (!rescheduledAlready && booking.scheduledDate) {
+  } 
+  else if (
+    booking.scheduledDate &&
+    !booking.notifications?.find(n => n.type === "RESCHEDULED")
+  ) {
     type = "RESCHEDULED";
+  } 
+  else if (
+    booking.status === "Confirmed" &&
+    !booking.notifications?.find(n => n.type === "CONFIRMED")
+  ) {
+    type = "CONFIRMED";
   }
 
-  // already sent?
-  const alreadySent = booking.notifications?.find(n => n.type === type);
+  if (!type) {
+    return { type: null, disabled: true, reason: "No valid event" };
+  }
+
+  // ✅ Check if already sent
+  const alreadySent = booking.notifications?.find(
+    n => n.type === type
+  );
 
   if (alreadySent) {
     return {
@@ -42,7 +57,7 @@ export function getNotificationState(booking) {
 
   return {
     type,
-    disabled: !type,
-    reason: !type ? "No valid event" : null,
+    disabled: false,
+    reason: null,
   };
 }

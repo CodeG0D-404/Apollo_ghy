@@ -92,7 +92,11 @@ export default function TestimonialView() {
         {testimonial.patientImage && (
           <div className="testimonial-view-image">
             <img
-              src={`${BASE_URL}${testimonial.patientImage}`}
+              src={
+                testimonial.patientImage.startsWith("http")
+                  ? testimonial.patientImage
+                  : `${BASE_URL}/${testimonial.patientImage.replace(/^\/+/, "")}`
+              }
               alt={testimonial.patientName}
             />
           </div>

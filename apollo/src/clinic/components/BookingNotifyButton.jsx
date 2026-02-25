@@ -1,5 +1,5 @@
-import axios from "axios";
-import { getNotificationState } from ".Services/bookingNotificationState";
+import adminAxios from "./Services/adminAxios";
+import { getNotificationState } from "./Services/bookingNotificationState";
 
 export default function BookingNotifyButton({ booking, onSent }) {
 
@@ -7,11 +7,7 @@ export default function BookingNotifyButton({ booking, onSent }) {
 
   const handleNotify = async () => {
     try {
-      await axios.post(
-        `/api/bookings/${booking._id}/notify`,
-        {},
-        { withCredentials: true }
-      );
+await adminAxios.post(`/bookings/${booking._id}/notify`);
 
       onSent(); // refresh list
     } catch (err) {

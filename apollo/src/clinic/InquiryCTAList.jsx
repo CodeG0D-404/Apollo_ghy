@@ -4,7 +4,7 @@
 // =============================================
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import adminAxios from "./Services/adminAxios";
 import "./styles/InquiryCTAList.css";
 
 export default function InquiryCTAList() {
@@ -21,40 +21,40 @@ export default function InquiryCTAList() {
   const [followDate, setFollowDate] = useState("");
   const [remarks, setRemarks] = useState("");
 
-  const API = `${import.meta.env.VITE_API_URL}/api/inquiry`;
 
-  const fetchInquiries = async () => {
-    try {
-      const res = await axios.get(API, {
-        params: {
-          page,
-          limit: 25,
-          phone: phoneSearch,
-          date: dateFilter
-        },
-        withCredentials: true
-      });
+const fetchInquiries = async () => {
+  try {
+    const res = await adminAxios.get("/inquiry", {
+      params: {
+        page,
+        limit: 25,
+        phone: phoneSearch,
+        date: dateFilter,
+      },
+    });
 
-      setData(res.data.data);
-      setTotalPages(res.data.pagination.pages);
-    } catch {}
-  };
+    setData(res.data.data);
+    setTotalPages(res.data.pagination.pages);
+  } catch (err) {
+    console.error("Failed to fetch inquiries:", err);
+  }
+};
 
   useEffect(() => {
     fetchInquiries();
   }, [page, phoneSearch, dateFilter]);
 
-  const submitReview = async () => {
-    await axios.patch(
-      `${API}/review/${reviewPopup}`,
-      { notes },
-      { withCredentials: true }
-    );
+const submitReview = async () => {
+  try {
+    await adminAxios.patch(`/inquiry/review/${reviewPopup}`, { notes });
 
     setReviewPopup(null);
     setNotes("");
     fetchInquiries();
-  };
+  } catch (err) {
+    console.error("Failed to submit review:", err);
+  }
+};
 
   const submitFollowup = async () => {
     await axios.patch(

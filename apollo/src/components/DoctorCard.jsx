@@ -22,14 +22,10 @@ export default function DoctorCard({ doctor, visitType }) {
 
       {/* LEFT — PHOTO */}
       <div className="doctor-row-photo">
-        <img
-          src={
-            doctor.photo
-              ? `${API_BASE}/${doctor.photo}`
-              : "/default-doctor.png"
-          }
-          alt={doctor.displayName}
-        />
+      <img
+        src={doctor.photo || "/default-doctor.png"}
+        alt={doctor.displayName}
+      />
       </div>
 
       {/* CENTER — MAIN INFO */}

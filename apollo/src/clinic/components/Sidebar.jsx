@@ -3,6 +3,7 @@
 // Admin Sidebar — Scoped & CSS-safe
 // =============================================
 
+import adminAxios from "../Services/adminAxios";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Sidebar.css";
@@ -33,10 +34,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch(`${API}/clinic/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
+      await adminAxios.post("/clinic/logout");
     } catch (err) {
       console.error("Logout failed:", err);
     }

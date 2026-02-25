@@ -21,7 +21,7 @@ const DoctorDetails = () => {
   const [loading, setLoading] = useState(true);
   const [showAllConditions, setShowAllConditions] = useState(false);
 
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     let mounted = true;
@@ -81,7 +81,10 @@ const DoctorDetails = () => {
       <div className="doctor-details-top">
         <div className="doctor-details-photo">
           {photo ? (
-            <img src={`${BASE_URL}/${photo}`} alt={name} />
+            <img
+            src={photo?.startsWith("http") ? photo : `${BASE_URL}/${photo}`}
+            alt={name}
+          />
           ) : (
             <div className="doctor-details-no-photo">No Photo</div>
           )}

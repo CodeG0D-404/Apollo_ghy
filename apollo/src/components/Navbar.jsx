@@ -29,6 +29,11 @@ function Navbar() {
 
   // ✅ Close when clicking a link
   const handleLinkClick = () => setIsOpen(false);
+   // Close Bootstrap collapse manually
+  const navbarCollapse = document.getElementById("navbarSupportedContent");
+  if (navbarCollapse?.classList.contains("show")) {
+    navbarCollapse.classList.remove("show");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg main-nav">

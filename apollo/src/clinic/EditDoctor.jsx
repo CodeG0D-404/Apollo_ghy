@@ -3,7 +3,7 @@
 // Admin: Edit Doctor
 // Scoped styling + deployment ready
 // =============================================
-
+import adminAxios from "./Services/adminAxios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./styles/EditDoctor.css";
@@ -22,7 +22,7 @@ const LANGUAGE_OPTIONS = [
   "Malayalam","Odia","Punjabi",
 ];
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const EditDoctor = () => {
   const { id } = useParams();
@@ -72,10 +72,10 @@ const EditDoctor = () => {
           setPreviewPhoto(url);
         }
 
-        const [condRes, specRes] = await Promise.all([
-          axios.get(`${BASE_URL}/api/conditions`),
-          axios.get(`${BASE_URL}/api/specialties`),
-        ]);
+          const [condRes, specRes] = await Promise.all([
+            adminAxios.get("/conditions"),
+            adminAxios.get("/specialties"),
+          ]);
 
         setAllConditions(condRes.data || []);
         setAllSpecialties(specRes.data || []);
