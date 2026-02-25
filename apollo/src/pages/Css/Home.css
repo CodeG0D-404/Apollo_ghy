@@ -116,6 +116,13 @@
   height: 18px;
 }
 
+.home-why-image img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1024px) {
@@ -123,10 +130,29 @@
     flex-direction: column;
     text-align: center;
   }
+@media (max-width: 768px) {
+  .home-why {
+    padding: 40px 16px;
+  }
 
   .home-why-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
+
+  .home-why-text h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .home-why-list li {
+    font-size: 14px;
+  }
+
+  .home-why-image {
+    text-align: center;
+  }
+}
 
   .home-banner-text h1,
   .home-banner-text h2 {
