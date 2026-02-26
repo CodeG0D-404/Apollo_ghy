@@ -6,164 +6,83 @@ const ServiceTimeline = () => {
 
   const services = [
     {
-      name: "OPD",
+      name: "OPD Booking Process",
       steps: [
         {
-          title: "Choose Hospital",
+          title: "Check Visiting Doctor Schedule",
           description:
-            "Select your preferred hospital or clinic based on location, speciality and availability.",
+            "View updated dates of specialist doctors visiting Guwahati through our website.",
         },
         {
-          title: "Select Doctor",
+          title: "Book OPD Appointment",
           description:
-            "Browse verified doctors, check experience, and choose the right specialist for your condition.",
+            "Submit your medical requirement and confirm your OPD appointment in advance.",
         },
         {
-          title: "Pick Date & Time",
+          title: "Visit Clinic on OPD Date",
           description:
-            "Select available OPD slots according to your convenience.",
+            "Consult the specialist at the clinic on the scheduled OPD day without long waiting times.",
         },
         {
-          title: "Confirm Token",
+          title: "Follow-Up Support",
           description:
-            "Your OPD token is booked instantly and shared via SMS/WhatsApp.",
-          note: "Carry the token when visiting the clinic.",
-        },
-        {
-          title: "Visit Clinic",
-          description:
-            "Reach the hospital on time and consult the doctor without waiting in long queues.",
-        },
-      ],
+            "Our clinic team assists you with follow-up appointments and future treatment planning.",
+        }
+      ]
     },
 
+{
+  name: "Telemedicine Consultation",
+  steps: [
     {
-      name: "Telemedicine",
-      steps: [
-        {
-          title: "Choose Speciality",
-          description:
-            "Select the medical speciality relevant to your symptoms.",
-        },
-        {
-          title: "Select Doctor",
-          description:
-            "Pick a doctor based on experience, availability and consultation fees.",
-        },
-        {
-          title: "Confirm Booking",
-          description:
-            "Confirm your online appointment and receive meeting details.",
-        },
-        {
-          title: "Join Call",
-          description:
-            "Consult your doctor via video or audio call from home.",
-          note: "Prescription shared digitally after consultation.",
-        },
-      ],
+      title: "Select Doctor",
+      description:
+        "Choose a specialist based on your medical needs and consultation requirements.",
     },
+    {
+      title: "Get Scheduled Date & Time",
+      description:
+        "We confirm and share the doctor’s available teleconsultation slot with you.",
+    },
+    {
+      title: "Consult Online",
+      description:
+        "Connect with the doctor on the scheduled date via video or audio consultation.",
+    },
+    {
+      title: "Follow-Up Support",
+      description:
+        "Guidance for prescriptions, next steps, and future consultation planning.",
+    }
+  ]
+},
 
+{
+  name: "Hospital Visit Assistance",
+  steps: [
     {
-      name: "Hospital Visit",
-      steps: [
-        {
-          title: "Choose Department",
-          description:
-            "Select the required hospital department or treatment type.",
-        },
-        {
-          title: "Get Appointment",
-          description:
-            "We coordinate with the hospital to schedule your visit.",
-        },
-        {
-          title: "Arrive Hospital",
-          description:
-            "Our support team assists with registration and navigation.",
-        },
-        {
-          title: "Consult Doctor",
-          description:
-            "Meet the doctor and begin treatment or evaluation.",
-        },
-      ],
+      title: "Submit Enquiry Form",
+      description:
+        "Fill out the form with your medical requirement and contact details.",
     },
-
     {
-      name: "Lab Test",
-      steps: [
-        {
-          title: "Select Lab",
-          description:
-            "Choose from certified diagnostic centers and partner labs.",
-        },
-        {
-          title: "Choose Test",
-          description:
-            "Pick required tests or health packages.",
-        },
-        {
-          title: "Provide Sample",
-          description:
-            "Visit lab or request home sample collection.",
-        },
-        {
-          title: "Get Reports",
-          description:
-            "Reports are delivered digitally and can be shared with doctors instantly.",
-        },
-      ],
+      title: "Consultation Call",
+      description:
+        "Our team contacts you to understand your needs and suggest suitable treatment options.",
     },
-
     {
-      name: "Accommodation",
-      steps: [
-        {
-          title: "Share Travel Dates",
-          description:
-            "Provide arrival and departure details for hospital visit.",
-        },
-        {
-          title: "Select Stay Options",
-          description:
-            "Choose budget, premium, or hospital-near accommodation.",
-        },
-        {
-          title: "Confirm Booking",
-          description:
-            "Accommodation is reserved and confirmed in advance.",
-        },
-        {
-          title: "Check-in Support",
-          description:
-            "On-ground assistance available during your stay.",
-        },
-      ],
+      title: "Hospital Visit Guidance",
+      description:
+        "We coordinate your hospital appointment and guide you until you reach the hospital.",
     },
-
     {
-      name: "Commute",
-      steps: [
-        {
-          title: "Request Pickup",
-          description:
-            "Book airport, railway, or local pickup.",
-        },
-        {
-          title: "Driver Assigned",
-          description:
-            "Verified driver details shared before arrival.",
-        },
-        {
-          title: "Travel To Hospital",
-          description:
-            "Safe and comfortable transport arranged for your appointments.",
-        },
-      ],
-    },
+      title: "Ongoing Follow-Up Support",
+      description:
+        "Continuous assistance for reports, next steps, and future treatment planning.",
+    }
+  ]
+},
   ];
-
   return (
     <section className="st-grid-container">
 

@@ -170,16 +170,16 @@ export default function Home() {
                 <li>
                   <img src={circleTick} alt="" />
                   <span>
-                    <strong>Apollo-Affiliated Doctors –</strong>
-                    Verified specialists directly connected with Apollo Hospitals.
+                    <strong>Verified Specialists Network –</strong>
+                    Get connected with experienced and verified doctors through our trusted healthcare network.
                   </span>
                 </li>
 
                 <li>
                   <img src={circleTick} alt="" />
                   <span>
-                    <strong>Pan-India Appointments –</strong>
-                    OPD & telemedicine bookings across Apollo network.
+                    <strong>Pan-India Appointment Support –</strong>
+                    Assistance for OPD and teleconsultations across leading hospitals.
                   </span>
                 </li>
 
@@ -187,7 +187,7 @@ export default function Home() {
                   <img src={circleTick} alt="" />
                   <span>
                     <strong>Travel Support –</strong>
-                    Airport & railway pickup assistance.
+                    Help with airport and railway pickup arrangements.
                   </span>
                 </li>
 
@@ -227,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* ================= SPECIALTIES ================= */}
-      <BrowseSpecialist />
+      {/*<BrowseSpecialist />*/}
 
       {/* ================= TIMELINE ================= */}
       <ServiceTimeline />
