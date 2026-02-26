@@ -171,7 +171,7 @@ export default function Home() {
                   <img src={circleTick} alt="" />
                   <span>
                     <strong>Verified Specialists Network –</strong>
-                    Get connected with experienced and verified doctors through our trusted healthcare network.
+                    Connect with trusted and experienced specialists.
                   </span>
                 </li>
 
