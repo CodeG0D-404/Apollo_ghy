@@ -46,17 +46,26 @@
 
 /* FILTER TOGGLE BUTTON */
 
+/* Hidden by default (desktop) */
 .doctor-sidebar-toggle {
-  position: fixed;
-  top: 74px;
-  left: 12px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  background: #0f4b5f;
-  color: #ffffff;
-  cursor: pointer;
-  z-index: 9500;
+  display: none;
+}
+
+/* Visible only on mobile */
+@media (max-width: 768px) {
+  .doctor-sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 74px;
+    left: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #0f4b5f;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 9500;
+  }
 }
 
 /* CLOSE BTN */
