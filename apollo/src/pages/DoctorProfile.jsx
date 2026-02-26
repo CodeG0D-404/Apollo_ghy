@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import api from "../services/api";
+import { getPublicDoctorById } from "./services/publicDoctor.service";
 
 import LeftSidebar from "../components/LeftSidebar";
 import TestimonialSlider from "../components/TestimonialSlider";
@@ -26,7 +26,7 @@ export default function DoctorProfile() {
   useEffect(() => {
     async function fetchDoctor() {
       try {
-        const res = await api.get(`/doctors/${id}`);
+        const res = await getPublicDoctorById(id);
         setDoctor(res.data);
       } catch (err) {
         console.error("Doctor fetch failed:", err);
@@ -158,7 +158,7 @@ export default function DoctorProfile() {
 
                 <div className="doctor-details-conditions">
 
-                  <h3>Conditions Treated</h3>
+                  <h3>Symptoms Treated</h3>
 
                   <div className="doctor-details-conditions-grid">
                     {(showAllConditions

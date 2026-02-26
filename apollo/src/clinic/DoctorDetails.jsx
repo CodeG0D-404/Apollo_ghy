@@ -132,7 +132,7 @@ const DoctorDetails = () => {
         </p>
 
         <div className="doctor-details-conditions">
-          <h3>Conditions Treated</h3>
+          <h3>Symptoms Treated</h3>
 
           <div className="doctor-details-conditions-grid">
             {visibleConditions.map((c, i) => (

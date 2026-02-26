@@ -24,7 +24,7 @@ export default function MedicalDisclaimer() {
             </p>
 
             <ul>
-              <li>Diagnose medical conditions</li>
+              <li>Diagnose medical symptoms</li>
               <li>Recommend treatments or medications</li>
               <li>Provide clinical opinions</li>
               <li>Replace professional medical consultation</li>

@@ -233,7 +233,7 @@ const EditDoctor = () => {
         {/* CONDITIONS */}
         <div className="edit-doctor-condition-box">
           <input
-            placeholder="Search condition…"
+            placeholder="Search Symptoms…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

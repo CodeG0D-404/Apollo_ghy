@@ -31,7 +31,7 @@ const ConditionsList = () => {
       setConditions(data || []);
       setFiltered(data || []);
     } catch (error) {
-      console.error("Error fetching conditions:", error);
+      console.error("Error fetching Symptoms:", error);
     } finally {
       setLoading(false);
     }
@@ -51,21 +51,21 @@ const ConditionsList = () => {
       setNewCondition("");
       loadConditions();
     } catch (error) {
-      console.error("Error adding condition:", error);
-      alert("Failed to add condition");
+      console.error("Error adding Symptoms:", error);
+      alert("Failed to add Symptoms");
     }
   };
 
   // Delete
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this condition?")) return;
+    if (!window.confirm("Are you sure you want to delete this Symptoms?")) return;
 
     try {
       await deleteCondition(id);
       loadConditions();
     } catch (error) {
-      console.error("Error deleting condition:", error);
-      alert("Failed to delete condition");
+      console.error("Error deleting Symptoms:", error);
+      alert("Failed to delete Symptoms");
     }
   };
 
@@ -89,7 +89,7 @@ const ConditionsList = () => {
 
   return (
     <div className="condition-page">
-      <h2 className="condition-title">Conditions Treated</h2>
+      <h2 className="condition-title">Symptoms Treated</h2>
 
       {/* Add */}
 {/* Add + Search Row */}
@@ -98,7 +98,7 @@ const ConditionsList = () => {
   <form className="condition-add-form" onSubmit={handleAdd}>
     <input
       type="text"
-      placeholder="New condition"
+      placeholder="New Symptoms"
       value={newCondition}
       onChange={(e) => setNewCondition(e.target.value)}
     />
@@ -108,7 +108,7 @@ const ConditionsList = () => {
   <input
     type="text"
     className="condition-search"
-    placeholder="Search conditions..."
+    placeholder="Search Symptoms..."
     value={search}
     onChange={(e) => setSearch(e.target.value)}
   />
