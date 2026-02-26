@@ -47,7 +47,7 @@ export default function BookingForm() {
   useEffect(() => {
     async function fetchDoctor() {
       try {
-        const res = await api.get(`/doctors/${doctorId}`);
+        const res = await api.get(`/api/doctors/${doctorId}`);
         const doc = res.data;
         setDoctor(doc);
 
