@@ -25,6 +25,13 @@
   gap: 18px;
 }
 
+/* Mobile: force 2 per row */
+@media (max-width: 600px) {
+  .catalogue-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* CARD */
 
 .catalogue-card {
