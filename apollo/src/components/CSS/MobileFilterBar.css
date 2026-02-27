@@ -1,33 +1,61 @@
+/* =========================================
+   MOBILE FILTER BAR
+   Behaves like secondary navbar
+========================================= */
+
+/* Hidden on desktop */
 .mobile-filter-bar {
   display: none;
 }
+
+/* =========================================
+   MOBILE ONLY
+========================================= */
 
 @media (max-width: 768px) {
 
   .mobile-filter-bar {
     display: block;
+
     width: 100%;
     background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+
     position: sticky;
     top: var(--navbar-height);
+
     z-index: 950;
+
+    border-bottom: 1px solid #e5e7eb;
   }
 
-  .mobile-filter-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 14px;
-    font-weight: 600;
-    background: #0f4b5f;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-  }
-
-  /* When navbar disappears (add class to body or parent) */
+  /* When navbar hides (optional enhancement) */
   .navbar-hidden .mobile-filter-bar {
     top: 0;
+  }
+
+  /* Button */
+  .mobile-filter-btn {
+    width: 100%;
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    background: #0f4b5f;
+    color: #ffffff;
+
+    border: none;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+  }
+
+  .mobile-filter-btn:hover {
+    background: #0c3e4e;
   }
 
 }

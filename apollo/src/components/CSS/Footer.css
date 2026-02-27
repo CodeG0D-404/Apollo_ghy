@@ -91,7 +91,7 @@
 }
 
 /* =========================================
-   MOBILE GLASS FOOTER
+   MOBILE GLASS FOOTER — UNIFORM VERSION
 ========================================= */
 
 .mobile-footer {
@@ -101,15 +101,21 @@
   transform: translateX(-50%);
   width: calc(100% - 24px);
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.88);
+
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
+
   border-radius: 22px;
-  padding: 12px 14px;
+  padding: 16px 18px;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
+
   box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
   transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   z-index: 999;
@@ -120,32 +126,56 @@
   opacity: 1;
 }
 
+/* Nav Items */
+
 .mobile-footer a,
 .mobile-item button {
-  flex: 1;
-  text-align: center;
-  font-size: 11px;
-  color: #6b7280;
+  flex: 1 1 0;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+  padding: 6px 0;
+
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #6b7280;
   text-decoration: none;
+
   background: none;
   border: none;
   cursor: pointer;
+
+  transition: 0.25s ease;
 }
 
+/* Icons */
+
 .mobile-footer svg {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 4px;
+  width: 24px;
+  height: 24px;
+  transition: 0.2s ease;
 }
+
+/* Active State */
 
 .mobile-footer a.active {
   color: #0b5ed7;
 }
 
-/* Tooltip Bubble */
+.mobile-footer a.active svg {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   TOOLTIP BUBBLE — UNIFORM WIDTH
+========================================= */
 
 .mobile-item {
   position: relative;
@@ -153,17 +183,23 @@
 
 .tooltip-bubble {
   position: absolute;
-  bottom: 60px;
+  bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
+
+  width: 200px;
+  max-width: 90vw;
+
   background: #ffffff;
-  padding: 16px 18px;
-  border-radius: 16px;
+  padding: 18px 20px;
+  border-radius: 18px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-width: 170px;
+  gap: 12px;
+
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
   animation: bubbleIn 0.25s ease;
 }
 
@@ -178,19 +214,32 @@
   transform: translateX(-50%) rotate(45deg);
 }
 
+/* Tooltip Links */
+
 .tooltip-bubble a {
   font-size: 13px;
+  font-weight: 500;
   color: #0e3b50;
   text-decoration: none;
+  transition: 0.2s ease;
 }
 
 .tooltip-bubble a:hover {
   color: #0b5ed7;
+  transform: translateX(3px);
 }
 
+/* Animation */
+
 @keyframes bubbleIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* =========================================

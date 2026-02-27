@@ -1,7 +1,7 @@
 // =============================================
 // 📁 src/pages/DoctorsList.jsx
-// Apollo-style vertical doctor rows (Production)
-// Mobile Filter Bar + Responsive Sidebar
+// Apollo-style vertical doctor rows
+// Clean Layout + Mobile Filter Integration
 // =============================================
 
 import React, { useEffect, useState } from "react";
@@ -21,7 +21,6 @@ export default function DoctorsList() {
   const visitType = searchParams.get("visitType") || "All";
 
   const [collapsed, setCollapsed] = useState(true);
-
   const [doctors, setDoctors] = useState([]);
   const [specialty, setSpecialty] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,6 +30,8 @@ export default function DoctorsList() {
   // FETCH DOCTORS
   // =============================================
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchDoctors() {
       setLoading(true);
       setError(null);
@@ -46,6 +47,8 @@ export default function DoctorsList() {
 
         const res = await api.get(url);
 
+        if (!isMounted) return;
+
         if (slug) {
           setDoctors(res.data.doctors || []);
           setSpecialty(res.data.specialty || null);
@@ -53,19 +56,28 @@ export default function DoctorsList() {
           setDoctors(res.data || []);
           setSpecialty(null);
         }
+
       } catch (err) {
-        console.error("Doctor fetch failed:", err);
-        setError("Unable to load doctors");
+        if (isMounted) {
+          setError("Unable to load doctors");
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchDoctors();
+
+    return () => {
+      isMounted = false;
+    };
+
   }, [slug, visitType]);
 
   // =============================================
-  // HEADING
+  // PAGE HEADING
   // =============================================
   const heading = specialty
     ? `${specialty.name} Doctors`
@@ -77,65 +89,66 @@ export default function DoctorsList() {
   // RENDER
   // =============================================
   return (
-    <div className="doctors-page">
-
-      {/* MOBILE FILTER BAR (Visible only on mobile via CSS) */}
+    <>
+      {/* MOBILE FILTER BAR (Must be OUTSIDE layout container) */}
       <MobileFilterBar onOpen={() => setCollapsed(false)} />
 
-      <div className="doctors-layout">
+      <div className="doctors-page">
 
-        {/* LEFT SIDEBAR */}
-        <LeftSidebar
-          visitType={visitType}
-          collapsed={collapsed}
-          setCollapsed={setCollapsed}
-        />
+        <div className="doctors-layout">
 
-        {/* MAIN CONTENT */}
-        <div className="doctors-content">
+          {/* LEFT SIDEBAR */}
+          <LeftSidebar
+            visitType={visitType}
+            collapsed={collapsed}
+            setCollapsed={setCollapsed}
+          />
 
-          {/* HEADER */}
-          <div className="doctors-header">
-            <h1 className="doctors-title">{heading}</h1>
+          {/* MAIN CONTENT */}
+          <div className="doctors-content">
+
+            <div className="doctors-header">
+              <h1 className="doctors-title">{heading}</h1>
+            </div>
+
+            <div className="doctors-card-wrapper">
+
+              {loading && (
+                <div className="doctors-state">
+                  Loading doctors…
+                </div>
+              )}
+
+              {error && (
+                <div className="doctors-state doctors-error">
+                  {error}
+                </div>
+              )}
+
+              {!loading && !error && doctors.length === 0 && (
+                <div className="doctors-state">
+                  No doctors available
+                </div>
+              )}
+
+              {!loading && !error && doctors.length > 0 && (
+                <div className="doctors-list-rows">
+                  {doctors.map((doctor) => (
+                    <DoctorCard
+                      key={doctor._id}
+                      doctor={doctor}
+                      visitType={visitType}
+                    />
+                  ))}
+                </div>
+              )}
+
+            </div>
+
           </div>
-
-          {/* CARD WRAPPER */}
-          <div className="doctors-card-wrapper">
-
-            {loading && (
-              <div className="doctors-state">
-                Loading doctors…
-              </div>
-            )}
-
-            {error && (
-              <div className="doctors-state doctors-error">
-                {error}
-              </div>
-            )}
-
-            {!loading && !error && doctors.length === 0 && (
-              <div className="doctors-state">
-                No doctors available
-              </div>
-            )}
-
-            {!loading && !error && doctors.length > 0 && (
-              <div className="doctors-list-rows">
-                {doctors.map((doctor) => (
-                  <DoctorCard
-                    key={doctor._id}
-                    doctor={doctor}
-                    visitType={visitType}
-                  />
-                ))}
-              </div>
-            )}
-
-          </div>
-
         </div>
+
       </div>
-    </div>
+    </>
   );
 }

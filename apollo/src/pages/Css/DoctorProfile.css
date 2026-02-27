@@ -1,8 +1,6 @@
 /* =================================================
    APOLLO DOCTOR PROFILE — BRAND ALIGNED
-   Blue: #2582A1
-   Yellow: #FDB931
-   ================================================= */
+================================================= */
 
 :root {
   --apollo-blue: #2582A1;
@@ -16,42 +14,41 @@
 }
 
 /* ========================================
-   PAGE LAYOUT
+   PAGE WRAPPER
 ======================================== */
 
 .doctor-profile-page {
-  display: flex;
-  align-items: flex-start;
   background: #ffffff;
   min-height: 100vh;
-  padding-top: 70px;
 }
 
-/* LEFT SIDEBAR */
+/* ========================================
+   LAYOUT CONTAINER (IMPORTANT)
+======================================== */
 
-.doctor-profile-page aside,
-.doctor-profile-page .left-sidebar {
-  width: 260px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--apollo-border);
-  background: var(--apollo-bg-light);
+.doctor-profile-layout {
+  display: flex;
 }
 
-/* MAIN CONTENT */
+/* Mobile stacking */
+@media (max-width: 768px) {
+  .doctor-profile-layout {
+    display: block;
+  }
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
 
 .doctor-profile-content {
   flex: 1;
   padding: 40px;
-  max-width: calc(100% - 260px);
   background: #ffffff;
 }
 
-.doctor-details-page {
-  width: 100%;
-}
-
 /* ========================================
-   TOP SECTION
+   PROFILE CARD
 ======================================== */
 
 .doctor-details-top {
@@ -188,8 +185,6 @@
   border: 1px solid rgba(37, 130, 161, 0.2);
 }
 
-/* READ MORE BUTTON */
-
 .doctor-details-readmore-wrap {
   margin-top: 14px;
   text-align: right;
@@ -215,19 +210,7 @@
 ======================================== */
 
 @media (max-width: 1024px) {
-  .doctor-profile-page {
-    flex-direction: column;
-  }
-
-  .doctor-profile-page aside,
-  .doctor-profile-page .left-sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--apollo-border);
-  }
-
   .doctor-profile-content {
-    max-width: 100%;
     padding: 24px;
   }
 
@@ -253,16 +236,5 @@
 
   .doctor-details-extra {
     padding: 20px;
-  }
-}
-
-.doctor-profile-layout {
-  display: flex;
-}
-
-/* Mobile stacking */
-@media (max-width: 768px) {
-  .doctor-profile-layout {
-    display: block;
   }
 }

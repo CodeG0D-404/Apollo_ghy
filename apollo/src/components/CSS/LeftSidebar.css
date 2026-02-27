@@ -1,3 +1,7 @@
+/* =========================================
+   ROOT
+========================================= */
+
 :root {
   --navbar-height: 64px;
 }
@@ -11,29 +15,41 @@
   padding: 20px 16px;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
-  height: calc(100vh - var(--navbar-height));
+
   position: sticky;
   top: var(--navbar-height);
+
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+
   z-index: 900;
   transition: transform 0.3s ease;
 }
 
-/* CONTENT */
+/* Hide close button on desktop */
+.doctor-sidebar-close {
+  display: none;
+}
+
+/* Content wrapper */
 .doctor-sidebar-content {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
-/* SECTION */
+/* Section Title */
 .doctor-sidebar-title {
   font-size: 15px;
   font-weight: 700;
   color: #0f4b5f;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* FILTER GROUP */
+/* =========================================
+   FILTER INPUTS
+========================================= */
+
 .doctor-filter-group {
   display: flex;
   flex-direction: column;
@@ -48,32 +64,41 @@
 
 .doctor-filter-group input,
 .doctor-filter-group select {
+  width: 100%;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   font-size: 13px;
+  background: #ffffff;
 }
 
-/* BUTTON GROUP */
+/* =========================================
+   BUTTON GROUPS
+========================================= */
+
 .doctor-sidebar-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* UNIFORM BUTTON */
+/* Uniform Button */
 .doctor-btn {
   width: 100%;
   padding: 12px;
+
   border-radius: 10px;
   border: none;
+
   background: #f3f4f6;
   font-size: 14px;
+
   display: flex;
   align-items: center;
   gap: 10px;
+
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .doctor-btn:hover {
@@ -85,10 +110,15 @@
   color: #ffffff;
 }
 
-/* DIVIDER */
+.doctor-btn-icon {
+  font-size: 15px;
+}
+
+/* Divider */
 .doctor-sidebar-divider {
   height: 1px;
   background: #e5e7eb;
+  margin: 4px 0;
 }
 
 /* =========================================
@@ -101,20 +131,27 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+
     width: 85%;
     max-width: 320px;
-    transform: translateX(-100%);
-    box-shadow: 4px 0 18px rgba(0,0,0,0.2);
+    height: 100vh;
+
+    background: #ffffff;
     border-right: none;
+
+    transform: translateX(-100%);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+
     z-index: 9999;
   }
 
-  .doctor-sidebar:not(.collapsed) {
+  .doctor-sidebar.open {
     transform: translateX(0);
   }
 
+  /* Close Button Visible on Mobile */
   .doctor-sidebar-close {
+    display: block;
     background: none;
     border: none;
     font-size: 20px;
@@ -122,11 +159,11 @@
     cursor: pointer;
   }
 
+  /* Overlay */
   .doctor-sidebar-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 9998;
   }
-
 }
