@@ -59,7 +59,7 @@ export default function Footer() {
 
             {/* Column 1 — Brand Only */}
             <div className="footer-brand">
-              <h3>Apollo Information Centre</h3>
+              <h3>Apollo Hospitals Information Centre</h3>
               <p>
                 Bora Commercial Complex,<br />
                 Basisthapur Bye Lane 4,<br />
@@ -122,7 +122,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-bottom">
-            © {new Date().getFullYear()} Apollo Information Centre, Guwahati. All Rights Reserved.
+            © {new Date().getFullYear()} Apollo Hospitals Information Centre, Guwahati. All Rights Reserved.
           </div>
 
         </div>

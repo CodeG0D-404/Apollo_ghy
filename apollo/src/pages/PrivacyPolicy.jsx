@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
           <p className="updated-date">Last updated: [Add Date]</p>
 
           <p>
-            Apollo Information Centre (“we”, “our”, “us”) respects your privacy
+            Apollo Hospitals Information Centre (“we”, “our”, “us”) respects your privacy
             and is committed to protecting your personal data. This Privacy
             Policy explains how we collect, use, store, and safeguard your
             information when you use our website and services.
@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2>1. Our Role</h2>
             <p>
-              Apollo Information Centre acts as a licensed coordination and
+              Apollo Hospitals Information Centre acts as a licensed coordination and
               facilitation bridge between Apollo Hospitals, Chennai and patients,
               primarily from the North Eastern region of India.
             </p>
@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
             <h2>4. WhatsApp, Call & Messaging Consent</h2>
             <p>
               By submitting your details on our website, you expressly consent to
-              being contacted by Apollo Information Centre via WhatsApp, phone
+              being contacted by Apollo Hospitals Information Centre via WhatsApp, phone
               calls, SMS, or email for service-related purposes, including:
             </p>
 
@@ -239,7 +239,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2>13. Contact & Grievance Redressal</h2>
             <p>
-              Apollo Information Centre<br />
+              Apollo Hospitals Information Centre<br />
               📧 Email: [your-email@example.com]<br />
               📞 Phone: [your-phone-number]<br />
               📍 Address: [Office Address, City, State, India]

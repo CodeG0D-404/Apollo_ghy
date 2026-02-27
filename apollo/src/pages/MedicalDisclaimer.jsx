@@ -9,7 +9,7 @@ export default function MedicalDisclaimer() {
           <p className="updated-date">Last updated: [Add Date]</p>
 
           <p>
-            Apollo Information Centre (“we”, “our”, “us”) provides non-clinical,
+            Apollo Hospitals Information Centre (“we”, “our”, “us”) provides non-clinical,
             informational, and appointment coordination services only.
           </p>
 
@@ -42,7 +42,7 @@ export default function MedicalDisclaimer() {
           <section>
             <h2>2. Appointment Facilitation Only</h2>
             <p>
-              Apollo Information Centre acts as a licensed facilitation and
+              Apollo Hospitals Information Centre acts as a licensed facilitation and
               coordination bridge between Apollo Hospitals, Chennai and
               patients, primarily from the North Eastern region of India.
             </p>
@@ -111,7 +111,7 @@ export default function MedicalDisclaimer() {
             </p>
 
             <p>
-              Apollo Information Centre is not responsible for acts, omissions,
+              Apollo Hospitals Information Centre is not responsible for acts, omissions,
               or outcomes related to hospital care or medical treatment.
             </p>
           </section>

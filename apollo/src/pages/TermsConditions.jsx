@@ -9,7 +9,7 @@ export default function TermsConditions() {
           <p className="updated-date">Last updated: [Add Date]</p>
 
           <p>
-            Welcome to Apollo Information Centre (“we”, “our”, “us”).
+            Welcome to Apollo Hospitals Information Centre (“we”, “our”, “us”).
             By accessing or using this website, you agree to be bound by these
             Terms & Conditions. If you do not agree, discontinue use of the
             website.
@@ -20,7 +20,7 @@ export default function TermsConditions() {
           <section>
             <h2>1. Role & Scope of Service</h2>
             <p>
-              Apollo Information Centre acts as a licensed coordination and
+              Apollo Hospitals Information Centre acts as a licensed coordination and
               facilitation bridge between Apollo Hospitals, Chennai and patients
               primarily from the North Eastern region of India.
             </p>
@@ -106,7 +106,7 @@ export default function TermsConditions() {
             <h2>6. Intellectual Property</h2>
             <p>
               All website content, including text, layout, logos, and graphics,
-              is owned by Apollo Information Centre unless stated otherwise.
+              is owned by Apollo Hospitals Information Centre unless stated otherwise.
               Unauthorized use is prohibited.
             </p>
           </section>
@@ -120,7 +120,7 @@ export default function TermsConditions() {
               provided entirely by Apollo Hospitals, Chennai.
             </p>
 
-            <p>Apollo Information Centre is not liable for:</p>
+            <p>Apollo Hospitals Information Centre is not liable for:</p>
             <ul>
               <li>Medical outcomes</li>
               <li>Treatment decisions</li>
@@ -169,7 +169,7 @@ export default function TermsConditions() {
           <section>
             <h2>11. Contact Details</h2>
             <p>
-              Apollo Information Centre<br />
+              Apollo Hospitals Information Centre<br />
               Email: [your-email@example.com]<br />
               Phone: [your-phone-number]<br />
               Address: [Office Address, City, State, India]

@@ -164,7 +164,7 @@ export default function Home() {
           <div className="home-why-grid">
 
             <div className="home-why-text">
-              <h2>Why Apollo Information Centre – Guwahati?</h2>
+              <h2>Why Apollo Hospitals Information Centre – Guwahati?</h2>
 
               <ul className="home-why-list">
                 <li>

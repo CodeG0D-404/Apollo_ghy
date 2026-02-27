@@ -111,7 +111,7 @@ export default function Contact() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.9925334637805!2d91.7889602789956!3d26.131786434244354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a58d61305ddcb%3A0x8fe706184e2126f6!2sApollo%20Hospitals%20Information%20Centre%2C%20Beltola%2CGhy!5e0!3m2!1sen!2sin"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Apollo Information Centre location map"
+                title="Apollo Hospitals Information Centre location map"
               />
             </div>
 
