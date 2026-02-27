@@ -152,6 +152,7 @@ export default function Footer() {
               <Link to="/services/opd" onClick={closeTooltip}>OPD</Link>
               <Link to="/services/telemedicine" onClick={closeTooltip}>Telemedicine</Link>
               <Link to="/services/hospital-visit" onClick={closeTooltip}>Hospital Visit</Link>
+              <Link to="/apollo-diagnostics" onClick={closeTooltip}>Apollo Diagnostics</Link>
               <Link to="/services/support-services" onClick={closeTooltip}>Other Services</Link>
             </div>
           )}

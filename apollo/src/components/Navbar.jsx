@@ -143,7 +143,7 @@ function Navbar() {
               <Link to="/services/opd" onClick={closeAll}>OPD Consultation</Link>
               <Link to="/services/telemedicine" onClick={closeAll}>Telemedicine</Link>
               <Link to="/services/hospital-visit" onClick={closeAll}>Hospital Visit</Link>
-              <Link to="/services/apollo-diagnostics" onClick={closeAll}>Apollo Diagnostics</Link>
+              <Link to="/apollo-diagnostics" onClick={closeAll}>Apollo Diagnostics</Link>
               <Link to="/services/support-services" onClick={closeAll}>Other Services</Link>
             </div>
           </li>
