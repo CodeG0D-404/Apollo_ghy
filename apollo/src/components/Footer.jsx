@@ -1,66 +1,64 @@
 // =============================================
 // 📁 src/components/Footer.jsx
-// Apollo Information Centre — Redesigned Footer
-// Structured Desktop + Speech Bubble Mobile
+// Apollo Information Centre — Clean Footer
+// Desktop Grid + Floating Mobile Navigation
 // =============================================
 
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./CSS/Footer.css";
 import {
   Home,
   Stethoscope,
   Info,
-  UserRound,
+  Phone,
 } from "lucide-react";
+import "./CSS/Footer.css";
 
 export default function Footer() {
+  const location = useLocation();
+  const mobileRef = useRef(null);
+
   const [showMobileFooter, setShowMobileFooter] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  const location = useLocation();
-  const mobileRef = useRef();
 
-  // Show mobile footer after scroll
-useEffect(() => {
-  let lastScrollY = window.scrollY;
+  /* ================= Scroll Behavior ================= */
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+    const handleScroll = () => {
+      const current = window.scrollY;
 
-    if (currentScrollY > 100) {
-      if (currentScrollY < lastScrollY) {
+      if (current > 120 && current < lastScrollY) {
         setShowMobileFooter(true); // scrolling up
       } else {
-        setShowMobileFooter(false); // scrolling down
+        setShowMobileFooter(false);
       }
-    } else {
-      setShowMobileFooter(false);
-    }
 
-    lastScrollY = currentScrollY;
-  };
+      lastScrollY = current;
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-  // Close tooltip on outside click
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* ================= Close Tooltip on Outside Click ================= */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (mobileRef.current && !mobileRef.current.contains(e.target)) {
         setActiveMenu(null);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const toggleMenu = (menu) => {
+  const toggleMenu = (menu) =>
     setActiveMenu(activeMenu === menu ? null : menu);
-  };
 
   const closeMenu = () => setActiveMenu(null);
 
-  const isActive = (path) => location.pathname.startsWith(path);
+  const isActive = (path) => location.pathname === path;
 
   return (
     <>
@@ -70,8 +68,8 @@ useEffect(() => {
 
           <div className="footer-grid">
 
-            {/* Brand (Spans 2 rows) */}
-            <div className="footer-brand span-2-rows">
+            {/* Brand */}
+            <div className="footer-brand">
               <h3>Apollo Information Centre</h3>
               <p>
                 Bora Commercial Complex,<br />
@@ -89,7 +87,7 @@ useEffect(() => {
               </div>
             </div>
 
-            {/* Row 1 */}
+            {/* Services */}
             <div>
               <h4>Services</h4>
               <ul>
@@ -100,6 +98,7 @@ useEffect(() => {
               </ul>
             </div>
 
+            {/* Information */}
             <div>
               <h4>Information</h4>
               <ul>
@@ -109,16 +108,7 @@ useEffect(() => {
               </ul>
             </div>
 
-            {/* Row 2 */}
-            <div>
-              <h4>Book Appointment</h4>
-              <ul>
-                <li><Link to="/doctors?visitType=OPD">Book OPD</Link></li>
-                <li><Link to="/doctors?visitType=Telemedicine">Book Telemedicine</Link></li>
-                <li><Link to="/hospital-request">Hospital Visit</Link></li>
-              </ul>
-            </div>
-
+            {/* Legal */}
             <div>
               <h4>Legal</h4>
               <ul>
@@ -182,18 +172,18 @@ useEffect(() => {
           )}
         </div>
 
-        {/* DOCTORS */}
+        {/* CONTACT */}
         <div className="mobile-item">
-          <button onClick={() => toggleMenu("doctors")}>
-            <UserRound />
-            <span>Doctors</span>
+          <button onClick={() => toggleMenu("contact")}>
+            <Phone />
+            <span>Contact</span>
           </button>
 
-          {activeMenu === "doctors" && (
+          {activeMenu === "contact" && (
             <div className="tooltip-bubble">
-              <Link to="/doctors?visitType=OPD" onClick={closeMenu}>Book OPD</Link>
-              <Link to="/doctors?visitType=Telemedicine" onClick={closeMenu}>Telemedicine</Link>
-              <Link to="/hospital-request" onClick={closeMenu}>Hospital Visit</Link>
+              <a href="tel:09678769107">Call Us</a>
+              <a href="mailto:info@apolloinfoghy.com">Email</a>
+              <Link to="/about" onClick={closeMenu}>About Centre</Link>
             </div>
           )}
         </div>

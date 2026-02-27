@@ -15,17 +15,13 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 50px 60px;
   margin-bottom: 50px;
 }
 
-.span-2-rows {
-  grid-row: span 2;
-}
-
 /* Brand */
+
 .footer-brand h3 {
   font-size: 20px;
   font-weight: 600;
@@ -40,7 +36,7 @@
 }
 
 .footer-contact {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .footer-contact p {
@@ -49,6 +45,7 @@
 }
 
 /* Headings */
+
 .footer h4 {
   font-size: 15px;
   font-weight: 600;
@@ -57,6 +54,7 @@
 }
 
 /* Links */
+
 .footer ul {
   list-style: none;
   padding: 0;
@@ -71,7 +69,7 @@
   font-size: 14px;
   color: #b7c6d8;
   text-decoration: none;
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .footer a:hover {
@@ -80,6 +78,7 @@
 }
 
 /* Bottom */
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 20px;
@@ -97,15 +96,14 @@
   transform: translateX(-50%);
   width: calc(100% - 24px);
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   border-radius: 22px;
   padding: 12px 14px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-between;
-  box-shadow:
-    0 15px 40px rgba(0,0,0,0.15),
-    inset 0 1px 0 rgba(255,255,255,0.6);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   z-index: 999;
@@ -149,7 +147,7 @@
 
 .tooltip-bubble {
   position: absolute;
-  bottom: 60px;
+  bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;
