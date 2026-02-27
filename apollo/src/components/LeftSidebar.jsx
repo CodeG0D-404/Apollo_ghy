@@ -1,6 +1,6 @@
 // ============================================
 // 📁 src/components/LeftSidebar.jsx
-// Unified Buttons + Smart Sticky Mobile Filter Bar
+// Stable Layout + Proper Sticky Behavior
 // ============================================
 
 import React, { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ export default function LeftSidebar({ visitType }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [collapsed, setCollapsed] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [specialties, setSpecialties] = useState([]);
   const [loadingSpecs, setLoadingSpecs] = useState(true);
@@ -25,13 +25,12 @@ export default function LeftSidebar({ visitType }) {
       .finally(() => setLoadingSpecs(false));
   }, []);
 
-  // auto close drawer on route change
   useEffect(() => {
-    setCollapsed(true);
+    setDrawerOpen(false);
   }, [location.pathname]);
 
   const navigateAndClose = (url) => {
-    setCollapsed(true);
+    setDrawerOpen(false);
     navigate(url);
   };
 
@@ -44,26 +43,27 @@ export default function LeftSidebar({ visitType }) {
   return (
     <>
       {/* MOBILE FILTER BAR */}
-      <button
-        className="doctor-filter-bar"
-        onClick={() => setCollapsed(false)}
-      >
-        ☰ Filters
-      </button>
+      <div className="mobile-filter-wrapper">
+        <button
+          className="mobile-filter-bar"
+          onClick={() => setDrawerOpen(true)}
+        >
+          ☰ Filters
+        </button>
+      </div>
 
       {/* SIDEBAR */}
-      <aside className={`doctor-sidebar ${collapsed ? "collapsed" : ""}`}>
+      <aside className={`doctor-sidebar ${drawerOpen ? "open" : ""}`}>
 
-        {/* CLOSE BUTTON (MOBILE) */}
+        {/* CLOSE (MOBILE) */}
         <button
           className="doctor-sidebar-close"
-          onClick={() => setCollapsed(true)}
+          onClick={() => setDrawerOpen(false)}
         >
           ✕ Close
         </button>
 
-        {/* FIND DOCTORS */}
-        <div className="doctor-sidebar-section">
+        <div className="doctor-sidebar-content">
 
           <h3 className="doctor-sidebar-title">Find Doctors</h3>
 
@@ -81,9 +81,7 @@ export default function LeftSidebar({ visitType }) {
             <label>Specialty</label>
 
             {loadingSpecs ? (
-              <div className="doctor-filter-loading">
-                Loading specialties…
-              </div>
+              <div>Loading specialties…</div>
             ) : (
               <select
                 defaultValue=""
@@ -101,61 +99,72 @@ export default function LeftSidebar({ visitType }) {
               </select>
             )}
           </div>
-        </div>
 
-        {/* VISIT TYPES */}
-        <div className="doctor-sidebar-visit">
-          {[
-            { label: "OPD", icon: "🏥" },
-            { label: "Telemedicine", icon: "💻" },
-          ].map(({ label, icon }) => (
+          <div className="doctor-section-divider" />
+
+          {/* VISIT TYPES */}
+          <div className="doctor-button-group">
+            {[
+              { label: "OPD", icon: "🏥" },
+              { label: "Telemedicine", icon: "💻" },
+            ].map(({ label, icon }) => (
+              <button
+                key={label}
+                className={`doctor-btn ${
+                  visitType === label ? "active" : ""
+                }`}
+                onClick={() =>
+                  navigateAndClose(`/doctors?visitType=${label}`)
+                }
+              >
+                {icon} {label}
+              </button>
+            ))}
+
             <button
-              key={label}
-              className={`doctor-btn ${
-                visitType === label ? "active" : ""
-              }`}
-              onClick={() => navigateAndClose(`/doctors?visitType=${label}`)}
+              className="doctor-btn"
+              onClick={() => navigateAndClose("/hospital-request")}
             >
-              <span>{icon}</span>
-              {label}
+              🧪 Hospital Visit
             </button>
-          ))}
+          </div>
 
-          <button
-            className="doctor-btn"
-            onClick={() => navigateAndClose("/hospital-request")}
-          >
-            🧪 Hospital Visit
-          </button>
+          <div className="doctor-section-divider" />
+
+          {/* SERVICES */}
+          <div className="doctor-button-group">
+            <button
+              className="doctor-btn"
+              onClick={() => navigateAndClose("/diagnostic-tests")}
+            >
+              🧪 Diagnostic Tests
+            </button>
+
+            <button
+              className="doctor-btn"
+              onClick={() => navigateAndClose("/accommodation")}
+            >
+              🏠 Accommodation
+            </button>
+
+            <button
+              className="doctor-btn"
+              onClick={() => navigateAndClose("/medical-transport")}
+            >
+              🚑 Medical Transport
+            </button>
+          </div>
+
         </div>
-
-        <div className="doctor-sidebar-divider" />
-
-        {/* SERVICES */}
-        <div className="doctor-sidebar-services">
-          <button
-            className="doctor-btn"
-            onClick={() => navigateAndClose("/diagnostic-tests")}
-          >
-            🧪 Diagnostic Tests
-          </button>
-
-          <button
-            className="doctor-btn"
-            onClick={() => navigateAndClose("/accommodation")}
-          >
-            🏠 Accommodation
-          </button>
-
-          <button
-            className="doctor-btn"
-            onClick={() => navigateAndClose("/medical-transport")}
-          >
-            🚑 Medical Transport
-          </button>
-        </div>
-
       </aside>
+
+      {/* OVERLAY */}
+      {drawerOpen && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setDrawerOpen(false)}
+        />
+      )}
     </>
   );
 }
