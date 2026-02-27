@@ -1,0 +1,254 @@
+/* =============================================
+   Apollo Diagnostics — Clean Modern System
+   Elegant • Professional • Scalable
+============================================= */
+
+/* ================= VARIABLES ================= */
+
+:root {
+  --diag-teal: #0c8fa1;
+  --diag-magenta: #c21875;
+  --diag-dark: #1f2d3d;
+  --diag-gray: #5f6f7f;
+  --diag-light: #f6fbfd;
+
+  --radius: 20px;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* ================= BASE ================= */
+
+.diag-page {
+  font-family: "Inter", sans-serif;
+  color: var(--diag-dark);
+  line-height: 1.6;
+}
+
+.diag-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.diag-center {
+  text-align: center;
+}
+
+.diag-section {
+  padding: 100px 0;
+}
+
+.diag-light {
+  background: var(--diag-light);
+}
+
+/* ================= HERO ================= */
+
+.diag-hero {
+  padding: 120px 0 100px;
+  background: linear-gradient(135deg, #f6fbfd, #ffffff);
+}
+
+.diag-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.diag-badge {
+  background: linear-gradient(90deg, var(--diag-teal), var(--diag-magenta));
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.diag-hero-content h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.diag-hero-content h1 span {
+  background: linear-gradient(90deg, var(--diag-teal), var(--diag-magenta));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.diag-hero-content p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--diag-gray);
+  max-width: 500px;
+}
+
+.diag-hero-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.diag-btn-primary {
+  background: linear-gradient(90deg, var(--diag-teal), var(--diag-magenta));
+  color: white;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.diag-btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.diag-hero-image img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ================= SERVICES ================= */
+
+.diag-section-header {
+  margin-bottom: 60px;
+}
+
+.diag-section-header h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.diag-section-header p {
+  color: var(--diag-gray);
+}
+
+.diag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+.diag-card {
+  background: white;
+  padding: 35px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+}
+
+.diag-card:hover {
+  transform: translateY(-10px);
+}
+
+.diag-card h3 {
+  margin-bottom: 10px;
+}
+
+.diag-card p {
+  color: var(--diag-gray);
+}
+
+/* ================= HOME COLLECTION ================= */
+
+.diag-home-collection {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.diag-home-collection ul {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.diag-home-collection li {
+  margin-bottom: 12px;
+  color: var(--diag-gray);
+}
+
+.diag-home-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ================= STATS ================= */
+
+.diag-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.diag-stat h3 {
+  font-size: 44px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--diag-teal), var(--diag-magenta));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.diag-stat span {
+  display: block;
+  margin-top: 10px;
+  color: var(--diag-gray);
+}
+
+/* ================= CTA ================= */
+
+.diag-cta {
+  padding: 120px 0;
+  background: linear-gradient(135deg, var(--diag-teal), var(--diag-magenta));
+  color: white;
+}
+
+.diag-btn-light {
+  background: white;
+  color: var(--diag-teal);
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.diag-cta-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .diag-hero-grid,
+  .diag-home-collection {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .diag-hero-content p {
+    margin: auto;
+  }
+
+  .diag-hero-image {
+    margin-top: 40px;
+  }
+}

@@ -124,6 +124,7 @@ function Navbar() {
                 <li><Link className="dropdown-item" to="/services/opd" onClick={handleLinkClick}>OPD Consultation</Link></li>
                 <li><Link className="dropdown-item" to="/services/telemedicine" onClick={handleLinkClick}>Telemedicine</Link></li>
                 <li><Link className="dropdown-item" to="/services/hospital-visit" onClick={handleLinkClick}>Hospital Visit</Link></li>
+                <li><Link className="dropdown-item" to="/services/apollo-diagnostics" onClick={handleLinkClick}>Apollo Diadnostics</Link></li>
                 <li><Link className="dropdown-item" to="/services/support-services" onClick={handleLinkClick}>Other Services</Link></li>
               </ul>
             </li>

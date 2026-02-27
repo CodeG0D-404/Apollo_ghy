@@ -34,7 +34,7 @@ import OpdServices from "./pages/OpdServices";
 import TelemedicineServices from "./pages/TelemedicineServices";
 import HospitalVisitServices from "./pages/HospitalVisitServices";
 import SupportServices from "./pages/SupportServices";
-
+import ApolloDiagnostics from "./pages/ApolloDiagnostics";
 
 // =============================
 // 📄 Public Blog Pages
@@ -147,6 +147,7 @@ function AppContent() {
           <Route path="/services/telemedicine" element={<TelemedicineServices />} />
           <Route path="/services/hospital-visit" element={<HospitalVisitServices />} />
           <Route path="/services/support-services" element={<SupportServices />} />
+          <Route path="/apollo-diagnostics" element={<ApolloDiagnostics />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/production" element={<Production />} />
 
