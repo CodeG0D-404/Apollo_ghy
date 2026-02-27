@@ -1,64 +1,53 @@
 // =============================================
 // 📁 src/components/Footer.jsx
-// Apollo Information Centre — Clean Footer
-// Desktop Grid + Floating Mobile Navigation
+// Apollo Information Centre — Re-Architected
+// Desktop Structured + Mobile Tooltip Nav
 // =============================================
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "./CSS/Footer.css";
 import {
   Home,
   Stethoscope,
   Info,
+  UserRound,
   Phone,
 } from "lucide-react";
-import "./CSS/Footer.css";
 
 export default function Footer() {
-  const location = useLocation();
-  const mobileRef = useRef(null);
-
   const [showMobileFooter, setShowMobileFooter] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeTooltip, setActiveTooltip] = useState(null);
+  const location = useLocation();
+  const tooltipRef = useRef();
 
-  /* ================= Scroll Behavior ================= */
+  // Show mobile footer after scroll
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const current = window.scrollY;
-
-      if (current > 120 && current < lastScrollY) {
-        setShowMobileFooter(true); // scrolling up
-      } else {
-        setShowMobileFooter(false);
-      }
-
-      lastScrollY = current;
+    const onScroll = () => {
+      setShowMobileFooter(window.scrollY > 100);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ================= Close Tooltip on Outside Click ================= */
+  // Close tooltip on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (mobileRef.current && !mobileRef.current.contains(e.target)) {
-        setActiveMenu(null);
+      if (tooltipRef.current && !tooltipRef.current.contains(e.target)) {
+        setActiveTooltip(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const toggleMenu = (menu) =>
-    setActiveMenu(activeMenu === menu ? null : menu);
+  const toggleTooltip = (name) => {
+    setActiveTooltip(activeTooltip === name ? null : name);
+  };
 
-  const closeMenu = () => setActiveMenu(null);
+  const closeTooltip = () => setActiveTooltip(null);
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => location.pathname.startsWith(path);
 
   return (
     <>
@@ -68,7 +57,7 @@ export default function Footer() {
 
           <div className="footer-grid">
 
-            {/* Brand */}
+            {/* Column 1 — Brand Only */}
             <div className="footer-brand">
               <h3>Apollo Information Centre</h3>
               <p>
@@ -87,35 +76,47 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Services */}
-            <div>
-              <h4>Services</h4>
-              <ul>
-                <li><Link to="/services/opd">OPD Consultation</Link></li>
-                <li><Link to="/services/telemedicine">Telemedicine</Link></li>
-                <li><Link to="/services/hospital-visit">Hospital Visit</Link></li>
-                <li><Link to="/services/support-services">Other Services</Link></li>
-              </ul>
+            {/* Column 2 */}
+            <div className="footer-column">
+              <div>
+                <h4>Services</h4>
+                <ul>
+                  <li><Link to="/services/opd">OPD Consultation</Link></li>
+                  <li><Link to="/services/telemedicine">Telemedicine</Link></li>
+                  <li><Link to="/services/hospital-visit">Hospital Visit</Link></li>
+                  <li><Link to="/services/support-services">Other Services</Link></li>
+                </ul>
+              </div>
+
+              <div className="footer-subsection">
+                <h4>Book Appointment</h4>
+                <ul>
+                  <li><Link to="/doctors?visitType=OPD">Book OPD</Link></li>
+                  <li><Link to="/doctors?visitType=Telemedicine">Book Telemedicine</Link></li>
+                  <li><Link to="/hospital-request">Hospital Visit</Link></li>
+                </ul>
+              </div>
             </div>
 
-            {/* Information */}
-            <div>
-              <h4>Information</h4>
-              <ul>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/faqs">FAQs</Link></li>
-                <li><Link to="/blogs">Blog</Link></li>
-              </ul>
-            </div>
+            {/* Column 3 */}
+            <div className="footer-column">
+              <div>
+                <h4>Information</h4>
+                <ul>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/faqs">FAQs</Link></li>
+                  <li><Link to="/blogs">Blog</Link></li>
+                </ul>
+              </div>
 
-            {/* Legal */}
-            <div>
-              <h4>Legal</h4>
-              <ul>
-                <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-                <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
-                <li><Link to="/medical-disclaimer">Medical Disclaimer</Link></li>
-              </ul>
+              <div className="footer-subsection">
+                <h4>Legal</h4>
+                <ul>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+                  <li><Link to="/medical-disclaimer">Medical Disclaimer</Link></li>
+                </ul>
+              </div>
             </div>
 
           </div>
@@ -127,66 +128,67 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* ================= MOBILE FOOTER ================= */}
-      <nav
-        ref={mobileRef}
-        className={`mobile-footer ${showMobileFooter ? "show" : ""}`}
-      >
+      {/* ================= MOBILE TOOLTIP NAV ================= */}
+      <nav className={`mobile-footer ${showMobileFooter ? "show" : ""}`} ref={tooltipRef}>
 
-        {/* HOME */}
         <Link to="/" className={isActive("/") ? "active" : ""}>
           <Home />
           <span>Home</span>
         </Link>
 
-        {/* SERVICES */}
+        {/* Services */}
         <div className="mobile-item">
-          <button onClick={() => toggleMenu("services")}>
+          <button onClick={() => toggleTooltip("services")}>
             <Stethoscope />
             <span>Services</span>
           </button>
 
-          {activeMenu === "services" && (
+          {activeTooltip === "services" && (
             <div className="tooltip-bubble">
-              <Link to="/services/opd" onClick={closeMenu}>OPD</Link>
-              <Link to="/services/telemedicine" onClick={closeMenu}>Telemedicine</Link>
-              <Link to="/services/hospital-visit" onClick={closeMenu}>Hospital Visit</Link>
-              <Link to="/services/support-services" onClick={closeMenu}>Other Services</Link>
+              <Link to="/services/opd" onClick={closeTooltip}>OPD</Link>
+              <Link to="/services/telemedicine" onClick={closeTooltip}>Telemedicine</Link>
+              <Link to="/services/hospital-visit" onClick={closeTooltip}>Hospital Visit</Link>
+              <Link to="/services/support-services" onClick={closeTooltip}>Other Services</Link>
             </div>
           )}
         </div>
 
-        {/* INFO */}
+        {/* Info */}
         <div className="mobile-item">
-          <button onClick={() => toggleMenu("info")}>
+          <button onClick={() => toggleTooltip("info")}>
             <Info />
             <span>Info</span>
           </button>
 
-          {activeMenu === "info" && (
+          {activeTooltip === "info" && (
             <div className="tooltip-bubble">
-              <Link to="/about" onClick={closeMenu}>About</Link>
-              <Link to="/faqs" onClick={closeMenu}>FAQs</Link>
-              <Link to="/blogs" onClick={closeMenu}>Blog</Link>
+              <Link to="/about" onClick={closeTooltip}>About</Link>
+              <Link to="/faqs" onClick={closeTooltip}>FAQs</Link>
+              <Link to="/blogs" onClick={closeTooltip}>Blog</Link>
             </div>
           )}
         </div>
 
-        {/* CONTACT */}
+        {/* Doctors */}
         <div className="mobile-item">
-          <button onClick={() => toggleMenu("contact")}>
-            <Phone />
-            <span>Contact</span>
+          <button onClick={() => toggleTooltip("doctors")}>
+            <UserRound />
+            <span>Doctors</span>
           </button>
 
-          {activeMenu === "contact" && (
+          {activeTooltip === "doctors" && (
             <div className="tooltip-bubble">
-              <a href="tel:09678769107">Call Us</a>
-              <a href="mailto:info@apolloinfoghy.com">Email</a>
-              <Link to="/about" onClick={closeMenu}>About Centre</Link>
+              <Link to="/doctors?visitType=OPD" onClick={closeTooltip}>Book OPD</Link>
+              <Link to="/doctors?visitType=Telemedicine" onClick={closeTooltip}>Telemedicine</Link>
+              <Link to="/hospital-request" onClick={closeTooltip}>Hospital Visit</Link>
             </div>
           )}
         </div>
+
+        <Link to="/contact" className={isActive("/contact") ? "active" : ""}>
+          <Phone />
+          <span>Contact</span>
+        </Link>
 
       </nav>
     </>

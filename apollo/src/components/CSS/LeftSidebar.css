@@ -1,57 +1,114 @@
 /* =========================================
-   Layout Variables
-========================================= */
+   Doctor Sidebar — Desktop Sticky
+   Mobile Drawer UX
+   ========================================= */
 
 :root {
   --navbar-height: 64px;
 }
 
-/* =========================================
-   DESKTOP SIDEBAR
-========================================= */
+/* BASE SIDEBAR */
 
 .doctor-sidebar {
   width: 260px;
+  padding: 18px 16px;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   height: calc(100vh - var(--navbar-height));
   position: sticky;
   top: var(--navbar-height);
-  padding: 20px;
-  overflow-y: auto;
+  transition: 0.3s ease;
+  z-index: 900;
 }
 
-/* =========================================
-   BUTTON SYSTEM
-========================================= */
+/* MOBILE DRAWER */
 
-.doctor-btn {
-  width: 100%;
-  padding: 11px 12px;
-  border-radius: 10px;
-  border: none;
-  background: #f3f4f6;
-  cursor: pointer;
-  font-size: 13px;
-  text-align: left;
-  transition: 0.2s ease;
+@media (max-width: 768px) {
+
+  .doctor-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 85%;
+    max-width: 320px;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 18px rgba(0,0,0,0.2);
+    border-right: none;
+    z-index: 9999;
+  }
+
+  .doctor-sidebar:not(.collapsed) {
+    transform: translateX(0);
+  }
+
 }
 
-.doctor-btn:hover {
-  background: #e5e7eb;
+/* FILTER TOGGLE BUTTON */
+
+/* Hidden by default (desktop) */
+.doctor-sidebar-toggle {
+  display: none;
 }
 
-.doctor-btn.active {
-  background: #0f4b5f;
-  color: #ffffff;
+/* Visible only on mobile */
+@media (max-width: 768px) {
+  .doctor-sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 74px;
+    left: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #0f4b5f;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 9500;
+  }
 }
 
-/* =========================================
-   FORM
-========================================= */
+/* CLOSE BTN */
+
+.doctor-sidebar-collapse {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .doctor-sidebar-collapse {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}
+
+/* SECTION */
+
+.doctor-sidebar-section {
+  margin-bottom: 20px;
+}
+
+/* TITLE */
+
+.doctor-sidebar-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f4b5f;
+  margin-bottom: 10px;
+}
+
+/* FILTER GROUP */
 
 .doctor-filter-group {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+}
+
+.doctor-filter-group label {
+  font-size: 12px;
+  color: #6b7280;
 }
 
 .doctor-filter-group input,
@@ -63,99 +120,52 @@
   font-size: 13px;
 }
 
-.doctor-sidebar-title {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #0f4b5f;
-}
+/* VISIT TYPES */
 
-.doctor-button-group {
+.doctor-sidebar-visit {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.doctor-section-divider {
+.doctor-visit-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #f3f4f6;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.doctor-visit-btn.active {
+  background: #0f4b5f;
+  color: #ffffff;
+}
+
+/* DIVIDER */
+
+.doctor-sidebar-divider {
+  margin: 16px 0;
   height: 1px;
   background: #e5e7eb;
-  margin: 18px 0;
 }
 
-/* =========================================
-   MOBILE FILTER BAR
-========================================= */
+/* SERVICES */
 
-.mobile-filter-wrapper {
-  display: none;
+.doctor-sidebar-services {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-@media (max-width: 768px) {
-
-  .mobile-filter-wrapper {
-    display: block;
-    position: fixed;
-    top: var(--navbar-height);
-    left: 0;
-    width: 100%;
-    z-index: 950;
-    transition: top 0.35s ease;
-  }
-
-  body.nav-hidden .mobile-filter-wrapper {
-    top: 0;
-  }
-
-  .mobile-filter-bar {
-    width: 100%;
-    padding: 14px;
-    background: #0f4b5f;
-    color: white;
-    border: none;
-    font-weight: 600;
-  }
-
-  /* Drawer */
-
-  .doctor-sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100vh;
-    width: 85%;
-    max-width: 320px;
-    z-index: 1000;
-    transition: left 0.3s ease;
-  }
-
-  .doctor-sidebar.open {
-    left: 0;
-  }
-
-  .doctor-sidebar-close {
-    display: block;
-    margin-bottom: 15px;
-    background: none;
-    border: none;
-    font-size: 14px;
-  }
-
-}
-
-/* Hide mobile elements on desktop */
-@media (min-width: 769px) {
-  .doctor-sidebar-close {
-    display: none;
-  }
-}
-
-/* =========================================
-   Overlay
-========================================= */
-
-.sidebar-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: 999;
+.doctor-sidebar-services button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #fafafa;
+  font-size: 13px;
+  cursor: pointer;
 }

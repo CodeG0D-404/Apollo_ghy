@@ -46,30 +46,17 @@ function Navbar() {
 
   // ✅ ADDED: Smart Hide/Show on Scroll
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setNavVisible(false);
+    } else {
+      setNavVisible(true);
+    }
+  };
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 80) {
-        if (currentScrollY > lastScrollY) {
-          // Scrolling DOWN
-          setNavVisible(false);
-        } else {
-          // Scrolling UP
-          setNavVisible(true);
-        }
-      } else {
-        setNavVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   return (
     <nav
       // ✅ Only class modified to support visibility

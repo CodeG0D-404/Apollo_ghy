@@ -1,10 +1,12 @@
-/* ================= DESKTOP FOOTER ================= */
+/* =========================================
+   DESKTOP FOOTER
+========================================= */
 
 .footer {
   width: 100%;
   background: linear-gradient(180deg, #071a2f 0%, #0e3b50 100%);
   color: #e6eef7;
-  padding: 80px 0 30px;
+  padding: 90px 0 30px;
 }
 
 .footer-inner {
@@ -15,23 +17,22 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 50px 60px;
-  margin-bottom: 50px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 70px;
+  margin-bottom: 60px;
 }
 
 /* Brand */
-
 .footer-brand h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: #ffffff;
 }
 
 .footer-brand p {
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #b7c6d8;
 }
 
@@ -44,50 +45,54 @@
   margin-bottom: 6px;
 }
 
-/* Headings */
+/* Columns */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 
-.footer h4 {
+.footer-column h4 {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 16px;
   color: #ffffff;
+  letter-spacing: 0.3px;
 }
 
-/* Links */
-
-.footer ul {
+.footer-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer li {
+.footer-column li {
   margin-bottom: 10px;
 }
 
-.footer a {
+.footer-column a {
   font-size: 14px;
   color: #b7c6d8;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
 }
 
-.footer a:hover {
+.footer-column a:hover {
   color: #0b5ed7;
   transform: translateX(4px);
 }
 
-/* Bottom */
-
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 22px;
   text-align: center;
   font-size: 13px;
   color: #9fb2c7;
 }
 
-/* ================= MOBILE FOOTER ================= */
+/* =========================================
+   MOBILE GLASS FOOTER
+========================================= */
 
 .mobile-footer {
   position: fixed;
@@ -96,15 +101,16 @@
   transform: translateX(-50%);
   width: calc(100% - 24px);
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   border-radius: 22px;
   padding: 12px 14px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   z-index: 999;
 }
@@ -147,18 +153,18 @@
 
 .tooltip-bubble {
   position: absolute;
-  bottom: 65px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;
-  padding: 14px 16px;
+  padding: 16px 18px;
   border-radius: 16px;
-  min-width: 170px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  animation: bubbleFade 0.25s ease;
+  min-width: 170px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  animation: bubbleIn 0.25s ease;
 }
 
 .tooltip-bubble::after {
@@ -166,35 +172,30 @@
   position: absolute;
   bottom: -8px;
   left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px;
-  border-style: solid;
-  border-color: #ffffff transparent transparent transparent;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .tooltip-bubble a {
   font-size: 13px;
-  color: #1f2937;
+  color: #0e3b50;
   text-decoration: none;
-  transition: 0.2s ease;
 }
 
 .tooltip-bubble a:hover {
   color: #0b5ed7;
 }
 
-@keyframes bubbleFade {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 900px) {
   .desktop-footer {
