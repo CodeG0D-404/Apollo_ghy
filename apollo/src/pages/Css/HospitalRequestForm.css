@@ -1,31 +1,53 @@
 /* =============================================
-   Hospital Request Page — Production Layout
-   Matches Booking Layout (Unified Design)
+   APOLLO HOSPITAL REQUEST PAGE — BRAND ALIGNED
+   Blue: #2582A1
+   Yellow: #FDB931
+============================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =============================================
+   PAGE WRAPPER
 ============================================= */
 
 .hospital-page {
   width: 100%;
-  background: #f2f5f9;
-  padding: 40px 0;
+  background: var(--apollo-bg-light);
+  padding: 80px 0;
+  min-height: 100vh;
 }
 
 /* centered container */
+
 .hospital-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
-/* main card */
+/* =============================================
+   MAIN CARD
+============================================= */
+
 .hospital-card {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1.25fr;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(37, 130, 161, 0.12);
   overflow: hidden;
+  border: 1px solid var(--apollo-border);
 }
 
 /* =============================================
@@ -33,32 +55,40 @@
 ============================================= */
 
 .hospital-info {
-  padding: 36px;
-  background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
+  padding: 50px 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(37, 130, 161, 0.08) 0%,
+    #ffffff 100%
+  );
 }
 
 .hospital-info h3 {
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: #0b2c4d;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--apollo-blue);
 }
 
 .hospital-info p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #444;
-  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--apollo-text-light);
+  margin-bottom: 24px;
 }
 
+/* trust points */
+
 .hospital-trust {
-  padding-left: 16px;
-  margin-top: 20px;
+  padding-left: 18px;
+  margin-top: 24px;
 }
 
 .hospital-trust li {
   font-size: 14px;
-  margin-bottom: 10px;
-  color: #333;
+  margin-bottom: 12px;
+  color: var(--apollo-text-dark);
+  line-height: 1.6;
 }
 
 /* =============================================
@@ -66,66 +96,83 @@
 ============================================= */
 
 .hospital-form {
-  padding: 30px 36px;
+  padding: 45px 40px;
   display: flex;
   flex-direction: column;
 }
 
+/* grid layout */
+
 .hospital-form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 18px;
 }
 
-/* input styles */
+/* =============================================
+   INPUT STYLING
+============================================= */
+
 .hospital-form-grid input,
 .hospital-form-grid textarea,
 .hospital-form-grid select {
-  padding: 12px 13px;
+  padding: 14px 14px;
   font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #d6dbe1;
-  background: #fff;
-  transition: border 0.2s ease;
+  border-radius: 8px;
+  border: 1px solid var(--apollo-border);
+  background: #ffffff;
+  transition: all 0.25s ease;
+  color: var(--apollo-text-dark);
 }
+
+/* focus effect */
 
 .hospital-form-grid input:focus,
 .hospital-form-grid textarea:focus,
 .hospital-form-grid select:focus {
   outline: none;
-  border-color: #0b2c4d;
+  border-color: var(--apollo-blue);
+  box-shadow: 0 0 0 3px rgba(37, 130, 161, 0.15);
 }
 
 /* textarea full width */
+
 .hospital-form-grid textarea {
   grid-column: span 2;
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
-/* consent */
+/* consent text */
+
 .hospital-consent {
   grid-column: span 2;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
-  color: #333;
+  color: var(--apollo-text-light);
 }
 
-/* submit button */
+/* =============================================
+   SUBMIT BUTTON
+============================================= */
+
 .hospital-form button {
-  margin-top: 22px;
-  padding: 14px;
-  background: #0b2c4d;
-  color: #fff;
-  font-size: 14px;
+  margin-top: 28px;
+  padding: 15px;
+  background: var(--apollo-yellow);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.35);
 }
 
 .hospital-form button:hover {
-  background: #0e3a63;
+  background: var(--apollo-yellow-dark);
+  transform: translateY(-2px);
 }
 
 .hospital-form button:disabled {
@@ -133,10 +180,22 @@
   cursor: not-allowed;
 }
 
-/* success / error message */
+/* =============================================
+   SUCCESS / ERROR MESSAGE
+============================================= */
+
 .hospital-message {
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: 14px;
+  font-weight: 600;
+}
+
+.hospital-message.success {
+  color: var(--apollo-blue);
+}
+
+.hospital-message.error {
+  color: #dc2626;
 }
 
 /* =============================================
@@ -157,11 +216,11 @@
   }
 
   .hospital-info {
-    padding: 26px;
+    padding: 32px;
   }
 
   .hospital-form {
-    padding: 26px;
+    padding: 32px;
   }
 
   .hospital-form-grid {
@@ -171,5 +230,19 @@
   .hospital-form-grid textarea,
   .hospital-consent {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .hospital-page {
+    padding: 60px 0;
+  }
+
+  .hospital-info h3 {
+    font-size: 18px;
+  }
+
+  .hospital-form button {
+    font-size: 14px;
   }
 }

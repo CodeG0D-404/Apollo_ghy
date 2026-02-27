@@ -1,13 +1,29 @@
 /* =========================================
-   HOSPITAL VISIT SERVICES — Calm Modern UI
-   Scoped: hosp2-* (no bleed)
-   Brand: #0f4b5f + #facc15
+   APOLLO HOSPITAL VISIT SERVICES
+   Brand Blue: #2582A1
+   Brand Yellow: #FDB931
+   Scoped: hosp2-*
    ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =========================================
+   PAGE
+========================================= */
 
 .hosp2-page {
   font-family: system-ui, -apple-system, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
+  background: #ffffff;
+  color: var(--apollo-text-dark);
 }
 
 /* CONTAINER */
@@ -21,123 +37,180 @@
   text-align: center;
 }
 
-/* HERO */
+/* =========================================
+   HERO
+========================================= */
 
 .hosp2-hero {
-  padding: 80px 0;
-  background-size: cover;
-  background-position: center;
+  padding: 90px 0;
+  background: var(--apollo-bg-light);
 }
 
 .hosp2-hero-inner {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
+  gap: 60px;
   align-items: center;
 }
 
 .hosp2-hero-content h1 {
-  font-size: 36px;
-  color: #0f4b5f;
-  margin-bottom: 12px;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
 .hosp2-hero-content p {
-  font-size: 16px;
-  color: #475569;
-  line-height: 1.6;
+  font-size: 17px;
+  color: var(--apollo-text-light);
+  line-height: 1.7;
+  max-width: 520px;
 }
 
 .hosp2-hero-image img {
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(37, 130, 161, 0.15);
 }
 
-/* SECTION */
+/* =========================================
+   SECTION
+========================================= */
 
 .hosp2-section {
-  padding: 72px 0;
+  padding: 80px 0;
 }
 
 .hosp2-soft {
-  background: #f1f5f9;
+  background: var(--apollo-bg-light);
 }
 
 .hosp2-section-header {
   text-align: center;
-  margin-bottom: 42px;
+  margin-bottom: 50px;
 }
 
 .hosp2-section-header h2 {
-  color: #0f4b5f;
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--apollo-blue);
 }
 
 .hosp2-section-header p {
-  color: #64748b;
+  margin-top: 10px;
+  color: var(--apollo-text-light);
+  font-size: 15px;
 }
 
-/* CARD */
+/* =========================================
+   CARD
+========================================= */
 
 .hosp2-card {
-  background: white;
-  padding: 34px;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid var(--apollo-border);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
 }
 
 .hosp2-divider {
-  width: 60px;
+  width: 70px;
   height: 4px;
-  background: #facc15;
-  margin: 14px auto 20px;
+  background: var(--apollo-yellow);
+  margin: 16px auto 24px;
+  border-radius: 4px;
 }
 
 .hosp2-lead {
-  font-weight: 600;
-  color: #0f4b5f;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--apollo-blue);
 }
 
-/* SERVICES */
+/* =========================================
+   SERVICES GRID
+========================================= */
 
 .hosp2-services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 28px;
 }
 
 .hosp2-service {
-  background: white;
-  padding: 26px;
-  border-radius: 14px;
-  border: 1px solid #e6edf3;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--apollo-border);
+  transition: 0.3s ease;
+}
+
+.hosp2-service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(37, 130, 161, 0.12);
 }
 
 .hosp2-service h3 {
-  color: #0f4b5f;
+  font-size: 18px;
+  color: var(--apollo-blue);
+  margin-bottom: 10px;
 }
 
-/* PROCESS */
+.hosp2-service p {
+  color: var(--apollo-text-light);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   PROCESS
+========================================= */
 
 .hosp2-process {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 26px;
 }
 
 .hosp2-step {
-  background: white;
-  padding: 24px;
-  border-radius: 14px;
-  border-top: 4px solid #facc15;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--apollo-border);
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.hosp2-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hosp2-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: var(--apollo-yellow);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .hosp2-step span {
-  font-weight: 700;
-  color: #0f4b5f;
+  display: block;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 8px;
 }
 
-/* LIST */
+/* =========================================
+   LIST
+========================================= */
 
 .hosp2-list {
   text-align: left;
@@ -145,45 +218,96 @@
 }
 
 .hosp2-list li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  color: var(--apollo-text-light);
 }
 
-/* CTA */
+/* =========================================
+   CTA SECTION
+========================================= */
 
 .hosp2-cta {
-  background: #0f4b5f;
-  color: white;
-  padding: 70px 0;
+  background: var(--apollo-blue);
+  color: #ffffff;
+  padding: 90px 0;
+}
+
+.hosp2-cta h2 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.hosp2-cta p {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.85);
 }
 
 .hosp2-cta-actions {
-  margin-top: 20px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
 }
+
+/* PRIMARY BUTTON */
 
 .hosp2-btn-primary {
-  background: #facc15;
-  color: #0f4b5f;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: 600;
+  background: var(--apollo-yellow);
+  color: #ffffff;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.35);
 }
+
+.hosp2-btn-primary:hover {
+  background: var(--apollo-yellow-dark);
+  transform: translateY(-2px);
+}
+
+/* SECONDARY BUTTON */
 
 .hosp2-btn-secondary {
-  border: 1px solid #facc15;
-  padding: 12px 20px;
-  border-radius: 10px;
-  color: #facc15;
+  border: 2px solid #ffffff;
+  padding: 14px 26px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
-/* RESPONSIVE */
+.hosp2-btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+}
 
-@media (max-width: 900px) {
-  .hosp2-hero-inner,
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .hosp2-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hosp2-services-grid,
+  .hosp2-process {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
   .hosp2-services-grid,
   .hosp2-process {
     grid-template-columns: 1fr;
+  }
+
+  .hosp2-cta-actions {
+    flex-direction: column;
+  }
+
+  .hosp2-hero-content h1 {
+    font-size: 28px;
   }
 }

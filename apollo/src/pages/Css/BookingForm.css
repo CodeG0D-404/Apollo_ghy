@@ -1,32 +1,50 @@
 /* =============================================
-   Booking Page — Production Layout
-   Matches DoctorsList / Site Container
+   APOLLO BOOKING PAGE — BRAND ALIGNED
+   Blue: #2582A1
+   Yellow: #FDB931
+============================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =============================================
+   PAGE WRAPPER
 ============================================= */
 
 .booking-page {
-  border-top: 20%;
   width: 100%;
-  background: #f2f5f9;
-  padding: 32px 0;
+  background: var(--apollo-bg-light);
+  padding: 80px 0;
+  min-height: 100vh;
 }
 
-/* centered container like other pages */
+/* CONTAINER */
+
 .booking-container {
-  border-top: 70px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
-/* main card */
+/* MAIN CARD */
+
 .booking-card {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 1fr 1.3fr;
   background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  border: 1px solid var(--apollo-border);
+  box-shadow: 0 15px 40px rgba(37, 130, 161, 0.08);
   overflow: hidden;
 }
 
@@ -35,47 +53,59 @@
 ============================================= */
 
 .booking-info {
-  padding: 32px;
-  background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+  padding: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(37, 130, 161, 0.08) 0%,
+    #ffffff 100%
+  );
+  border-right: 1px solid var(--apollo-border);
 }
 
 .doctor-card {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .doctor-img {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  border: 3px solid var(--apollo-blue);
 }
 
 .doctor-card h3 {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 700;
   margin-bottom: 6px;
-  color: #0b2c4d;
+  color: var(--apollo-blue);
 }
 
 .visit-info {
-  margin-top: 14px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--apollo-text-light);
 }
 
 .opd-date {
   margin-top: 6px;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--apollo-blue);
 }
 
+/* TRUST POINTS */
+
 .trust-points {
-  margin-top: 22px;
-  padding-left: 16px;
+  margin-top: 30px;
+  padding-left: 18px;
 }
 
 .trust-points li {
   font-size: 14px;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 10px;
+  color: var(--apollo-text-dark);
 }
 
 /* =============================================
@@ -83,7 +113,7 @@
 ============================================= */
 
 .booking-form {
-  padding: 28px 32px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -91,44 +121,64 @@
 .form-scroll {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
-/* input styles */
+/* INPUT STYLES */
+
 .form-scroll input,
 .form-scroll textarea,
 .form-scroll select {
-  padding: 11px 12px;
+  padding: 12px 14px;
   font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #d6dbe1;
-  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--apollo-border);
+  background: #ffffff;
+  transition: 0.2s ease;
+}
+
+.form-scroll input:focus,
+.form-scroll textarea:focus,
+.form-scroll select:focus {
+  outline: none;
+  border-color: var(--apollo-blue);
+  box-shadow: 0 0 0 3px rgba(37, 130, 161, 0.15);
 }
 
 .form-scroll textarea {
   grid-column: span 2;
-  min-height: 90px;
+  min-height: 100px;
   resize: vertical;
 }
 
-/* consent */
+/* CONSENT */
+
 .consent-box {
   grid-column: span 2;
   font-size: 12px;
-  line-height: 1.5;
-  color: #333;
+  line-height: 1.6;
+  color: var(--apollo-text-light);
 }
 
-/* submit */
+/* SUBMIT BUTTON */
+
 .booking-form button {
-  margin-top: 20px;
-  padding: 13px;
-  background: #0b2c4d;
-  color: #fff;
-  font-size: 14px;
+  margin-top: 24px;
+  padding: 14px;
+  background: var(--apollo-yellow);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.35);
+}
+
+.booking-form button:hover {
+  background: var(--apollo-yellow-dark);
+  transform: translateY(-2px);
 }
 
 .booking-form button:disabled {
@@ -136,18 +186,22 @@
   cursor: not-allowed;
 }
 
+/* MESSAGE */
+
 .form-message {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 14px;
+  color: var(--apollo-blue);
 }
 
-/* honeypot */
+/* HONEYPOT */
+
 .hp-field {
   display: none;
 }
 
 /* =============================================
-   MOBILE
+   RESPONSIVE
 ============================================= */
 
 @media (max-width: 991px) {
@@ -156,11 +210,13 @@
   }
 
   .booking-info {
-    padding: 24px;
+    border-right: none;
+    border-bottom: 1px solid var(--apollo-border);
   }
 
+  .booking-info,
   .booking-form {
-    padding: 24px;
+    padding: 28px;
   }
 
   .form-scroll {
@@ -170,5 +226,16 @@
   .form-scroll textarea,
   .consent-box {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-page {
+    padding: 60px 0;
+  }
+
+  .booking-info,
+  .booking-form {
+    padding: 20px;
   }
 }

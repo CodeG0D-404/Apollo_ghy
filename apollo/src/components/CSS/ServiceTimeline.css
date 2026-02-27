@@ -1,11 +1,27 @@
 /* =========================================
-   Service Timeline — Grid Layout
-   Centered, no scroll, clean medical UI
+   APOLLO SERVICE TIMELINE — 4 PER ROW
+   Blue: #2582A1
+   Yellow: #FDB931
+   ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =========================================
+   SECTION WRAPPER
    ========================================= */
 
 .st-grid-container {
-  padding: 60px 20px;
-  background: #f7f9fc;
+  padding: 80px 20px;
+  background: #ffffff;
   font-family: system-ui, -apple-system, sans-serif;
 }
 
@@ -13,96 +29,147 @@
 
 .st-grid-title {
   text-align: center;
-  font-size: 30px;
-  font-weight: 700;
-  color: #0f4b5f;
-  margin-bottom: 34px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 50px;
+  position: relative;
 }
 
-/* TABS */
+.st-grid-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: var(--apollo-yellow);
+  display: block;
+  margin: 14px auto 0;
+  border-radius: 4px;
+}
+
+/* =========================================
+   TABS
+   ========================================= */
 
 .st-grid-tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
+  gap: 12px;
+  margin-bottom: 50px;
   flex-wrap: wrap;
 }
 
 .st-grid-tab {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--apollo-border);
   background: #ffffff;
   cursor: pointer;
-  font-size: 13px;
-  transition: 0.2s ease;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--apollo-blue);
+  transition: all 0.3s ease;
 }
 
 .st-grid-tab.active {
-  background: #0f4b5f;
+  background: var(--apollo-blue);
   color: #ffffff;
-  border-color: #0f4b5f;
+  border-color: var(--apollo-blue);
 }
 
-/* GRID */
+/* =========================================
+   GRID — 4 PER ROW
+   ========================================= */
 
 .st-grid-steps {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, 1fr); /* 🔥 FORCE 4 */
+  gap: 24px;
 }
 
-/* CARD */
+/* =========================================
+   CARD
+   ========================================= */
 
 .st-grid-card {
   background: #ffffff;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  text-align: left;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--apollo-border);
+  box-shadow: 0 8px 25px rgba(37, 130, 161, 0.06);
+  transition: all 0.3s ease;
+}
+
+.st-grid-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(37, 130, 161, 0.12);
 }
 
 /* STEP NUMBER */
 
 .st-grid-number {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #facc15;
-  color: #0f4b5f;
-  font-weight: 700;
+  background: var(--apollo-yellow);
+  color: var(--apollo-blue);
+  font-weight: 800;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 18px rgba(253, 185, 49, 0.35);
 }
 
 /* TEXT */
 
 .st-grid-card h4 {
-  margin-bottom: 6px;
-  font-size: 15px;
-  color: #111827;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--apollo-blue);
 }
 
 .st-grid-card p {
-  font-size: 13px;
-  color: #4b5563;
-  line-height: 1.5;
+  font-size: 14px;
+  color: var(--apollo-text-light);
+  line-height: 1.6;
 }
 
 /* NOTE */
 
 .st-grid-note {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 12px;
   font-size: 12px;
-  color: #047857;
-  background: #ecfdf5;
-  padding: 4px 8px;
-  border-radius: 6px;
+  font-weight: 600;
+  color: var(--apollo-blue);
+  background: var(--apollo-bg-light);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(37, 130, 161, 0.2);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Tablet — 2 per row */
+@media (max-width: 1024px) {
+  .st-grid-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile — 1 per row */
+@media (max-width: 640px) {
+  .st-grid-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .st-grid-title {
+    font-size: 24px;
+  }
 }

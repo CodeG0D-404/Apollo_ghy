@@ -1,26 +1,33 @@
 /* =========================================
-   Testimonial Swiper — Production
-   Scoped styling (no bleed)
-   Works with sidebar & full-width pages
-   Premium medical UI
+   APOLLO TESTIMONIAL SWIPER — FIXED VERSION
    ========================================= */
 
-.testimonial-swiper-section {
-  padding: 44px 20px;
-  background: #f7f9fc;
-  font-family: system-ui, -apple-system, sans-serif;
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-yellow: #FDB931;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
 }
 
 /* =========================================
-   CENTERED CONTAINER
-   Prevents left-shift on homepage
+   SECTION
+   ========================================= */
+
+.testimonial-swiper-section {
+  padding: 70px 20px;
+  background: var(--apollo-bg-light);
+  border-top: 4px solid var(--apollo-blue);
+}
+
+/* =========================================
+   CONTAINER
    ========================================= */
 
 .testimonial-swiper-container {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding: 0 44px; /* arrow space */
+  padding: 0 40px;
 }
 
 /* =========================================
@@ -29,115 +36,76 @@
 
 .testimonial-swiper-title {
   text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  color: #0f4b5f;
-  margin-bottom: 28px;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.testimonial-swiper-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: var(--apollo-yellow);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 4px;
 }
 
 /* =========================================
-   SLIDE STRUCTURE
+   SLIDES
    ========================================= */
 
 .testimonial-swiper-container .swiper-slide {
-  height: auto;
   display: flex;
+  align-items: stretch;
+  height: auto;
 }
 
-/* =========================================
-   TESTIMONIAL CARD NORMALIZATION
-   Same size cards
-   ========================================= */
-
-.testimonial-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-
-  height: 240px;
-
+/* IMPORTANT: REMOVE HEIGHT CONTROL FROM CARD */
+.testimonial-swiper-container .testimonial-card {
+  width: 100%;
+  height: auto;              /* <-- critical fix */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between;  /* keeps footer inside */
 }
 
 /* =========================================
-   NAVIGATION ARROWS — OUTSIDE CARDS
-   ========================================= */
-
-.testimonial-swiper-container .swiper-button-prev,
-.testimonial-swiper-container .swiper-button-next {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-
-  color: #0f4b5f;
-  transition: all 0.2s ease;
-}
-
-/* arrow icon size */
-.testimonial-swiper-container .swiper-button-prev::after,
-.testimonial-swiper-container .swiper-button-next::after {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* position arrows */
-.testimonial-swiper-container .swiper-button-prev {
-  left: -10px;
-}
-
-.testimonial-swiper-container .swiper-button-next {
-  right: -10px;
-}
-
-/* hover effect */
-.testimonial-swiper-container .swiper-button-prev:hover,
-.testimonial-swiper-container .swiper-button-next:hover {
-  background: #0f4b5f;
-  color: #ffffff;
-}
-
-/* =========================================
-   DOTS BELOW CARDS
+   PAGINATION
    ========================================= */
 
 .testimonial-swiper-container .swiper-pagination {
   position: relative;
-  margin-top: 18px;
-  text-align: center;
+  margin-top: 28px;
 }
 
-/* dots style */
 .testimonial-swiper-container .swiper-pagination-bullet {
   background: #cbd5e1;
   opacity: 1;
-  width: 8px;
-  height: 8px;
-  margin: 0 5px;
+  width: 9px;
+  height: 9px;
+  margin: 0 6px;
+  transition: all 0.3s ease;
 }
 
 .testimonial-swiper-container .swiper-pagination-bullet-active {
-  background: #facc15;
+  background: var(--apollo-yellow);
+  width: 20px;
+  border-radius: 20px;
 }
 
 /* =========================================
-   MOBILE OPTIMIZATION
+   MOBILE
    ========================================= */
 
 @media (max-width: 768px) {
-
   .testimonial-swiper-container {
     padding: 0 20px;
   }
 
-  /* hide arrows on mobile */
-  .testimonial-swiper-container .swiper-button-prev,
-  .testimonial-swiper-container .swiper-button-next {
-    display: none;
+  .testimonial-swiper-title {
+    font-size: 24px;
   }
 }

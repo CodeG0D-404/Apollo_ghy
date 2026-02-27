@@ -1,65 +1,94 @@
 /* =========================================
-   Catalogue Section — Homepage Services
-   Scoped, modern medical UI
-   Matches doctor & admin design language
+   APOLLO CATALOGUE SECTION — BRAND ALIGNED
+   Blue: #2582A1
+   Yellow: #FDB931
+   ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =========================================
+   SECTION WRAPPER
    ========================================= */
 
 .catalogue-section {
   background: #ffffff;
-  padding: 50px 20px;
+  padding: 80px 20px;
   font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* CONTAINER */
 
 .catalogue-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* GRID */
+/* =========================================
+   GRID LAYOUT
+   ========================================= */
 
 .catalogue-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
 }
 
 /* Mobile: force 2 per row */
 @media (max-width: 600px) {
   .catalogue-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
-/* CARD */
+/* =========================================
+   CARD DESIGN
+   ========================================= */
 
 .catalogue-card {
-  background: #f7f9fc;
-  border-radius: 16px;
-  padding: 20px;
+  background: var(--apollo-bg-light);
+  border-radius: 18px;
+  padding: 24px;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 14px;
-  transition: 0.2s ease;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+  gap: 18px;
+  border: 1px solid var(--apollo-border);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(37, 130, 161, 0.05);
 }
 
 .catalogue-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+  transform: translateY(-6px);
+  background: #ffffff;
+  border-color: var(--apollo-blue);
+  box-shadow: 0 14px 35px rgba(37, 130, 161, 0.12);
 }
 
-/* ICON */
+/* =========================================
+   ICON
+   ========================================= */
 
 .catalogue-icon {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
+  flex-shrink: 0;
+  filter: hue-rotate(10deg) saturate(1.2);
 }
 
-/* TEXT */
+/* =========================================
+   CONTENT
+   ========================================= */
 
 .catalogue-content {
   display: flex;
@@ -67,14 +96,38 @@
 }
 
 .catalogue-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  color: #0f4b5f;
-  margin-bottom: 4px;
+  color: var(--apollo-blue);
+  margin-bottom: 6px;
 }
 
 .catalogue-cta {
   font-size: 13px;
-  color: #facc15;
-  font-weight: 600;
+  color: var(--apollo-yellow);
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.catalogue-card:hover .catalogue-cta {
+  color: var(--apollo-yellow-dark);
+}
+
+/* =========================================
+   RESPONSIVE TWEAKS
+   ========================================= */
+
+@media (max-width: 768px) {
+  .catalogue-section {
+    padding: 60px 16px;
+  }
+
+  .catalogue-card {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .catalogue-title {
+    font-size: 14px;
+  }
 }

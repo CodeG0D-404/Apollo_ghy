@@ -1,36 +1,56 @@
 /* =========================================
-   HOME PAGE — PRODUCTION
-   Scoped, no bleed
+   APOLLO HOME PAGE — BRAND ALIGNED
+   Blue: #2582A1
+   Yellow: #FDB931
+   ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =========================================
+   PAGE BASE
    ========================================= */
 
 .home-page {
-  background: #f7f9fc;
+  background: #ffffff;
   font-family: system-ui, -apple-system, sans-serif;
+  color: var(--apollo-text-dark);
 }
 
-/* ================= HERO ================= */
+/* =========================================
+   HERO SECTION
+   ========================================= */
 
 .home-banner {
   position: relative;
+  border-bottom: 4px solid var(--apollo-blue);
 }
 
 .home-banner-slide {
   position: relative;
-  padding: 40px 0;
+  padding: 60px 0;
 }
 
 .home-banner-bg {
   position: absolute;
   inset: 0;
   background: url("../../assets/banner-bg.png") no-repeat center/cover;
-  opacity: 0.08;
+  opacity: 0.05;
 }
 
 .home-banner-inner {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 50px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -42,41 +62,66 @@
 
 .home-banner-text h1,
 .home-banner-text h2 {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 800;
-  color: #0f4b5f;
-  margin-bottom: 12px;
+  color: var(--apollo-blue);
+  margin-bottom: 18px;
+  line-height: 1.2;
 }
 
 .home-banner-text p {
-  font-size: 16px;
-  color: #374151;
-  margin-bottom: 18px;
+  font-size: 17px;
+  color: var(--apollo-text-light);
+  margin-bottom: 24px;
   line-height: 1.6;
+  max-width: 520px;
 }
+
+/* CTA BUTTON */
 
 .home-banner-cta {
   display: inline-block;
-  background: #facc15;
-  color: #111827;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-weight: 600;
+  background: var(--apollo-yellow);
+  color: #ffffff;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-weight: 700;
   text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.35);
 }
 
 .home-banner-cta:hover {
-  background: #eab308;
+  background: var(--apollo-yellow-dark);
+  transform: translateY(-3px);
 }
 
 .home-banner-image img {
-  max-width: 420px;
+  max-width: 460px;
+  width: 100%;
+  height: auto;
 }
 
-/* ================= WHY ================= */
+/* Swiper pagination styling */
+
+.swiper-pagination-bullet {
+  background: var(--apollo-blue);
+  opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--apollo-yellow);
+  opacity: 1;
+}
+
+/* =========================================
+   WHY SECTION
+   ========================================= */
 
 .home-why {
-  padding: 60px 20px;
+  padding: 80px 20px;
+  background: var(--apollo-bg-light);
 }
 
 .home-container {
@@ -87,14 +132,15 @@
 .home-why-grid {
   display: grid;
   grid-template-columns: 1fr 420px;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
 }
 
 .home-why-text h2 {
-  font-size: 30px;
-  color: #0f4b5f;
-  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 30px;
 }
 
 .home-why-list {
@@ -105,15 +151,23 @@
 
 .home-why-list li {
   display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  color: #374151;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: var(--apollo-text-dark);
+  line-height: 1.5;
+}
+
+.home-why-list strong {
+  color: var(--apollo-blue);
 }
 
 .home-why-list img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  filter: hue-rotate(20deg) saturate(3);
 }
 
 .home-why-image img {
@@ -123,39 +177,45 @@
   display: block;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media (max-width: 1024px) {
   .home-banner-inner {
     flex-direction: column;
     text-align: center;
   }
-@media (max-width: 768px) {
-  .home-why {
-    padding: 40px 16px;
+
+  .home-banner-text p {
+    margin: 0 auto 24px;
+  }
+
+  .home-banner-image img {
+    max-width: 380px;
   }
 
   .home-why-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .home-why-text h2 {
-    font-size: 24px;
     text-align: center;
   }
 
   .home-why-list li {
-    font-size: 14px;
-  }
-
-  .home-why-image {
-    text-align: center;
+    justify-content: center;
   }
 }
 
+@media (max-width: 768px) {
   .home-banner-text h1,
   .home-banner-text h2 {
     font-size: 28px;
+  }
+
+  .home-why {
+    padding: 60px 16px;
+  }
+
+  .home-why-text h2 {
+    font-size: 24px;
   }
 }

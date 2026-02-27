@@ -1,19 +1,34 @@
 /* =========================================
-   Browse Specialist — Public Section
-   Centered grid, medical UI
-   No Bootstrap dependency
+   APOLLO Browse Specialist — Brand Aligned
+   Blue: #2582A1
+   Yellow: #FDB931
+   ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-yellow-dark: #e3a420;
+  --apollo-bg-light: #f4fbfd;
+  --apollo-border: #e5e7eb;
+  --apollo-text-dark: #1f2937;
+  --apollo-text-light: #6b7280;
+}
+
+/* =========================================
+   SECTION
    ========================================= */
 
 .browse-spec-section {
-  background: #f7f9fc;
-  padding: 60px 20px;
+  background: var(--apollo-bg-light);
+  padding: 80px 20px;
   font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* CONTAINER */
 
 .browse-spec-container {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: 0 auto;
   text-align: center;
 }
@@ -21,66 +36,116 @@
 /* TITLE */
 
 .browse-spec-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0f4b5f;
-  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--apollo-blue);
+  margin-bottom: 40px;
+  position: relative;
 }
 
-/* GRID */
+.browse-spec-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: var(--apollo-yellow);
+  display: block;
+  margin: 14px auto 0;
+  border-radius: 4px;
+}
+
+/* =========================================
+   GRID
+   ========================================= */
 
 .browse-spec-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
 }
 
-/* CARD */
+/* =========================================
+   CARD
+   ========================================= */
 
 .browse-spec-card {
   background: #ffffff;
-  border-radius: 14px;
-  padding: 18px 14px;
+  border-radius: 16px;
+  padding: 22px 18px;
   text-decoration: none;
-  color: #111827;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-  transition: 0.2s ease;
+  color: var(--apollo-text-dark);
+  border: 1px solid var(--apollo-border);
+  box-shadow: 0 10px 30px rgba(37, 130, 161, 0.06);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .browse-spec-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(37, 130, 161, 0.12);
+  border-color: var(--apollo-blue);
 }
 
 /* ICON */
 
 .browse-spec-icon {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 10px;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 14px;
   object-fit: contain;
+  transition: 0.3s ease;
+}
+
+.browse-spec-card:hover .browse-spec-icon {
+  transform: scale(1.1);
 }
 
 /* NAME */
 
 .browse-spec-name {
-  font-size: 12px;
-  font-weight: 500;
-  color: #0f4b5f;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--apollo-blue);
   text-align: center;
+  line-height: 1.4;
+  transition: 0.2s ease;
 }
 
-/* STATES */
+.browse-spec-card:hover .browse-spec-name {
+  color: var(--apollo-yellow);
+}
+
+/* =========================================
+   STATES (Loading / Error)
+   ========================================= */
 
 .browse-spec-state {
-  padding: 30px;
-  color: #6b7280;
-  font-size: 14px;
+  padding: 40px;
+  color: var(--apollo-text-light);
+  font-size: 15px;
 }
 
 .browse-spec-error {
   color: #b91c1c;
+  font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .browse-spec-section {
+    padding: 60px 16px;
+  }
+
+  .browse-spec-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .browse-spec-grid {
+    gap: 16px;
+  }
 }

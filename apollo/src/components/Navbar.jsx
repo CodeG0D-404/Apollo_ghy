@@ -1,6 +1,7 @@
 // =============================================
 // 📁 src/components/Navbar.jsx
 // Premium Elegant Navbar (No Bootstrap Dropdown JS)
+// + Smart Scroll Hide/Reveal Logic Added
 // =============================================
 
 import { useState, useRef, useEffect } from "react";
@@ -11,6 +12,10 @@ import logo from "../assets/apollo-logo.png";
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+
+  // ✅ ADDED: Smart scroll visibility state
+  const [navVisible, setNavVisible] = useState(true);
+
   const navRef = useRef(null);
 
   const toggleMobile = () => {
@@ -27,7 +32,7 @@ function Navbar() {
     setOpenDropdown(null);
   };
 
-  // Close on outside click
+  // Close on outside click (unchanged)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -39,8 +44,38 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // ✅ ADDED: Smart Hide/Show on Scroll
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling DOWN
+          setNavVisible(false);
+        } else {
+          // Scrolling UP
+          setNavVisible(true);
+        }
+      } else {
+        setNavVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="main-nav" ref={navRef}>
+    <nav
+      // ✅ Only class modified to support visibility
+      className={`main-nav ${navVisible ? "nav-show" : "nav-hide"}`}
+      ref={navRef}
+    >
       <div className="nav-container">
 
         {/* LOGO */}
