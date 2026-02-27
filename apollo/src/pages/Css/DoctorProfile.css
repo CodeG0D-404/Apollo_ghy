@@ -1,5 +1,5 @@
 /* =================================================
-   APOLLO DOCTOR PROFILE — BRAND ALIGNED
+   APOLLO DOCTOR PROFILE — PREMIUM (SIDEBAR SAFE)
 ================================================= */
 
 :root {
@@ -14,7 +14,7 @@
 }
 
 /* ========================================
-   PAGE WRAPPER
+   KEEP ORIGINAL LAYOUT STRUCTURE
 ======================================== */
 
 .doctor-profile-page {
@@ -22,25 +22,11 @@
   min-height: 100vh;
 }
 
-/* ========================================
-   LAYOUT CONTAINER (IMPORTANT)
-======================================== */
-
 .doctor-profile-layout {
   display: flex;
 }
 
-/* Mobile stacking */
-@media (max-width: 768px) {
-  .doctor-profile-layout {
-    display: block;
-  }
-}
-
-/* ========================================
-   MAIN CONTENT
-======================================== */
-
+/* DO NOT TOUCH SIDEBAR WIDTH */
 .doctor-profile-content {
   flex: 1;
   padding: 40px;
@@ -48,19 +34,35 @@
 }
 
 /* ========================================
-   PROFILE CARD
+   PROFILE CARD WRAPPER (SAFE)
+======================================== */
+
+.doctor-profile-card {
+  width: 100%;
+}
+
+.doctor-details-page {
+  width: 100%;
+}
+
+/* ========================================
+   TOP CARD
 ======================================== */
 
 .doctor-details-top {
   display: flex;
   gap: 30px;
   margin-bottom: 30px;
-  padding: 30px;
+  padding: 35px;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(37, 130, 161, 0.08);
   border: 1px solid var(--apollo-border);
+  box-shadow: 0 12px 35px rgba(37, 130, 161, 0.06);
 }
+
+/* ========================================
+   PHOTO
+======================================== */
 
 .doctor-details-photo img {
   width: 180px;
@@ -73,15 +75,19 @@
 .doctor-details-no-photo {
   width: 180px;
   height: 180px;
-  background: var(--apollo-bg-light);
   border-radius: 16px;
+  background: var(--apollo-bg-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--apollo-blue);
   font-weight: 600;
+  color: var(--apollo-blue);
   border: 2px dashed var(--apollo-blue);
 }
+
+/* ========================================
+   INFO SECTION
+======================================== */
 
 .doctor-details-info {
   flex: 1;
@@ -91,25 +97,59 @@
   font-size: 30px;
   font-weight: 800;
   color: var(--apollo-blue);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.doctor-details-info p {
+.doctor-details-specialty {
   font-size: 15px;
-  margin-bottom: 10px;
-  color: var(--apollo-text-light);
+  font-weight: 600;
+  color: var(--apollo-text-dark);
+  margin-bottom: 20px;
 }
 
-/* OPD BADGE */
+/* CLEAN META GRID */
+
+.doctor-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 30px;
+  margin-bottom: 20px;
+}
+
+.doctor-meta-item span {
+  display: block;
+  font-size: 12px;
+  color: var(--apollo-text-light);
+  margin-bottom: 3px;
+}
+
+.doctor-meta-item strong {
+  font-size: 14px;
+  color: var(--apollo-text-dark);
+}
+
+/* ========================================
+   OPD
+======================================== */
+
+.doctor-opd-section {
+  margin-bottom: 18px;
+}
+
+.doctor-opd-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
 
 .doctor-details-opd-badge {
   background: var(--apollo-yellow);
-  color: #ffffff;
+  color: #fff;
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  margin-left: 8px;
 }
 
 /* ========================================
@@ -156,7 +196,7 @@
 .doctor-details-extra h3 {
   color: var(--apollo-blue);
   margin-bottom: 16px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .doctor-details-bio {
@@ -166,7 +206,7 @@
 }
 
 /* ========================================
-   CONDITIONS SECTION
+   CONDITIONS
 ======================================== */
 
 .doctor-details-conditions-grid {
@@ -181,32 +221,11 @@
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 500;
   border: 1px solid rgba(37, 130, 161, 0.2);
 }
 
-.doctor-details-readmore-wrap {
-  margin-top: 14px;
-  text-align: right;
-}
-
-.doctor-details-show-btn {
-  background: none;
-  border: none;
-  color: var(--apollo-blue);
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-.doctor-details-show-btn:hover {
-  color: var(--apollo-blue-dark);
-  text-decoration: underline;
-}
-
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE (SAFE)
 ======================================== */
 
 @media (max-width: 1024px) {
@@ -220,21 +239,17 @@
     text-align: center;
   }
 
+  .doctor-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
   .doctor-details-buttons {
     justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .doctor-details-name {
-    font-size: 24px;
-  }
-
-  .doctor-details-top {
-    padding: 20px;
-  }
-
-  .doctor-details-extra {
-    padding: 20px;
+  .doctor-profile-layout {
+    display: block;
   }
 }
