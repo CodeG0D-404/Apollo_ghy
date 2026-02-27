@@ -1,39 +1,45 @@
 /* =========================================
-   APOLLO DOCTOR ROW — BRAND ALIGNED
-   Blue: #2582A1
-   Yellow: #FDB931
+   DOCTOR ROW — PREMIUM POLISH UPGRADE
+   Layout unchanged
    ========================================= */
 
-:root {
-  --apollo-blue: #2582A1;
-  --apollo-blue-dark: #1f6d87;
-  --apollo-yellow: #FDB931;
-  --apollo-yellow-dark: #e3a420;
-  --apollo-bg-light: #f4fbfd;
-  --apollo-border: #e5e7eb;
-  --apollo-text-dark: #1f2937;
-  --apollo-text-light: #6b7280;
-}
-
-/* =========================================
-   CARD CONTAINER
-   ========================================= */
+/* Card */
 
 .doctor-row {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   background: #ffffff;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 18px;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 20px;
   border: 1px solid var(--apollo-border);
-  box-shadow: 0 10px 30px rgba(37, 130, 161, 0.06);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(37, 130, 161, 0.06);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle left accent strip */
+
+.doctor-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--apollo-blue);
+  opacity: 0;
+  transition: 0.3s ease;
 }
 
 .doctor-row:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(37, 130, 161, 0.12);
+}
+
+.doctor-row:hover::before {
+  opacity: 1;
 }
 
 /* =========================================
@@ -41,80 +47,64 @@
    ========================================= */
 
 .doctor-row-photo img {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
+  width: 76px;
+  height: 76px;
+  border-radius: 16px;
   object-fit: cover;
-  border: 2px solid var(--apollo-blue);
+  border: 3px solid var(--apollo-blue);
+  transition: 0.3s ease;
+}
+
+.doctor-row:hover .doctor-row-photo img {
+  transform: scale(1.05);
 }
 
 /* =========================================
-   MAIN AREA
+   NAME
    ========================================= */
-
-.doctor-row-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* =========================================
-   TOP LINE
-   ========================================= */
-
-.doctor-row-topline {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-/* NAME */
 
 .doctor-row-name {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
   color: var(--apollo-blue);
+  letter-spacing: 0.3px;
 }
 
-/* SPECIALTY */
+/* Specialty slightly softer */
 
 .doctor-row-specialty {
   font-size: 13px;
   color: var(--apollo-text-light);
 }
 
-/* OPD BADGE */
+/* =========================================
+   OPD BADGE (More premium)
+   ========================================= */
 
 .doctor-row-opd {
   background: var(--apollo-yellow);
   color: #ffffff;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   gap: 6px;
   align-items: center;
+  box-shadow: 0 4px 12px rgba(253, 185, 49, 0.35);
 }
 
-/* EXPERIENCE */
-
-.doctor-row-exp,
-.doctor-row-lang {
-  font-size: 13px;
-  color: var(--apollo-text-dark);
-}
-
-/* VIEW PROFILE */
+/* =========================================
+   VIEW PROFILE
+   ========================================= */
 
 .doctor-row-view {
   margin-left: auto;
   font-size: 13px;
+  font-weight: 700;
   color: var(--apollo-blue);
-  font-weight: 600;
   text-decoration: none;
-  transition: 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .doctor-row-view:hover {
@@ -122,68 +112,25 @@
 }
 
 /* =========================================
-   SECOND LINE
-   ========================================= */
-
-.doctor-row-bottomline {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  gap: 16px;
-}
-
-/* QUALIFICATION */
-
-.doctor-row-qualification {
-  font-size: 13px;
-  color: var(--apollo-text-light);
-}
-
-/* =========================================
-   BOOK BUTTON
+   BOOK BUTTON — STRONGER CTA
    ========================================= */
 
 .doctor-row-book {
   margin-left: auto;
   background: var(--apollo-yellow);
   color: #ffffff;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: 13px;
+  padding: 11px 20px;
+  border-radius: 12px;
+  font-size: 14px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.3px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(253, 185, 49, 0.35);
+  box-shadow: 0 8px 22px rgba(253, 185, 49, 0.35);
 }
 
 .doctor-row-book:hover {
   background: var(--apollo-yellow-dark);
-  transform: translateY(-2px);
-}
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-
-@media (max-width: 768px) {
-  .doctor-row {
-    flex-direction: column;
-  }
-
-  .doctor-row-view,
-  .doctor-row-book {
-    margin-left: 0;
-  }
-
-  .doctor-row-topline {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .doctor-row-bottomline {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(253, 185, 49, 0.45);
 }

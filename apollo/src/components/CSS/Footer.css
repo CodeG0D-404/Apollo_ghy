@@ -1,19 +1,37 @@
 /* =========================================
-   DESKTOP FOOTER
+   DESKTOP FOOTER — APOLLO BRAND ALIGNED
 ========================================= */
+
+:root {
+  --apollo-blue: #2582A1;
+  --apollo-blue-dark: #1f6d87;
+  --apollo-yellow: #FDB931;
+  --apollo-text-light: #e6f4f8;
+  --apollo-text-muted: #c7e6ef;
+}
+
+/* Main Footer */
 
 .footer {
   width: 100%;
-  background: linear-gradient(180deg, #071a2f 0%, #0e3b50 100%);
-  color: #e6eef7;
+  background: linear-gradient(
+    180deg,
+    var(--apollo-blue) 0%,
+    var(--apollo-blue-dark) 100%
+  );
+  color: var(--apollo-text-light);
   padding: 90px 0 30px;
 }
+
+/* Container */
 
 .footer-inner {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
 }
+
+/* Grid */
 
 .footer-grid {
   display: grid;
@@ -22,10 +40,13 @@
   margin-bottom: 60px;
 }
 
-/* Brand */
+/* =========================================
+   BRAND SECTION
+========================================= */
+
 .footer-brand h3 {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 20px;
   color: #ffffff;
 }
@@ -33,7 +54,7 @@
 .footer-brand p {
   font-size: 14px;
   line-height: 1.9;
-  color: #b7c6d8;
+  color: var(--apollo-text-muted);
 }
 
 .footer-contact {
@@ -43,9 +64,13 @@
 .footer-contact p {
   font-size: 14px;
   margin-bottom: 6px;
+  color: var(--apollo-text-muted);
 }
 
-/* Columns */
+/* =========================================
+   COLUMNS
+========================================= */
+
 .footer-column {
   display: flex;
   flex-direction: column;
@@ -54,11 +79,26 @@
 
 .footer-column h4 {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 16px;
   color: #ffffff;
   letter-spacing: 0.3px;
+  position: relative;
 }
+
+/* Yellow underline accent */
+
+.footer-column h4::after {
+  content: "";
+  width: 36px;
+  height: 3px;
+  background: var(--apollo-yellow);
+  display: block;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+/* Links */
 
 .footer-column ul {
   list-style: none;
@@ -67,27 +107,33 @@
 }
 
 .footer-column li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-column a {
   font-size: 14px;
-  color: #b7c6d8;
+  color: var(--apollo-text-muted);
   text-decoration: none;
   transition: 0.25s ease;
 }
 
+/* Hover effect */
+
 .footer-column a:hover {
-  color: #0b5ed7;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
+/* =========================================
+   BOTTOM SECTION
+========================================= */
+
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 22px;
   text-align: center;
   font-size: 13px;
-  color: #9fb2c7;
+  color: var(--apollo-text-muted);
 }
 
 /* =========================================

@@ -131,7 +131,11 @@ export default function Footer() {
       {/* ================= MOBILE TOOLTIP NAV ================= */}
       <nav className={`mobile-footer ${showMobileFooter ? "show" : ""}`} ref={tooltipRef}>
 
-        <Link to="/" className={isActive("/") ? "active" : ""}>
+        <Link 
+          to="/" 
+          className={isActive("/") ? "active" : ""} 
+          onClick={closeTooltip}
+        >
           <Home />
           <span>Home</span>
         </Link>
