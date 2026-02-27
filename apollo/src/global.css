@@ -14,3 +14,11 @@ html, body {
   overflow-x: hidden;
   font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* =========================================
+   GLOBAL LAYOUT OFFSET FOR FIXED NAVBAR
+========================================= */
+
+body {
+  padding-top: 75px; /* same as navbar height */
+}
