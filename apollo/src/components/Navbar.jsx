@@ -1,160 +1,122 @@
 // =============================================
 // 📁 src/components/Navbar.jsx
-// Production-safe Navbar (React + Bootstrap)
+// Premium Elegant Navbar (No Bootstrap Dropdown JS)
 // =============================================
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./CSS/Navbar.css";
 import logo from "../assets/apollo-logo.png";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navRef = useRef(null);
 
-  // Toggle mobile menu state
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-
-  // Close when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
-
-  // Close menu + Bootstrap collapse when link clicked
-  const handleLinkClick = () => {
-    setIsOpen(false);
-
-    const navbarCollapse = document.getElementById("navbarSupportedContent");
-    if (navbarCollapse?.classList.contains("show")) {
-      navbarCollapse.classList.remove("show");
-    }
+  const toggleMobile = () => {
+    setMobileOpen(!mobileOpen);
+    setOpenDropdown(null);
   };
 
+  const toggleDropdown = (menu) => {
+    setOpenDropdown(openDropdown === menu ? null : menu);
+  };
+
+  const closeAll = () => {
+    setMobileOpen(false);
+    setOpenDropdown(null);
+  };
+
+  // Close on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        closeAll();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <nav className="navbar navbar-expand-lg main-nav" ref={menuRef}>
-      <div className="container-fluid">
+    <nav className="main-nav" ref={navRef}>
+      <div className="nav-container">
 
         {/* LOGO */}
-        <Link className="navbar-brand logo" to="/" onClick={handleLinkClick}>
+        <Link to="/" className="logo" onClick={closeAll}>
           <img src={logo} alt="Apollo Logo" />
         </Link>
 
-        {/* MOBILE TOGGLER */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={toggleMenu}
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        {/* NAV ITEMS */}
+        {/* HAMBURGER */}
         <div
-          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
-          id="navbarSupportedContent"
+          className={`hamburger ${mobileOpen ? "active" : ""}`}
+          onClick={toggleMobile}
         >
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-
-            {/* Home */}
-            <li className="nav-item">
-              <Link to="/" onClick={handleLinkClick}>Home</Link>
-            </li>
-
-            {/* Book Appointment */}
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Book Appointment
-              </Link>
-
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/doctors?visitType=OPD" onClick={handleLinkClick}>
-                    Book OPD Consultation
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/doctors?visitType=Telemedicine" onClick={handleLinkClick}>
-                    Book Telemedicine (Online)
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/hospital-request" onClick={handleLinkClick}>
-                    Book Hospital Visit (Chennai)
-                  </Link>
-                </li>
-              </ul>
-            </li>
-
-            {/* Services */}
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="/services"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Services
-              </Link>
-
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/services/opd" onClick={handleLinkClick}>OPD Consultation</Link></li>
-                <li><Link className="dropdown-item" to="/services/telemedicine" onClick={handleLinkClick}>Telemedicine</Link></li>
-                <li><Link className="dropdown-item" to="/services/hospital-visit" onClick={handleLinkClick}>Hospital Visit</Link></li>
-                <li><Link className="dropdown-item" to="/services/apollo-diagnostics" onClick={handleLinkClick}>Apollo Diadnostics</Link></li>
-                <li><Link className="dropdown-item" to="/services/support-services" onClick={handleLinkClick}>Other Services</Link></li>
-              </ul>
-            </li>
-
-            {/* Information */}
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Information
-              </Link>
-
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/about" onClick={handleLinkClick}>About Us</Link></li>
-                <li><Link className="dropdown-item" to="/faqs" onClick={handleLinkClick}>FAQs</Link></li>
-                <li><Link className="dropdown-item" to="/blogs" onClick={handleLinkClick}>Blog</Link></li>
-              </ul>
-            </li>
-
-            {/* Contact */}
-            <li className="nav-item">
-              <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
-            </li>
-
-          </ul>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        {/* MENU */}
+        <ul className={`nav-menu ${mobileOpen ? "active" : ""}`}>
+
+          <li>
+            <Link to="/" onClick={closeAll}>Home</Link>
+          </li>
+
+          {/* Book Appointment */}
+          <li className="dropdown">
+            <button onClick={() => toggleDropdown("book")}>
+              Book Appointment
+            </button>
+
+            <div className={`dropdown-menu ${openDropdown === "book" ? "show" : ""}`}>
+              <Link to="/doctors?visitType=OPD" onClick={closeAll}>
+                OPD Consultation
+              </Link>
+              <Link to="/doctors?visitType=Telemedicine" onClick={closeAll}>
+                Telemedicine
+              </Link>
+              <Link to="/hospital-request" onClick={closeAll}>
+                Hospital Visit
+              </Link>
+            </div>
+          </li>
+
+          {/* Services */}
+          <li className="dropdown">
+            <button onClick={() => toggleDropdown("services")}>
+              Services
+            </button>
+
+            <div className={`dropdown-menu ${openDropdown === "services" ? "show" : ""}`}>
+              <Link to="/services/opd" onClick={closeAll}>OPD Consultation</Link>
+              <Link to="/services/telemedicine" onClick={closeAll}>Telemedicine</Link>
+              <Link to="/services/hospital-visit" onClick={closeAll}>Hospital Visit</Link>
+              <Link to="/services/apollo-diagnostics" onClick={closeAll}>Apollo Diagnostics</Link>
+              <Link to="/services/support-services" onClick={closeAll}>Other Services</Link>
+            </div>
+          </li>
+
+          {/* Information */}
+          <li className="dropdown">
+            <button onClick={() => toggleDropdown("info")}>
+              Information
+            </button>
+
+            <div className={`dropdown-menu ${openDropdown === "info" ? "show" : ""}`}>
+              <Link to="/about" onClick={closeAll}>About Us</Link>
+              <Link to="/faqs" onClick={closeAll}>FAQs</Link>
+              <Link to="/blogs" onClick={closeAll}>Blog</Link>
+            </div>
+          </li>
+
+          <li>
+            <Link to="/contact" onClick={closeAll}>Contact</Link>
+          </li>
+
+        </ul>
       </div>
     </nav>
   );
