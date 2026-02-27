@@ -1,7 +1,8 @@
 // =============================================
 // 📁 src/components/Navbar.jsx
-// Premium Elegant Navbar (No Bootstrap Dropdown JS)
-// + Smart Scroll Hide/Reveal Logic Added
+// Premium Elegant Navbar
+// Desktop: Always Sticky
+// Mobile: Smart Hide on Scroll
 // =============================================
 
 import { useState, useRef, useEffect } from "react";
@@ -12,14 +13,13 @@ import logo from "../assets/apollo-logo.png";
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-
-  // ✅ ADDED: Smart scroll visibility state
   const [navVisible, setNavVisible] = useState(true);
 
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   const toggleMobile = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((prev) => !prev);
     setOpenDropdown(null);
   };
 
@@ -32,34 +32,63 @@ function Navbar() {
     setOpenDropdown(null);
   };
 
-  // Close on outside click (unchanged)
+  // =============================================
+  // CLOSE ON OUTSIDE CLICK
+  // =============================================
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
         closeAll();
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ✅ ADDED: Smart Hide/Show on Scroll
+  // =============================================
+  // SMART SCROLL BEHAVIOR
+  // Desktop: Always visible
+  // Mobile: Hide after 100px + scrolling down
+  // =============================================
   useEffect(() => {
-  const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setNavVisible(false);
-    } else {
-      setNavVisible(true);
-    }
-  };
+    const handleScroll = () => {
+      const isDesktop = window.innerWidth >= 1024;
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+      // Desktop always visible
+      if (isDesktop) {
+        setNavVisible(true);
+        document.body.classList.remove("navbar-hidden");
+        return;
+      }
+
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
+        // scrolling down
+        setNavVisible(false);
+        document.body.classList.add("navbar-hidden");
+      } else {
+        // scrolling up
+        setNavVisible(true);
+        document.body.classList.remove("navbar-hidden");
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   return (
     <nav
-      // ✅ Only class modified to support visibility
       className={`main-nav ${navVisible ? "nav-show" : "nav-hide"}`}
       ref={navRef}
     >
@@ -87,7 +116,6 @@ function Navbar() {
             <Link to="/" onClick={closeAll}>Home</Link>
           </li>
 
-          {/* Book Appointment */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("book")}>
               Book Appointment
@@ -106,7 +134,6 @@ function Navbar() {
             </div>
           </li>
 
-          {/* Services */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("services")}>
               Services
@@ -121,7 +148,6 @@ function Navbar() {
             </div>
           </li>
 
-          {/* Information */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("info")}>
               Information

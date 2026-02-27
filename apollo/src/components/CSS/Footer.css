@@ -109,8 +109,9 @@
   padding: 16px 18px;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;   /* change this */
   align-items: center;
+  gap: 0; 
 
   box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.15),
