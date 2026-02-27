@@ -180,6 +180,9 @@
 
 .mobile-item {
   position: relative;
+  flex: 1;              /* VERY IMPORTANT */
+  display: flex;
+  justify-content: center;
 }
 
 .tooltip-bubble {
