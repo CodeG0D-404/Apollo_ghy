@@ -1,30 +1,30 @@
-import { useState } from "react";
 import "./CSS/FloatingChat.css";
 
 export default function FloatingChat() {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="floating-chat">
-      {open && (
-        <div className="chat-panel">
-          <a
-            href="https://wa.me/918134095156"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="chat-option whatsapp"
-          >
-            WhatsApp Chat
-          </a>
-        </div>
-      )}
+      
+      {/* Desktop Version */}
+      <a
+        href="https://wa.me/918134095156"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-desktop"
+      >
+        <span className="wa-icon">🟢</span>
+        WhatsApp Us
+      </a>
 
-      <button
-        className="chat-toggle"
-        onClick={() => setOpen(!open)}
+      {/* Mobile Version */}
+      <a
+        href="https://wa.me/918134095156"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-mobile"
       >
         💬
-      </button>
+      </a>
+
     </div>
   );
 }

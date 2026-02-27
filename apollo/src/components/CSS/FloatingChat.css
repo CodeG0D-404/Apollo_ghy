@@ -5,57 +5,70 @@
   z-index: 999999;
 }
 
-
-.chat-toggle {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: none;
-  background: #25d366;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.chat-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.chat-option {
+/* =========================
+   Desktop Pill Button
+========================= */
+.whatsapp-desktop {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: #fff;
-  border-radius: 10px;
-  border: none;
+  gap: 8px;
+  padding: 8px 18px;  /* thinner height */
+  background: #2f7f95;
+  color: #fff;
   text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-weight: 200;
+  font-size: 14px;     /* slightly smaller text */
+  border-radius: 40px; /* keep pill shape but slimmer */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-.chat-option img {
-  width: 22px;
+.whatsapp-desktop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
 }
 
-.chat-option.whatsapp {
-  border-left: 4px solid #25d366;
+/* WhatsApp icon circle */
+.wa-icon {
+  font-size: 10x;
 }
 
-.chat-option.ai {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* =========================
+   Mobile Circular Button
+========================= */
+.whatsapp-mobile {
+  display: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #2f7f95;
+  color: #fff;
+  font-size: 26px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-/* Mobile adjustment */
+.whatsapp-mobile:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   Responsive Switch
+========================= */
 @media (max-width: 768px) {
+  .whatsapp-desktop {
+    display: none;
+  }
+
+  .whatsapp-mobile {
+    display: flex;
+  }
+
   .floating-chat {
-    bottom: 110px; /* move higher */
-    right: 16px;  /* optional: align better with mobile padding */
+    bottom: 110px; /* match your mobile spacing */
+    right: 16px;
   }
 }
