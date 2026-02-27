@@ -1,8 +1,6 @@
 // ============================================
 // 📁 src/components/LeftSidebar.jsx
-// Responsive medical filter sidebar
-// Desktop: sticky
-// Mobile: slide drawer with auto close
+// Unified Buttons + Smart Sticky Mobile Filter Bar
 // ============================================
 
 import React, { useEffect, useState } from "react";
@@ -14,13 +12,8 @@ export default function LeftSidebar({ visitType }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // drawer state
   const [collapsed, setCollapsed] = useState(true);
-
-  // doctor search
   const [search, setSearch] = useState("");
-
-  // specialties
   const [specialties, setSpecialties] = useState([]);
   const [loadingSpecs, setLoadingSpecs] = useState(true);
 
@@ -32,12 +25,11 @@ export default function LeftSidebar({ visitType }) {
       .finally(() => setLoadingSpecs(false));
   }, []);
 
-  // auto close drawer when route changes
+  // auto close drawer on route change
   useEffect(() => {
     setCollapsed(true);
   }, [location.pathname]);
 
-  // navigate helper
   const navigateAndClose = (url) => {
     setCollapsed(true);
     navigate(url);
@@ -51,33 +43,30 @@ export default function LeftSidebar({ visitType }) {
 
   return (
     <>
-      {/* MOBILE FILTER BUTTON */}
-      {collapsed && (
-        <button
-          className="doctor-sidebar-toggle"
-          onClick={() => setCollapsed(false)}
-        >
-          ☰ Filters
-        </button>
-      )}
+      {/* MOBILE FILTER BAR */}
+      <button
+        className="doctor-filter-bar"
+        onClick={() => setCollapsed(false)}
+      >
+        ☰ Filters
+      </button>
 
       {/* SIDEBAR */}
       <aside className={`doctor-sidebar ${collapsed ? "collapsed" : ""}`}>
 
         {/* CLOSE BUTTON (MOBILE) */}
         <button
-          className="doctor-sidebar-collapse"
+          className="doctor-sidebar-close"
           onClick={() => setCollapsed(true)}
         >
-          ⬅
+          ✕ Close
         </button>
 
-        {/* FILTER BLOCK */}
+        {/* FIND DOCTORS */}
         <div className="doctor-sidebar-section">
 
           <h3 className="doctor-sidebar-title">Find Doctors</h3>
 
-          {/* SEARCH */}
           <form className="doctor-filter-group" onSubmit={handleSearch}>
             <label>Doctor Name</label>
             <input
@@ -88,7 +77,6 @@ export default function LeftSidebar({ visitType }) {
             />
           </form>
 
-          {/* SPECIALTY */}
           <div className="doctor-filter-group">
             <label>Specialty</label>
 
@@ -113,51 +101,58 @@ export default function LeftSidebar({ visitType }) {
               </select>
             )}
           </div>
-
         </div>
 
         {/* VISIT TYPES */}
         <div className="doctor-sidebar-visit">
-
           {[
             { label: "OPD", icon: "🏥" },
             { label: "Telemedicine", icon: "💻" },
           ].map(({ label, icon }) => (
             <button
               key={label}
-              className={`doctor-visit-btn ${
+              className={`doctor-btn ${
                 visitType === label ? "active" : ""
               }`}
               onClick={() => navigateAndClose(`/doctors?visitType=${label}`)}
             >
-              <span className="icon">{icon}</span>
+              <span>{icon}</span>
               {label}
             </button>
           ))}
 
-          <button onClick={() => navigateAndClose("/hospital-request")}>
+          <button
+            className="doctor-btn"
+            onClick={() => navigateAndClose("/hospital-request")}
+          >
             🧪 Hospital Visit
           </button>
-
         </div>
 
         <div className="doctor-sidebar-divider" />
 
         {/* SERVICES */}
         <div className="doctor-sidebar-services">
-
-          <button onClick={() => navigateAndClose("/diagnostic-tests")}>
+          <button
+            className="doctor-btn"
+            onClick={() => navigateAndClose("/diagnostic-tests")}
+          >
             🧪 Diagnostic Tests
           </button>
 
-          <button onClick={() => navigateAndClose("/accommodation")}>
+          <button
+            className="doctor-btn"
+            onClick={() => navigateAndClose("/accommodation")}
+          >
             🏠 Accommodation
           </button>
 
-          <button onClick={() => navigateAndClose("/medical-transport")}>
+          <button
+            className="doctor-btn"
+            onClick={() => navigateAndClose("/medical-transport")}
+          >
             🚑 Medical Transport
           </button>
-
         </div>
 
       </aside>
