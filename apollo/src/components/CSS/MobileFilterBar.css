@@ -1,0 +1,33 @@
+.mobile-filter-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-filter-bar {
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 950;
+  }
+
+  .mobile-filter-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #0f4b5f;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* When navbar disappears (add class to body or parent) */
+  .navbar-hidden .mobile-filter-bar {
+    top: 0;
+  }
+
+}
