@@ -47,45 +47,79 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // =============================================
-  // SMART SCROLL BEHAVIOR
-  // Desktop: Always visible
-  // Mobile: Hide after 100px + scrolling down
-  // =============================================
-  useEffect(() => {
-    const handleScroll = () => {
-      const isDesktop = window.innerWidth >= 1024;
+// =============================================
+// SMART SCROLL BEHAVIOR (IMPROVED)
+// Desktop: Always visible
+// Mobile:
+//   - Hide after 100px scroll down
+//   - Show only after 50px intentional scroll up
+// =============================================
+useEffect(() => {
+  let ticking = false;
+  let lastScroll = 0;
+  let accumulatedUpScroll = 0;
 
-      // Desktop always visible
-      if (isDesktop) {
+  const handleScroll = () => {
+    const isDesktop = window.innerWidth >= 1024;
+
+    if (isDesktop) {
+      setNavVisible(true);
+      document.body.classList.remove("navbar-hidden");
+      return;
+    }
+
+    const currentScroll = window.scrollY;
+    const delta = currentScroll - lastScroll;
+
+    // If near top → always show
+    if (currentScroll <= 100) {
+      setNavVisible(true);
+      document.body.classList.remove("navbar-hidden");
+      accumulatedUpScroll = 0;
+      lastScroll = currentScroll;
+      return;
+    }
+
+    // SCROLLING DOWN
+    if (delta > 0) {
+      accumulatedUpScroll = 0;
+      setNavVisible(false);
+      document.body.classList.add("navbar-hidden");
+    }
+
+    // SCROLLING UP
+    if (delta < 0) {
+      accumulatedUpScroll += Math.abs(delta);
+
+      // Only show if scrolled up more than 50px intentionally
+      if (accumulatedUpScroll > 50) {
         setNavVisible(true);
         document.body.classList.remove("navbar-hidden");
-        return;
       }
+    }
 
-      const currentScrollY = window.scrollY;
+    lastScroll = currentScroll;
+  };
 
-      if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
-        // scrolling down
-        setNavVisible(false);
-        document.body.classList.add("navbar-hidden");
-      } else {
-        // scrolling up
-        setNavVisible(true);
-        document.body.classList.remove("navbar-hidden");
-      }
+  const optimizedScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
 
-      lastScrollY.current = currentScrollY;
-    };
+  window.addEventListener("scroll", optimizedScroll);
+  window.addEventListener("resize", optimizedScroll);
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
+  return () => {
+    window.removeEventListener("scroll", optimizedScroll);
+    window.removeEventListener("resize", optimizedScroll);
+  };
+}, []);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
 
   return (
     <nav
