@@ -1,6 +1,8 @@
 // =============================================
 // 📁 src/components/Navbar.jsx
-// Ultra Premium Navbar (Production Ready)
+// Ultra Premium Sticky Navbar
+// Desktop: Always visible
+// Mobile: Smart hide + reveal system
 // =============================================
 
 import { useState, useRef, useEffect } from "react";
@@ -17,13 +19,17 @@ function Navbar() {
 
   const navRef = useRef(null);
 
+  // =============================================
+  // TOGGLES
+  // =============================================
+
   const toggleMobile = () => {
     setMobileOpen(prev => !prev);
     setOpenDropdown(null);
   };
 
   const toggleDropdown = (menu) => {
-    setOpenDropdown(openDropdown === menu ? null : menu);
+    setOpenDropdown(prev => (prev === menu ? null : menu));
   };
 
   const closeAll = () => {
@@ -32,8 +38,9 @@ function Navbar() {
   };
 
   // =============================================
-  // OUTSIDE CLICK CLOSE
+  // CLOSE ON OUTSIDE CLICK
   // =============================================
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -47,8 +54,9 @@ function Navbar() {
   }, []);
 
   // =============================================
-  // ULTRA SMOOTH SCROLL SYSTEM
+  // SMART SCROLL ENGINE
   // =============================================
+
   useEffect(() => {
     let lastScroll = 0;
     let accumulatedUpScroll = 0;
@@ -59,35 +67,49 @@ function Navbar() {
       const delta = currentScroll - lastScroll;
       const isDesktop = window.innerWidth >= 1024;
 
-      // Shrink + Shadow logic (all devices)
+      // Shrink & shadow (all devices)
       setIsShrunk(currentScroll > 40);
       setHasShadow(currentScroll > 100);
 
+      // =============================
+      // DESKTOP: Always visible
+      // =============================
       if (isDesktop) {
         setNavVisible(true);
+        document.body.classList.remove("navbar-hidden");
         lastScroll = currentScroll;
         return;
       }
 
+      // =============================
       // Always visible near top
+      // =============================
       if (currentScroll <= 100) {
         setNavVisible(true);
+        document.body.classList.remove("navbar-hidden");
         accumulatedUpScroll = 0;
         lastScroll = currentScroll;
         return;
       }
 
-      // Scroll Down
+      // =============================
+      // SCROLL DOWN → Hide
+      // =============================
       if (delta > 0) {
         accumulatedUpScroll = 0;
         setNavVisible(false);
+        document.body.classList.add("navbar-hidden");
       }
 
-      // Scroll Up
+      // =============================
+      // SCROLL UP → Reveal only after 50px
+      // =============================
       if (delta < 0) {
         accumulatedUpScroll += Math.abs(delta);
+
         if (accumulatedUpScroll > 50) {
           setNavVisible(true);
+          document.body.classList.remove("navbar-hidden");
         }
       }
 
@@ -113,13 +135,17 @@ function Navbar() {
     };
   }, []);
 
+  // =============================================
+  // RENDER
+  // =============================================
+
   return (
     <nav
-      className={`main-nav 
-        ${navVisible ? "nav-show" : "nav-hide"} 
-        ${isShrunk ? "nav-shrink" : ""} 
-        ${hasShadow ? "nav-shadow" : ""}`}
       ref={navRef}
+      className={`main-nav
+        ${navVisible ? "nav-show" : "nav-hide"}
+        ${isShrunk ? "nav-shrink" : ""}
+        ${hasShadow ? "nav-shadow" : ""}`}
     >
       <div className="nav-container">
 
@@ -128,33 +154,43 @@ function Navbar() {
           <img src={logo} alt="Apollo Logo" />
         </Link>
 
-        {/* HAMBURGER */}
+        {/* HAMBURGER (Mobile) */}
         <div
           className={`hamburger ${mobileOpen ? "active" : ""}`}
           onClick={toggleMobile}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </div>
 
-        {/* MENU */}
+        {/* NAV MENU */}
         <ul className={`nav-menu ${mobileOpen ? "active" : ""}`}>
 
-          <li><Link to="/" onClick={closeAll}>Home</Link></li>
+          <li>
+            <Link to="/" onClick={closeAll}>Home</Link>
+          </li>
 
+          {/* BOOK APPOINTMENT */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("book")}>
               Book Appointment
             </button>
 
             <div className={`dropdown-menu ${openDropdown === "book" ? "show" : ""}`}>
-              <Link to="/doctors?visitType=OPD" onClick={closeAll}>OPD Consultation</Link>
-              <Link to="/doctors?visitType=Telemedicine" onClick={closeAll}>Telemedicine</Link>
-              <Link to="/hospital-request" onClick={closeAll}>Hospital Visit</Link>
+              <Link to="/doctors?visitType=OPD" onClick={closeAll}>
+                OPD Consultation
+              </Link>
+              <Link to="/doctors?visitType=Telemedicine" onClick={closeAll}>
+                Telemedicine
+              </Link>
+              <Link to="/hospital-request" onClick={closeAll}>
+                Hospital Visit
+              </Link>
             </div>
           </li>
 
+          {/* SERVICES */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("services")}>
               Services
@@ -169,6 +205,7 @@ function Navbar() {
             </div>
           </li>
 
+          {/* INFORMATION */}
           <li className="dropdown">
             <button onClick={() => toggleDropdown("info")}>
               Information
@@ -181,7 +218,9 @@ function Navbar() {
             </div>
           </li>
 
-          <li><Link to="/contact" onClick={closeAll}>Contact</Link></li>
+          <li>
+            <Link to="/contact" onClick={closeAll}>Contact</Link>
+          </li>
 
         </ul>
       </div>

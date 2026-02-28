@@ -1,9 +1,22 @@
 /* =========================================
    MOBILE FILTER BAR
-   Behaves like secondary navbar
+   Premium Sticky Secondary Navbar
 ========================================= */
 
-/* Hidden on desktop */
+/* =========================================
+   ROOT DEPENDENCY
+   Must match Navbar heights
+========================================= */
+
+:root {
+  --navbar-height: 75px;          /* Default navbar */
+  --navbar-height-shrink: 60px;   /* Shrunk navbar */
+}
+
+/* =========================================
+   HIDDEN ON DESKTOP
+========================================= */
+
 .mobile-filter-bar {
   display: none;
 }
@@ -16,8 +29,8 @@
 
   .mobile-filter-bar {
     display: block;
-
     width: 100%;
+
     background: #ffffff;
 
     position: sticky;
@@ -26,14 +39,34 @@
     z-index: 950;
 
     border-bottom: 1px solid #e5e7eb;
+
+    transition: 
+      top 0.3s ease,
+      box-shadow 0.3s ease,
+      background 0.3s ease;
   }
 
-  /* When navbar hides (optional enhancement) */
-  .navbar-hidden .mobile-filter-bar {
+  /* =========================================
+     WHEN NAVBAR SHRINKS
+  ========================================= */
+
+  body .nav-shrink ~ * .mobile-filter-bar,
+  body:not(.navbar-hidden) .mobile-filter-bar {
+    top: var(--navbar-height);
+  }
+
+  /* =========================================
+     WHEN NAVBAR HIDES
+  ========================================= */
+
+  body.navbar-hidden .mobile-filter-bar {
     top: 0;
   }
 
-  /* Button */
+  /* =========================================
+     FILTER BUTTON
+  ========================================= */
+
   .mobile-filter-btn {
     width: 100%;
     padding: 14px 18px;
@@ -51,11 +84,26 @@
     border: none;
     cursor: pointer;
 
-    transition: background 0.2s ease;
+    transition: 
+      background 0.2s ease,
+      transform 0.2s ease;
   }
 
   .mobile-filter-btn:hover {
     background: #0c3e4e;
+  }
+
+  .mobile-filter-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* =========================================
+     OPTIONAL SHADOW WHEN SCROLLING
+  ========================================= */
+
+  body:not(.navbar-hidden) .mobile-filter-bar,
+  body.navbar-hidden .mobile-filter-bar {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   }
 
 }
