@@ -22,3 +22,16 @@ html, body {
 body {
   padding-top: 75px; /* same as navbar height */
 }
+
+
+/* =========================================
+   MOBILE FOOTER SPACE OFFSET
+========================================= */
+
+@media (max-width: 900px) {
+
+  body {
+    padding-bottom: 130px; /* space for floating footer */
+  }
+
+}
