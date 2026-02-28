@@ -1,72 +1,39 @@
 /* =========================================
    MOBILE FILTER BAR
-   Premium Sticky Secondary Navbar
+   True Sticky (Viewport-Based)
 ========================================= */
 
-/* =========================================
-   ROOT DEPENDENCY
-   Must match Navbar heights
-========================================= */
-
-:root {
-  --navbar-height: 75px;          /* Default navbar */
-  --navbar-height-shrink: 60px;   /* Shrunk navbar */
-}
-
-/* =========================================
-   HIDDEN ON DESKTOP
-========================================= */
-
+/* Hidden on desktop */
 .mobile-filter-bar {
   display: none;
 }
-
-/* =========================================
-   MOBILE ONLY
-========================================= */
 
 @media (max-width: 768px) {
 
   .mobile-filter-bar {
     display: block;
-    width: 100%;
 
+    width: 100%;
     background: #ffffff;
 
-    position: sticky;
-    top: var(--navbar-height);
+    position: fixed;              /* 🔥 KEY FIX */
+    left: 0;
 
-    z-index: 950;
+    top: var(--navbar-height);    /* Default below navbar */
+
+    z-index: 998;                 /* Below navbar (1000) */
 
     border-bottom: 1px solid #e5e7eb;
 
-    transition: 
-      top 0.3s ease,
-      box-shadow 0.3s ease,
-      background 0.3s ease;
+    transition: top 0.3s ease, box-shadow 0.3s ease;
   }
 
-  /* =========================================
-     WHEN NAVBAR SHRINKS
-  ========================================= */
-
-  body .nav-shrink ~ * .mobile-filter-bar,
-  body:not(.navbar-hidden) .mobile-filter-bar {
-    top: var(--navbar-height);
-  }
-
-  /* =========================================
-     WHEN NAVBAR HIDES
-  ========================================= */
-
+  /* When navbar hides */
   body.navbar-hidden .mobile-filter-bar {
     top: 0;
   }
 
-  /* =========================================
-     FILTER BUTTON
-  ========================================= */
-
+  /* Button */
   .mobile-filter-btn {
     width: 100%;
     padding: 14px 18px;
@@ -84,26 +51,10 @@
     border: none;
     cursor: pointer;
 
-    transition: 
-      background 0.2s ease,
-      transform 0.2s ease;
+    transition: background 0.2s ease;
   }
 
   .mobile-filter-btn:hover {
     background: #0c3e4e;
   }
-
-  .mobile-filter-btn:active {
-    transform: scale(0.98);
-  }
-
-  /* =========================================
-     OPTIONAL SHADOW WHEN SCROLLING
-  ========================================= */
-
-  body:not(.navbar-hidden) .mobile-filter-bar,
-  body.navbar-hidden .mobile-filter-bar {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  }
-
 }
