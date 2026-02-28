@@ -1,8 +1,6 @@
 // =============================================
 // 📁 src/components/Navbar.jsx
-// Premium Elegant Navbar
-// Desktop: Always Sticky
-// Mobile: Smart Hide on Scroll
+// Ultra Premium Navbar (Production Ready)
 // =============================================
 
 import { useState, useRef, useEffect } from "react";
@@ -14,12 +12,13 @@ function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [navVisible, setNavVisible] = useState(true);
+  const [isShrunk, setIsShrunk] = useState(false);
+  const [hasShadow, setHasShadow] = useState(false);
 
   const navRef = useRef(null);
-  const lastScrollY = useRef(0);
 
   const toggleMobile = () => {
-    setMobileOpen((prev) => !prev);
+    setMobileOpen(prev => !prev);
     setOpenDropdown(null);
   };
 
@@ -33,7 +32,7 @@ function Navbar() {
   };
 
   // =============================================
-  // CLOSE ON OUTSIDE CLICK
+  // OUTSIDE CLICK CLOSE
   // =============================================
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -47,83 +46,79 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-// =============================================
-// SMART SCROLL BEHAVIOR (IMPROVED)
-// Desktop: Always visible
-// Mobile:
-//   - Hide after 100px scroll down
-//   - Show only after 50px intentional scroll up
-// =============================================
-useEffect(() => {
-  let ticking = false;
-  let lastScroll = 0;
-  let accumulatedUpScroll = 0;
+  // =============================================
+  // ULTRA SMOOTH SCROLL SYSTEM
+  // =============================================
+  useEffect(() => {
+    let lastScroll = 0;
+    let accumulatedUpScroll = 0;
+    let ticking = false;
 
-  const handleScroll = () => {
-    const isDesktop = window.innerWidth >= 1024;
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      const delta = currentScroll - lastScroll;
+      const isDesktop = window.innerWidth >= 1024;
 
-    if (isDesktop) {
-      setNavVisible(true);
-      document.body.classList.remove("navbar-hidden");
-      return;
-    }
+      // Shrink + Shadow logic (all devices)
+      setIsShrunk(currentScroll > 40);
+      setHasShadow(currentScroll > 100);
 
-    const currentScroll = window.scrollY;
-    const delta = currentScroll - lastScroll;
-
-    // If near top → always show
-    if (currentScroll <= 100) {
-      setNavVisible(true);
-      document.body.classList.remove("navbar-hidden");
-      accumulatedUpScroll = 0;
-      lastScroll = currentScroll;
-      return;
-    }
-
-    // SCROLLING DOWN
-    if (delta > 0) {
-      accumulatedUpScroll = 0;
-      setNavVisible(false);
-      document.body.classList.add("navbar-hidden");
-    }
-
-    // SCROLLING UP
-    if (delta < 0) {
-      accumulatedUpScroll += Math.abs(delta);
-
-      // Only show if scrolled up more than 50px intentionally
-      if (accumulatedUpScroll > 50) {
+      if (isDesktop) {
         setNavVisible(true);
-        document.body.classList.remove("navbar-hidden");
+        lastScroll = currentScroll;
+        return;
       }
-    }
 
-    lastScroll = currentScroll;
-  };
+      // Always visible near top
+      if (currentScroll <= 100) {
+        setNavVisible(true);
+        accumulatedUpScroll = 0;
+        lastScroll = currentScroll;
+        return;
+      }
 
-  const optimizedScroll = () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        handleScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+      // Scroll Down
+      if (delta > 0) {
+        accumulatedUpScroll = 0;
+        setNavVisible(false);
+      }
 
-  window.addEventListener("scroll", optimizedScroll);
-  window.addEventListener("resize", optimizedScroll);
+      // Scroll Up
+      if (delta < 0) {
+        accumulatedUpScroll += Math.abs(delta);
+        if (accumulatedUpScroll > 50) {
+          setNavVisible(true);
+        }
+      }
 
-  return () => {
-    window.removeEventListener("scroll", optimizedScroll);
-    window.removeEventListener("resize", optimizedScroll);
-  };
-}, []);
+      lastScroll = currentScroll;
+    };
 
+    const optimizedScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", optimizedScroll, { passive: true });
+    window.addEventListener("resize", optimizedScroll);
+
+    return () => {
+      window.removeEventListener("scroll", optimizedScroll);
+      window.removeEventListener("resize", optimizedScroll);
+    };
+  }, []);
 
   return (
     <nav
-      className={`main-nav ${navVisible ? "nav-show" : "nav-hide"}`}
+      className={`main-nav 
+        ${navVisible ? "nav-show" : "nav-hide"} 
+        ${isShrunk ? "nav-shrink" : ""} 
+        ${hasShadow ? "nav-shadow" : ""}`}
       ref={navRef}
     >
       <div className="nav-container">
@@ -146,9 +141,7 @@ useEffect(() => {
         {/* MENU */}
         <ul className={`nav-menu ${mobileOpen ? "active" : ""}`}>
 
-          <li>
-            <Link to="/" onClick={closeAll}>Home</Link>
-          </li>
+          <li><Link to="/" onClick={closeAll}>Home</Link></li>
 
           <li className="dropdown">
             <button onClick={() => toggleDropdown("book")}>
@@ -156,15 +149,9 @@ useEffect(() => {
             </button>
 
             <div className={`dropdown-menu ${openDropdown === "book" ? "show" : ""}`}>
-              <Link to="/doctors?visitType=OPD" onClick={closeAll}>
-                OPD Consultation
-              </Link>
-              <Link to="/doctors?visitType=Telemedicine" onClick={closeAll}>
-                Telemedicine
-              </Link>
-              <Link to="/hospital-request" onClick={closeAll}>
-                Hospital Visit
-              </Link>
+              <Link to="/doctors?visitType=OPD" onClick={closeAll}>OPD Consultation</Link>
+              <Link to="/doctors?visitType=Telemedicine" onClick={closeAll}>Telemedicine</Link>
+              <Link to="/hospital-request" onClick={closeAll}>Hospital Visit</Link>
             </div>
           </li>
 
@@ -194,9 +181,7 @@ useEffect(() => {
             </div>
           </li>
 
-          <li>
-            <Link to="/contact" onClick={closeAll}>Contact</Link>
-          </li>
+          <li><Link to="/contact" onClick={closeAll}>Contact</Link></li>
 
         </ul>
       </div>

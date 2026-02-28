@@ -1,43 +1,46 @@
-/* ===================================
-   PREMIUM NAVBAR
-=================================== */
+/* =========================================
+   ULTRA PREMIUM NAVBAR
+========================================= */
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
 
-/* ===================================
-   MAIN NAVBAR
-=================================== */
+/* =========================================
+   MAIN NAV
+========================================= */
 
 .main-nav {
-  position: fixed;               /* Always fixed */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 75px;                  /* IMPORTANT: Fixed height */
+  height: 75px;
   z-index: 1000;
 
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* Show / Hide Animation */
-.nav-show {
-  transform: translateY(0);
+.nav-show { transform: translateY(0); }
+.nav-hide { transform: translateY(-110%); }
+
+.nav-shrink { height: 60px; }
+
+.nav-shadow {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.nav-hide {
-  transform: translateY(-110%);
-}
-
-/* ===================================
-   NAV CONTAINER
-=================================== */
+/* =========================================
+   CONTAINER
+========================================= */
 
 .nav-container {
   max-width: 1200px;
@@ -49,17 +52,22 @@ body {
   align-items: center;
 }
 
-/* ===================================
+/* =========================================
    LOGO
-=================================== */
+========================================= */
 
 .logo img {
   height: 55px;
+  transition: height 0.3s ease;
 }
 
-/* ===================================
-   MENU (DESKTOP)
-=================================== */
+.nav-shrink .logo img {
+  height: 45px;
+}
+
+/* =========================================
+   MENU DESKTOP
+========================================= */
 
 .nav-menu {
   display: flex;
@@ -70,9 +78,7 @@ body {
   padding: 0;
 }
 
-.nav-menu li {
-  position: relative;
-}
+.nav-menu li { position: relative; }
 
 .nav-menu a,
 .nav-menu button {
@@ -82,7 +88,7 @@ body {
   font-weight: 600;
   color: #1e1e1e;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav-menu a:hover,
@@ -90,17 +96,17 @@ body {
   color: #0f4b5f;
 }
 
-/* ===================================
-   DROPDOWN (DESKTOP)
-=================================== */
+/* =========================================
+   DROPDOWN DESKTOP
+========================================= */
 
 .dropdown-menu {
   position: absolute;
   top: 120%;
   left: 0;
 
-  width: max-content;
   min-width: 240px;
+  width: max-content;
 
   background: #ffffff;
   border-radius: 10px;
@@ -111,7 +117,6 @@ body {
   pointer-events: none;
 
   transition: all 0.25s ease;
-  overflow: hidden;
 }
 
 .dropdown-menu.show {
@@ -127,18 +132,13 @@ body {
   color: #333;
 }
 
-.dropdown-menu a:not(:last-child) {
-  border-bottom: 1px solid #f2f2f2;
-}
-
 .dropdown-menu a:hover {
-  background: #f9fbfc;
-  padding-left: 22px;
+  background: #f5f9fb;
 }
 
-/* ===================================
+/* =========================================
    HAMBURGER
-=================================== */
+========================================= */
 
 .hamburger {
   display: none;
@@ -154,23 +154,22 @@ body {
   transition: 0.3s;
 }
 
-/* ===================================
+/* =========================================
    MOBILE
-=================================== */
+========================================= */
 
 @media (max-width: 900px) {
 
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
 
   .nav-menu {
     position: absolute;
-    top: 75px;              /* Same as navbar height */
+    top: 75px;
     left: 0;
     width: 100%;
 
-    background: #ffffff;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(14px);
 
     flex-direction: column;
     align-items: flex-start;
@@ -178,35 +177,31 @@ body {
     padding: 20px;
     gap: 10px;
 
-    display: none;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
   }
 
   .nav-menu.active {
-    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  /* Dropdown becomes stacked */
   .dropdown-menu {
     position: relative;
     box-shadow: none;
     border-radius: 6px;
     width: 100%;
-    margin-top: 10px;
-
+    margin-top: 8px;
     transform: none;
     opacity: 1;
-    pointer-events: auto;
-
     display: none;
   }
 
   .dropdown-menu.show {
     display: block;
-  }
-
-  .dropdown-menu a {
-    padding-left: 10px;
   }
 }
