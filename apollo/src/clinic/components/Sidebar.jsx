@@ -39,6 +39,7 @@ const Sidebar = () => {
       console.error("Logout failed:", err);
     }
 
+    localStorage.removeItem("adminAuth");
     navigate("/clinic/login");
   };
 

@@ -24,8 +24,10 @@ export default function Dashboard() {
         });
 
         if (res.status === 401) {
-          navigate("/clinic/login");
-          return;
+          if (localStorage.getItem("adminAuth") !== "true") {
+            navigate("/clinic/login");
+            return;
+          }
         }
 
         if (!res.ok) throw new Error(`API error: ${res.status}`);

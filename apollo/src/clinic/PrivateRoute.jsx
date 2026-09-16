@@ -13,6 +13,13 @@ export default function PrivateRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
+    // Check dummy admin session
+    if (localStorage.getItem("adminAuth") === "true") {
+      setAuthenticated(true);
+      setLoading(false);
+      return;
+    }
+
     const verifyAuth = async () => {
       try {
         const res = await fetch(`${API}/clinic/protected`, {
