@@ -10,7 +10,7 @@ export default function Blogs() {
   useEffect(() => {
     api
       .get(`/api/blogs/public`)
-      .then((res) => setBlogs(res.data))
+      .then((res) => setBlogs(Array.isArray(res.data) ? res.data : []))
       .catch(() => console.error("Failed to load blogs"))
       .finally(() => setLoading(false));
   }, []);
@@ -23,7 +23,7 @@ export default function Blogs() {
         <h1 className="page-title">Health Articles & Updates</h1>
 
         <div className="blogs-grid">
-          {blogs.map((blog) => (
+          {Array.isArray(blogs) && blogs.map((blog) => (
             <Link
               key={blog.slug}
               to={`/blogs/${blog.slug}`}

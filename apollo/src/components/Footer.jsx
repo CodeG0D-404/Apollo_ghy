@@ -59,18 +59,16 @@ export default function Footer() {
 
             {/* Column 1 — Brand Only */}
             <div className="footer-brand">
-              <h3>Apollo Hospitals Information Centre</h3>
+              <h3>ApexCare Information Centre</h3>
               <p>
-                Bora Commercial Complex,<br />
-                Basisthapur Bye Lane 4,<br />
-                Bhabendra Nath Saikia Road,<br />
-                Beltola Tiniali, Guwahati,<br />
-                Assam – 781028
+                Plot 42, Health City Complex,<br />
+                G.S. Road, Dispur,<br />
+                Guwahati, Assam – 781005
               </p>
 
               <div className="footer-contact">
-                <p>📞 09678769107</p>
-                <p>✉ info@apolloinfoghy.com</p>
+                <p>📞 +91 98765 43210</p>
+                <p>✉ info@apexcarehealth.com</p>
                 <p>🕒 Mon – Sat, 9 AM – 6 PM</p>
                 <p>Sunday Closed (Except OPD Dates)</p>
               </div>
@@ -122,7 +120,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-bottom">
-            © {new Date().getFullYear()} Apollo Hospitals Information Centre, Guwahati. All Rights Reserved.
+            © {new Date().getFullYear()} ApexCare Information Centre. All Rights Reserved.
           </div>
 
         </div>

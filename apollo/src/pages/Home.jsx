@@ -87,7 +87,7 @@ const SLIDES = [
     badge: "Travel Support",
     h1: false,
     heading: "Seamless Travel for Your Hospital Visit",
-    sub: "Pickup and drop from airport or railway station to Apollo Hospital — safe, reliable, and always on time.",
+    sub: "Pickup and drop from airport or railway station to the hospital — safe, reliable, and always on time.",
     cta: { label: "Book Travel Support", to: "/services/support-services" },
     ctaSecondary: { label: "Learn more", to: "/services/hospital-visit" },
     img: bannerTwo,
@@ -102,7 +102,7 @@ const SLIDES = [
     cta: { label: "Book Lab Test", to: "/services/support-services" },
     ctaSecondary: { label: "Learn more", to: "/apollo-diagnostics" },
     img: bannerThree,
-    alt: "Apollo Diagnostics lab",
+    alt: "Complete diagnostics laboratory",
     trust: ["NABL Accredited", "Home Sample", "Fast Reports"],
   },
   {
@@ -207,12 +207,12 @@ export default function Home() {
             <div className="home-why-text">
               <span className="home-section-label">Why Choose Us</span>
               <h2>
-                Apollo Hospitals Information Centre —{" "}
+                ApexCare Information Centre —{" "}
                 <span>Guwahati</span>
               </h2>
               <p className="home-why-subtitle">
                 We bridge the gap between patients across North-East India and world-class
-                Apollo specialist care, with comprehensive end-to-end support at every step.
+                specialist care, with comprehensive end-to-end support at every step.
               </p>
 
               <ul className="home-why-list">
@@ -231,7 +231,7 @@ export default function Home() {
             </div>
 
             <div className="home-why-image">
-              <img src={whyUs} alt="Why choose Apollo" />
+              <img src={whyUs} alt="Why choose ApexCare" />
             </div>
 
           </div>

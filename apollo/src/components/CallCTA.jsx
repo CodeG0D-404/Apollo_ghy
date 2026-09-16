@@ -9,7 +9,7 @@ import api from "../services/api";
 import "./CSS/CallCTA.css";
 
 export default function CallCTA({ label = "Call Clinic" }) {
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+919876543210");
 
   useEffect(() => {
     let mounted = true;

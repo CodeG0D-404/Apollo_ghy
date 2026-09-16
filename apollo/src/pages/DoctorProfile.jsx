@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getPublicDoctorById } from "./services/publicDoctor.service";
+import { MOCK_DOCTORS } from "../services/mockData";
 
 import LeftSidebar from "../components/LeftSidebar";
 import MobileFilterBar from "../components/MobileFilterBar";
@@ -15,7 +16,7 @@ import CallCTA from "../components/CallCTA";
 import "./Css/DoctorProfile.css";
 
 export default function DoctorProfile() {
-  const { id } = useParams();
+  const { id, visitType } = useParams();
 
   const [collapsed, setCollapsed] = useState(true);
   const [doctor, setDoctor] = useState(null);
@@ -30,12 +31,22 @@ export default function DoctorProfile() {
     async function fetchDoctor() {
       try {
         const res = await getPublicDoctorById(id);
-        if (isMounted) setDoctor(res.data);
+        if (isMounted && res.data && res.data._id) {
+          setDoctor(res.data);
+          return;
+        }
       } catch (err) {
-        console.error("Doctor fetch failed:", err);
-      } finally {
-        if (isMounted) setLoading(false);
+        console.warn("Doctor fetch failed, using fallback:", err);
       }
+
+      // Fallback
+      if (isMounted) {
+        const fallback =
+          MOCK_DOCTORS.find((d) => d._id === id) || MOCK_DOCTORS[0];
+        setDoctor(fallback);
+      }
+
+      if (isMounted) setLoading(false);
     }
 
     fetchDoctor();
@@ -161,7 +172,7 @@ export default function DoctorProfile() {
 
                     <div className="doctor-details-buttons">
                       <Link
-                        to={`/booking/${id}/OPD`}
+                        to={`/booking/${id}/${(visitType && visitType !== "ALL") ? visitType : (hasOPD ? "OPD" : "Telemedicine")}`}
                         className="doctor-row-book"
                       >
                         Book Appointment
@@ -182,7 +193,7 @@ export default function DoctorProfile() {
                 </div>
 
                 {/* ================= CONDITIONS ================= */}
-                {conditionsTreated.length > 0 && (
+                {Array.isArray(conditionsTreated) && conditionsTreated.length > 0 && (
                   <div className="doctor-details-extra">
                     <h3>Symptoms & Conditions Treated</h3>
 

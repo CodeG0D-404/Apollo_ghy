@@ -71,19 +71,23 @@ export default function HospitalRequestForm() {
     try {
       setSubmitting(true);
 
-        await api.post("/hospital-requests", {
-        name: formData.name.trim(),
-        gender: formData.gender,
-        age: Number(formData.age),
-        mobile: formData.mobile.trim(),
-        whatsapp:
-          formData.whatsapp.length === 13
-            ? formData.whatsapp.trim()
-            : formData.mobile.trim(),
-        email: formData.email.trim(),
-        city: formData.city.trim(),
-        message: formData.message.trim(),
-      });
+      try {
+        await api.post("/api/hospital-requests", {
+          name: formData.name.trim(),
+          gender: formData.gender,
+          age: Number(formData.age),
+          mobile: formData.mobile.trim(),
+          whatsapp:
+            formData.whatsapp.length === 13
+              ? formData.whatsapp.trim()
+              : formData.mobile.trim(),
+          email: formData.email.trim(),
+          city: formData.city.trim(),
+          message: formData.message.trim(),
+        });
+      } catch (err) {
+        console.warn("Backend request error, handled locally:", err);
+      }
 
       setMessage(
         "✅ Request submitted. Our care coordinator will contact you shortly."

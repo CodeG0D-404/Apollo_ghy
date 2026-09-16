@@ -151,7 +151,7 @@ function Navbar() {
 
         {/* LOGO */}
         <Link to="/" className="logo" onClick={closeAll}>
-          <img src={logo} alt="Apollo Logo" />
+          <img src={logo} alt="ApexCare Logo" />
         </Link>
 
         {/* HAMBURGER (Mobile) */}

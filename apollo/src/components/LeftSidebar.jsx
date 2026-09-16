@@ -31,7 +31,7 @@ export default function LeftSidebar({
       try {
         const res = await api.get("/api/specialties");
         if (isMounted) {
-          setSpecialties(res.data || []);
+          setSpecialties(Array.isArray(res.data) ? res.data : []);
         }
       } catch {
         if (isMounted) {
@@ -153,14 +153,15 @@ export default function LeftSidebar({
                   <option value="">
                     Select specialty
                   </option>
-                  {specialties.map((spec) => (
-                    <option
-                      key={spec._id}
-                      value={spec.slug}
-                    >
-                      {spec.name}
-                    </option>
-                  ))}
+                  {Array.isArray(specialties) &&
+                    specialties.map((spec) => (
+                      <option
+                        key={spec._id}
+                        value={spec.slug}
+                      >
+                        {spec.name}
+                      </option>
+                    ))}
                 </select>
               )}
             </div>

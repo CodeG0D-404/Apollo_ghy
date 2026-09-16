@@ -15,7 +15,7 @@ export default function About() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-5">
-              <h2>Your Trusted Apollo Service Centre</h2>
+              <h2>Your Trusted ApexCare Information Centre</h2>
               <p>
                 OPD consultations, telemedicine appointments, and complete
                 patient support — delivered with care and clarity. We assist
@@ -29,7 +29,7 @@ export default function About() {
               <img
                 className="img-fluid"
                 src={bannerOne}
-                alt="Apollo Service Centre Illustration"
+                alt="ApexCare Information Centre Illustration"
               />
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function About() {
                 <span className="whoDivider"></span>
 
                 <p className="whoLead">
-                  We are an Apollo Service Centre dedicated to supporting
+                  We are an ApexCare Information Centre dedicated to supporting
                   patients through every step of their healthcare journey.
                 </p>
 
@@ -55,7 +55,7 @@ export default function About() {
                   facility, where qualified doctors visit to provide OPD
                   consultations. We also assist patients with telemedicine
                   appointments and guide them in planning hospital visits,
-                  including advanced care at Apollo Hospitals in Chennai.
+                  including advanced care at partner super-specialty hospitals.
                 </p>
 
                 <p>
@@ -115,10 +115,10 @@ export default function About() {
             {/* Chennai Hospital Support */}
             <div className="col-md-4">
               <div className="serviceCard">
-                <h4>Chennai Hospital Coordination</h4>
+                <h4>Super-Specialty Hospital Coordination</h4>
                 <p>
                   We assist patients with OPD visits and admissions at{" "}
-                  <strong>Apollo Hospitals, Chennai</strong>. Our support
+                  <strong>partner multi-specialty hospitals</strong>. Our support
                   includes department guidance, specialist coordination, and
                   visit planning for outstation patients.
                 </p>
@@ -287,7 +287,7 @@ export default function About() {
             </li>
             <li>
               Hospital-based care, procedures, and admissions are handled
-              directly by Apollo Hospitals.
+              directly by treating hospitals.
             </li>
             <li>
               Our role is limited to patient support, coordination, and

@@ -26,6 +26,8 @@ export default function DoctorsList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const q = searchParams.get("q") || "";
+
   // =============================================
   // FETCH DOCTORS
   // =============================================
@@ -41,8 +43,15 @@ export default function DoctorsList() {
           ? `/api/doctors/specialty/slug/${slug}`
           : `/api/doctors`;
 
+        const queryParams = [];
         if (visitType !== "All") {
-          url += `?visitType=${visitType}`;
+          queryParams.push(`visitType=${visitType}`);
+        }
+        if (q) {
+          queryParams.push(`q=${encodeURIComponent(q)}`);
+        }
+        if (queryParams.length > 0) {
+          url += (url.includes("?") ? "&" : "?") + queryParams.join("&");
         }
 
         const res = await api.get(url);
@@ -50,10 +59,29 @@ export default function DoctorsList() {
         if (!isMounted) return;
 
         if (slug) {
-          setDoctors(res.data.doctors || []);
-          setSpecialty(res.data.specialty || null);
+          const list = Array.isArray(res.data?.doctors)
+            ? res.data.doctors
+            : Array.isArray(res.data)
+            ? res.data
+            : [];
+          setDoctors(list);
+          setSpecialty(res.data?.specialty || null);
         } else {
-          setDoctors(res.data || []);
+          let list = Array.isArray(res.data)
+            ? res.data
+            : Array.isArray(res.data?.doctors)
+            ? res.data.doctors
+            : [];
+          if (q) {
+            const qLower = q.toLowerCase();
+            list = list.filter(
+              (d) =>
+                d.name?.toLowerCase().includes(qLower) ||
+                d.displayName?.toLowerCase().includes(qLower) ||
+                d.specialty?.name?.toLowerCase().includes(qLower)
+            );
+          }
+          setDoctors(list);
           setSpecialty(null);
         }
 
@@ -74,7 +102,7 @@ export default function DoctorsList() {
       isMounted = false;
     };
 
-  }, [slug, visitType]);
+  }, [slug, visitType, q]);
 
   // =============================================
   // PAGE HEADING
@@ -125,13 +153,13 @@ export default function DoctorsList() {
                 </div>
               )}
 
-              {!loading && !error && doctors.length === 0 && (
+              {!loading && !error && (!Array.isArray(doctors) || doctors.length === 0) && (
                 <div className="doctors-state">
                   No doctors available
                 </div>
               )}
 
-              {!loading && !error && doctors.length > 0 && (
+              {!loading && !error && Array.isArray(doctors) && doctors.length > 0 && (
                 <div className="doctors-list-rows">
                   {doctors.map((doctor) => (
                     <DoctorCard

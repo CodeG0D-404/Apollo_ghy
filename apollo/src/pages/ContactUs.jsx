@@ -15,12 +15,12 @@ import contactIllus from "../assets/contact-illustration.png";
 
 export default function Contact() {
 
-  // 🔐 centralised contact data (can move to .env later)
+  // 🔐 centralised contact data
   const CONTACT = {
-    phone: "09678769107",
-    email: "info@apolloinformationcentre.com",
+    phone: "+91 98765 43210",
+    email: "info@apexcarehealth.com",
     address:
-      "Bora Commercial Complex, Basisthapur Bye Lane 4, Bhabendra Nath Saikia Road, Beltola Tiniali, Guwahati, Assam 781028",
+      "Plot 42, Health City Complex, G.S. Road, Guwahati, Assam 781005",
     hours: "Mon – Sat, 9 AM – 6 PM",
   };
 

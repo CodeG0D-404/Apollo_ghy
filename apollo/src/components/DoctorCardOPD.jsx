@@ -14,7 +14,8 @@ export default function DoctorCardOPD({ doctor }) {
 
   const today = new Date();
 
-  const upcomingOpdDates = (doctor.opdDates || []).filter(
+  const opdList = Array.isArray(doctor.opdDates) ? doctor.opdDates : [];
+  const upcomingOpdDates = opdList.filter(
     (date) => new Date(date) >= today
   );
 
@@ -31,13 +32,13 @@ export default function DoctorCardOPD({ doctor }) {
                     : `${API_BASE}/${doctor.photo.replace(/^\/+/, "")}`
                   : "/default-doctor.png"
               }
-              alt={doctor.displayName}
+              alt={doctor.displayName || doctor.name}
             />
             </div>
             <div>
                 {/* NAME */}
                 <div className="opd-card-name">
-                    {doctor.displayName}
+                    {doctor.displayName || doctor.name}
                 </div>
 
                 {/* DATE */}

@@ -11,11 +11,18 @@ export default function DoctorCard({ doctor, visitType }) {
 
   const today = new Date();
 
-  const upcomingOpdDates = (doctor.opdDates || []).filter(
+  const opdList = Array.isArray(doctor.opdDates) ? doctor.opdDates : [];
+  const upcomingOpdDates = opdList.filter(
     (date) => new Date(date) >= today
   );
 
-  const API_BASE = import.meta.env.VITE_API_URL || "";
+  const visitTypes = Array.isArray(doctor.visitTypes) ? doctor.visitTypes : [];
+  const bookingVisitType =
+    visitType && visitType !== "All"
+      ? visitType
+      : visitTypes.includes("OPD")
+      ? "OPD"
+      : "Telemedicine";
 
   return (
     <div className="doctor-row">
@@ -24,7 +31,7 @@ export default function DoctorCard({ doctor, visitType }) {
       <div className="doctor-row-photo">
       <img
         src={doctor.photo || "/default-doctor.png"}
-        alt={doctor.displayName}
+        alt={doctor.displayName || doctor.name}
       />
       </div>
 
@@ -35,15 +42,15 @@ export default function DoctorCard({ doctor, visitType }) {
         <div className="doctor-row-topline">
 
           <div className="doctor-row-name">
-            {doctor.displayName}
+            {doctor.displayName || doctor.name}
           </div>
 
           <div className="doctor-row-specialty">
-            {doctor.specialty?.name || "Specialty not available"}
+            {doctor.specialty?.name || "Specialist"}
           </div>
 
           {visitType === "OPD" &&
-            doctor.visitTypes?.includes("OPD") &&
+            visitTypes.includes("OPD") &&
             upcomingOpdDates.length > 0 && (
               <div className="doctor-row-opd">
                 OPD:
@@ -56,7 +63,7 @@ export default function DoctorCard({ doctor, visitType }) {
           )}
 
           <div className="doctor-row-exp">
-            {doctor.experience} yrs exp
+            {doctor.experience ? `${doctor.experience} yrs exp` : ""}
           </div>
 
           <div className="doctor-row-lang">
@@ -65,7 +72,7 @@ export default function DoctorCard({ doctor, visitType }) {
 
           <Link
             className="doctor-row-view"
-            to={`/doctor/${doctor._id}/${(visitType || "all").toUpperCase()}`}
+            to={`/doctor/${doctor._id}/${bookingVisitType}`}
           >
             View details
           </Link>
@@ -80,7 +87,7 @@ export default function DoctorCard({ doctor, visitType }) {
           </div>
 
           <Link
-            to={`/booking/${doctor._id}/${visitType}`}
+            to={`/booking/${doctor._id}/${bookingVisitType}`}
             className="doctor-row-book"
           >
             Book now

@@ -21,7 +21,7 @@ export default function BrowseSpecialist() {
     async function fetchSpecialties() {
       try {
         const res = await api.get("/api/specialties");
-        setSpecialties(res.data || []);
+        setSpecialties(Array.isArray(res.data) ? res.data : []);
       } catch {
         setError("Unable to load specialties");
       } finally {
@@ -56,14 +56,14 @@ export default function BrowseSpecialist() {
         )}
 
         {/* Empty */}
-        {!loading && !error && specialties.length === 0 && (
+        {!loading && !error && (!Array.isArray(specialties) || specialties.length === 0) && (
           <div className="browse-spec-state">
             No specialties available
           </div>
         )}
 
         {/* Grid */}
-        {!loading && !error && specialties.length > 0 && (
+        {!loading && !error && Array.isArray(specialties) && specialties.length > 0 && (
           <div className="browse-spec-grid">
             {specialties.map((spec) => (
               <Link
