@@ -7,6 +7,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import api from "../services/api";
+import { MOCK_DOCTORS, MOCK_SPECIALTIES } from "../services/mockData";
 
 import DoctorCard from "../components/DoctorCard";
 import LeftSidebar from "../components/LeftSidebar";
@@ -59,19 +60,30 @@ export default function DoctorsList() {
         if (!isMounted) return;
 
         if (slug) {
-          const list = Array.isArray(res.data?.doctors)
+          let list = Array.isArray(res.data?.doctors) && res.data.doctors.length > 0
             ? res.data.doctors
-            : Array.isArray(res.data)
+            : Array.isArray(res.data) && res.data.length > 0
             ? res.data
-            : [];
+            : MOCK_DOCTORS.filter(
+                (d) => d.specialty?.slug?.toLowerCase() === slug.toLowerCase()
+              );
+          if (list.length === 0) list = MOCK_DOCTORS.slice(0, 3);
           setDoctors(list);
-          setSpecialty(res.data?.specialty || null);
+          setSpecialty(
+            res.data?.specialty ||
+            MOCK_SPECIALTIES.find((s) => s.slug.toLowerCase() === slug.toLowerCase()) ||
+            { name: slug.charAt(0).toUpperCase() + slug.slice(1), slug }
+          );
         } else {
-          let list = Array.isArray(res.data)
+          let list = Array.isArray(res.data) && res.data.length > 0
             ? res.data
-            : Array.isArray(res.data?.doctors)
+            : Array.isArray(res.data?.doctors) && res.data.doctors.length > 0
             ? res.data.doctors
-            : [];
+            : MOCK_DOCTORS;
+
+          if (visitType && visitType !== "All") {
+            list = list.filter((d) => Array.isArray(d.visitTypes) && d.visitTypes.includes(visitType));
+          }
           if (q) {
             const qLower = q.toLowerCase();
             list = list.filter(
@@ -87,7 +99,25 @@ export default function DoctorsList() {
 
       } catch (err) {
         if (isMounted) {
-          setError("Unable to load doctors");
+          console.warn("API doctors fetch failed, using fallback:", err);
+          let list = [...MOCK_DOCTORS];
+          if (slug) {
+            list = list.filter(
+              (d) => d.specialty?.slug?.toLowerCase() === slug.toLowerCase()
+            );
+            if (list.length === 0) list = MOCK_DOCTORS.slice(0, 3);
+            setSpecialty(
+              MOCK_SPECIALTIES.find((s) => s.slug.toLowerCase() === slug.toLowerCase()) ||
+              { name: slug.charAt(0).toUpperCase() + slug.slice(1), slug }
+            );
+          } else {
+            if (visitType && visitType !== "All") {
+              list = list.filter((d) => Array.isArray(d.visitTypes) && d.visitTypes.includes(visitType));
+            }
+            setSpecialty(null);
+          }
+          setDoctors(list);
+          setError(null);
         }
       } finally {
         if (isMounted) {

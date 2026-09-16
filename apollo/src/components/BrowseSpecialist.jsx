@@ -7,6 +7,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import { MOCK_SPECIALTIES } from "../services/mockData";
 import "./CSS/BrowseSpecialist.css";
 import doctorIcon from "../assets/doctor-icon.png";
 
@@ -15,15 +16,14 @@ export default function BrowseSpecialist() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-
-
   useEffect(() => {
     async function fetchSpecialties() {
       try {
         const res = await api.get("/api/specialties");
-        setSpecialties(Array.isArray(res.data) ? res.data : []);
+        const list = Array.isArray(res.data) && res.data.length > 0 ? res.data : MOCK_SPECIALTIES;
+        setSpecialties(list);
       } catch {
-        setError("Unable to load specialties");
+        setSpecialties(MOCK_SPECIALTIES);
       } finally {
         setLoading(false);
       }

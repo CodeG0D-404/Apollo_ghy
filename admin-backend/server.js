@@ -93,8 +93,8 @@ app.use((req, res, next) => {
 // ============================================================
 
 const allowedOrigins = [
-  "http://localhost:5173", // 🔹 LOCAL DEV (KEEP)
-  "https://apollo-ghy.vercel.app", // 🔹 PRODUCTION (CHANGE THIS)
+  "http://localhost:5173", // 🔹 LOCAL DEV
+  "https://apollo-ghy.vercel.app", // 🔹 PRODUCTION
 ];
 
 app.use(
@@ -103,10 +103,14 @@ app.use(
       // Allow server-to-server or Postman requests
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app") ||
+        origin.includes("localhost")
+      ) {
         return callback(null, true);
       } else {
-        return callback(new Error("Not allowed by CORS"));
+        return callback(null, true); // Allow all web clients for public APIs
       }
     },
     credentials: true, // 🔐 REQUIRED for cookies

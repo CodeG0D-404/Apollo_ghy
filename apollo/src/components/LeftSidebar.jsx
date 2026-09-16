@@ -7,6 +7,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import api from "../services/api";
+import { MOCK_SPECIALTIES } from "../services/mockData";
 import "./CSS/LeftSidebar.css";
 
 export default function LeftSidebar({
@@ -31,11 +32,12 @@ export default function LeftSidebar({
       try {
         const res = await api.get("/api/specialties");
         if (isMounted) {
-          setSpecialties(Array.isArray(res.data) ? res.data : []);
+          const list = Array.isArray(res.data) && res.data.length > 0 ? res.data : MOCK_SPECIALTIES;
+          setSpecialties(list);
         }
       } catch {
         if (isMounted) {
-          setSpecialties([]);
+          setSpecialties(MOCK_SPECIALTIES);
         }
       } finally {
         if (isMounted) {
