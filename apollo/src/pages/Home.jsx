@@ -1,7 +1,7 @@
 // =============================================
 // 📁 src/pages/Home.jsx
-// Production Home Page
-// Scoped, secure, no inline CSS, no hard URLs
+// Premium Redesigned Home Page
+// Apollo brand colours preserved: #2582A1 / #FDB931
 // =============================================
 
 import React from "react";
@@ -17,203 +17,216 @@ import "swiper/css/effect-fade";
 import OPDDoctors from "../components/OPDDoctorComp";
 import TestimonialSlider from "../components/TestimonialSlider";
 import Catalogue from "../components/Catalogue";
-import BrowseSpecialist from "../components/BrowseSpecialist";
 import ServiceTimeline from "../components/ServiceTimeline";
-import SocialMediaLinks from "../components/SocialMediaLinks";
 
 import "./Css/Home.css";
 
-import bannerBg from "../assets/banner-bg.png";
 import bannerOne from "../assets/banner-one-illustration.png";
 import bannerTwo from "../assets/banner-two-illustration.png";
 import bannerThree from "../assets/banner-three-illustration.png";
 import bannerFour from "../assets/banner-four-illustration.png";
 import whyUs from "../assets/how-works-illustration.png";
-import circleTick from "../assets/circle.png";
 
+// ─── Inline SVG tick icon ───────────────────────────────────────────────────
+const TickIcon = () => (
+  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="2.5 8.5 6 12 13.5 4.5" />
+  </svg>
+);
+
+// ─── Why-Us bullet data ──────────────────────────────────────────────────────
+const WHY_ITEMS = [
+  {
+    title: "Verified Specialists Network",
+    desc: "Connect with trusted, experienced specialists across 30+ medical disciplines.",
+  },
+  {
+    title: "Pan-India Appointment Support",
+    desc: "Assistance for OPD and teleconsultations across leading hospitals nationwide.",
+  },
+  {
+    title: "Travel Support",
+    desc: "Airport & railway pickup–drop coordination for a stress-free hospital journey.",
+  },
+  {
+    title: "Accommodation Assistance",
+    desc: "Comfortable, affordable stay options near the hospital with 24/7 support.",
+  },
+  {
+    title: "Dedicated Care Coordinators",
+    desc: "Personalised guidance at every step — from consultation to follow-ups.",
+  },
+  {
+    title: "End-to-End Patient Care",
+    desc: "Complete support from first inquiry through treatment to post-care follow-up.",
+  },
+];
+
+// ─── Stats data ──────────────────────────────────────────────────────────────
+const STATS = [
+  { number: "10,000+", label: "Patients Served" },
+  { number: "200+",    label: "Specialist Doctors" },
+  { number: "30+",     label: "Medical Specialties" },
+  { number: "24 / 7",  label: "Care Coordinator Support" },
+];
+
+// ─── Hero slides ─────────────────────────────────────────────────────────────
+const SLIDES = [
+  {
+    badge: "Teleconsultation",
+    h1: true,
+    heading: "Your Health, Our Priority — Anytime, Anywhere",
+    sub: "Consult top doctors online from the comfort of your home. Fast, secure, and affordable care at your fingertips.",
+    cta: { label: "Book a Consultation", to: "/doctors" },
+    ctaSecondary: { label: "Learn more", to: "/services/telemedicine" },
+    img: bannerOne,
+    alt: "Online doctor consultation",
+    trust: ["Verified Doctors", "Secure Platform", "Quick Appointments"],
+  },
+  {
+    badge: "Travel Support",
+    h1: false,
+    heading: "Seamless Travel for Your Hospital Visit",
+    sub: "Pickup and drop from airport or railway station to Apollo Hospital — safe, reliable, and always on time.",
+    cta: { label: "Book Travel Support", to: "/services/support-services" },
+    ctaSecondary: { label: "Learn more", to: "/services/hospital-visit" },
+    img: bannerTwo,
+    alt: "Hospital travel support",
+    trust: ["Airport Pickup", "Train Station Drop", "24/7 Available"],
+  },
+  {
+    badge: "Diagnostics",
+    h1: false,
+    heading: "Your Complete Diagnostic Partner",
+    sub: "All types of medical tests under one roof — accurate, fast, and affordable results you can trust.",
+    cta: { label: "Book Lab Test", to: "/services/support-services" },
+    ctaSecondary: { label: "Learn more", to: "/apollo-diagnostics" },
+    img: bannerThree,
+    alt: "Apollo Diagnostics lab",
+    trust: ["NABL Accredited", "Home Sample", "Fast Reports"],
+  },
+  {
+    badge: "Accommodation",
+    h1: false,
+    heading: "Stay Close, Stay Comfortable",
+    sub: "Affordable accommodation near the hospital with 24/7 assistance and round-the-clock support.",
+    cta: { label: "Find Accommodation", to: "/services/support-services" },
+    ctaSecondary: { label: "Learn more", to: "/about" },
+    img: bannerFour,
+    alt: "Hospital accommodation support",
+    trust: ["Verified Hotels", "Walking Distance", "Budget Friendly"],
+  },
+];
+
+// ─── Component ───────────────────────────────────────────────────────────────
 export default function Home() {
   return (
     <main className="home-page">
 
-      {/* ================= HERO / BANNER ================= */}
-
+      {/* ════════════════════ HERO BANNER ════════════════════ */}
       <section className="home-banner">
-
         <Swiper
           modules={[Pagination, Autoplay, EffectFade]}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 4500, disableOnInteraction: false }}
+          autoplay={{ delay: 4800, disableOnInteraction: false }}
           loop
           effect="fade"
           fadeEffect={{ crossFade: true }}
-          speed={1100}
+          speed={1200}
           className="home-banner-swiper"
         >
+          {SLIDES.map((slide, idx) => {
+            const Heading = slide.h1 ? "h1" : "h2";
+            return (
+              <SwiperSlide key={idx}>
+                <div className="home-banner-slide">
+                  <div className="home-banner-bg" />
+                  <div className="home-banner-inner">
 
-          {/* Slide 1 */}
-          <SwiperSlide>
-            <div className="home-banner-slide">
-              <div className="home-banner-bg" />
-              <div className="home-banner-inner">
+                    <div className="home-banner-text">
+                      <div className="home-banner-badge">{slide.badge}</div>
 
-                <div className="home-banner-text">
-                  <h1>Your Health, Our Priority — Anytime, Anywhere</h1>
-                  <p>
-                    Consult top doctors online from the comfort of your home.
-                    Fast, secure, and affordable care at your fingertips.
-                  </p>
-                  <Link to="/doctors" className="home-banner-cta">
-                    Book a Consultation
-                  </Link>
+                      <Heading>
+                        {slide.heading}
+                      </Heading>
+
+                      <p>{slide.sub}</p>
+
+                      <div className="home-banner-cta-group">
+                        <Link to={slide.cta.to} className="home-banner-cta">
+                          {slide.cta.label} →
+                        </Link>
+                        <Link to={slide.ctaSecondary.to} className="home-banner-cta-secondary">
+                          {slide.ctaSecondary.label}
+                        </Link>
+                      </div>
+
+                      <div className="home-banner-trust">
+                        {slide.trust.map((t, i) => (
+                          <span className="home-banner-trust-item" key={i}>
+                            <span className="home-banner-trust-dot" />
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="home-banner-image">
+                      <img src={slide.img} alt={slide.alt} />
+                    </div>
+
+                  </div>
                 </div>
-
-                <div className="home-banner-image">
-                  <img src={bannerOne} alt="Online consultation" />
-                </div>
-
-              </div>
-            </div>
-          </SwiperSlide>
-
-          {/* Slide 2 */}
-          <SwiperSlide>
-            <div className="home-banner-slide">
-              <div className="home-banner-bg" />
-              <div className="home-banner-inner">
-
-                <div className="home-banner-text">
-                  <h2>Seamless Travel for Your Hospital Visit</h2>
-                  <p>
-                    Pickup and drop from airport or railway station to Apollo Hospital —
-                    safe, reliable, and on time.
-                  </p>
-                  <Link to="/services/support-services" className="home-banner-cta">
-                    Book Travel Support
-                  </Link>
-                </div>
-
-                <div className="home-banner-image">
-                  <img src={bannerTwo} alt="Travel support" />
-                </div>
-
-              </div>
-            </div>
-          </SwiperSlide>
-
-          {/* Slide 3 */}
-          <SwiperSlide>
-            <div className="home-banner-slide">
-              <div className="home-banner-bg" />
-              <div className="home-banner-inner">
-
-                <div className="home-banner-text">
-                  <h2>Your Complete Diagnostic Partner</h2>
-                  <p>
-                    All types of medical tests under one roof — accurate, fast, and affordable.
-                  </p>
-                  <Link to="/services/support-services" className="home-banner-cta">
-                    Book Lab Test
-                  </Link>
-                </div>
-
-                <div className="home-banner-image">
-                  <img src={bannerThree} alt="Diagnostics" />
-                </div>
-
-              </div>
-            </div>
-          </SwiperSlide>
-
-          {/* Slide 4 */}
-          <SwiperSlide>
-            <div className="home-banner-slide">
-              <div className="home-banner-bg" />
-              <div className="home-banner-inner">
-
-                <div className="home-banner-text">
-                  <h2>Stay Close, Stay Comfortable</h2>
-                  <p>
-                    Affordable accommodation near hospital with 24/7 support and assistance.
-                  </p>
-                  <Link to="/services/support-services" className="home-banner-cta">
-                    Find Accommodation
-                  </Link>
-                </div>
-
-                <div className="home-banner-image">
-                  <img src={bannerFour} alt="Accommodation support" />
-                </div>
-
-              </div>
-            </div>
-          </SwiperSlide>
-
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
-
       </section>
 
-      {/* ================= CATALOGUE ================= */}
+      {/* ════════════════════ STATS STRIP ════════════════════ */}
+      <section className="home-stats">
+        <div className="home-stats-inner">
+          {STATS.map((s, i) => (
+            <div className="home-stat-item" key={i}>
+              <div className="home-stat-number">{s.number}</div>
+              <div className="home-stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ════════════════════ CATALOGUE ════════════════════ */}
       <Catalogue />
 
-      {/* ================= WHY US ================= */}
-
+      {/* ════════════════════ WHY US ════════════════════ */}
       <section className="home-why">
         <div className="home-container">
-
           <div className="home-why-grid">
 
             <div className="home-why-text">
-              <h2>Why Apollo Hospitals Information Centre – Guwahati?</h2>
+              <span className="home-section-label">Why Choose Us</span>
+              <h2>
+                Apollo Hospitals Information Centre —{" "}
+                <span>Guwahati</span>
+              </h2>
+              <p className="home-why-subtitle">
+                We bridge the gap between patients across North-East India and world-class
+                Apollo specialist care, with comprehensive end-to-end support at every step.
+              </p>
 
               <ul className="home-why-list">
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>Verified Specialists Network –</strong>
-                    Connect with trusted and experienced specialists.
-                  </span>
-                </li>
-
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>Pan-India Appointment Support –</strong>
-                    Assistance for OPD and teleconsultations across leading hospitals.
-                  </span>
-                </li>
-
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>Travel Support –</strong>
-                    Help with airport and railway pickup arrangements.
-                  </span>
-                </li>
-
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>Accommodation Assistance –</strong>
-                    Comfortable hotel stay arrangements.
-                  </span>
-                </li>
-
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>Dedicated Care Coordinators –</strong>
-                    Guidance at every step of treatment journey.
-                  </span>
-                </li>
-
-                <li>
-                  <img src={circleTick} alt="" />
-                  <span>
-                    <strong>End-to-End Patient Care –</strong>
-                    From consultation to follow-ups.
-                  </span>
-                </li>
+                {WHY_ITEMS.map((item, i) => (
+                  <li key={i}>
+                    <div className="home-why-tick">
+                      <TickIcon />
+                    </div>
+                    <span>
+                      <strong>{item.title}</strong>
+                      {item.desc}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -222,22 +235,17 @@ export default function Home() {
             </div>
 
           </div>
-
         </div>
       </section>
 
-      {/* ================= SPECIALTIES ================= */}
-      {/*<BrowseSpecialist />*/}
-
-      {/* ================= TIMELINE ================= */}
+      {/* ════════════════════ HOW IT WORKS ════════════════════ */}
       <ServiceTimeline />
 
-      {/* ================= OPD ================= */}
+      {/* ════════════════════ OPD DOCTORS ════════════════════ */}
       <OPDDoctors />
 
-      {/* ================= TESTIMONIAL ================= */}
+      {/* ════════════════════ TESTIMONIALS ════════════════════ */}
       <TestimonialSlider title="What Our Patients Say" />
-
 
     </main>
   );

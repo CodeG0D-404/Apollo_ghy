@@ -60,7 +60,7 @@ export default function DoctorCard({ doctor, visitType }) {
           </div>
 
           <div className="doctor-row-lang">
-            {doctor.language?.join(", ")}
+            {Array.isArray(doctor.language) ? doctor.language.join(", ") : ""}
           </div>
 
           <Link

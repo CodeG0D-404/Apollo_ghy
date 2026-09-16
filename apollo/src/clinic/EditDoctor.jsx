@@ -149,10 +149,11 @@ const EditDoctor = () => {
     const fd = new FormData();
     Object.entries(formData).forEach(([k, v]) => {
       if (k === "conditionsTreated") {
-        fd.append(k, JSON.stringify(v.map((c) => c._id)));
+        const arr = Array.isArray(v) ? v : [];
+        fd.append(k, JSON.stringify(arr.map((c) => c._id)));
       } else if (Array.isArray(v)) {
         fd.append(k, JSON.stringify(v));
-      } else {
+      } else if (v !== null && v !== undefined) {
         fd.append(k, v);
       }
     });

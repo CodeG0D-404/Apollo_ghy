@@ -1,22 +1,91 @@
 /* =========================================
-   APOLLO TESTIMONIAL SWIPER — FIXED VERSION
+   APOLLO TESTIMONIAL SWIPER — PREMIUM REDESIGN
+   Blue: #2582A1  |  Yellow: #FDB931
    ========================================= */
-
-:root {
-  --apollo-blue: #2582A1;
-  --apollo-yellow: #FDB931;
-  --apollo-bg-light: #f4fbfd;
-  --apollo-border: #e5e7eb;
-}
 
 /* =========================================
    SECTION
    ========================================= */
 
 .testimonial-swiper-section {
-  padding: 70px 20px;
-  background: var(--apollo-bg-light);
-  border-top: 4px solid var(--apollo-blue);
+  padding: 100px 40px;
+  background: linear-gradient(180deg, #0d3b4f 0%, #1a5c79 60%, #2582A1 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-swiper-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(253, 185, 49, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.testimonial-swiper-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.testimonial-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FDB931;
+  background: rgba(253, 185, 49, 0.15);
+  border: 1px solid rgba(253, 185, 49, 0.35);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.testimonial-swiper-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 12px;
+  position: relative;
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.testimonial-divider {
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, #FDB931, #e3a420);
+  border-radius: 4px;
+  margin: 0 auto;
 }
 
 /* =========================================
@@ -27,30 +96,7 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding: 0 40px;
-}
-
-/* =========================================
-   TITLE
-   ========================================= */
-
-.testimonial-swiper-title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--apollo-blue);
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.testimonial-swiper-title::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background: var(--apollo-yellow);
-  display: block;
-  margin: 12px auto 0;
-  border-radius: 4px;
+  z-index: 1;
 }
 
 /* =========================================
@@ -63,13 +109,12 @@
   height: auto;
 }
 
-/* IMPORTANT: REMOVE HEIGHT CONTROL FROM CARD */
 .testimonial-swiper-container .testimonial-card {
   width: 100%;
-  height: auto;              /* <-- critical fix */
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;  /* keeps footer inside */
+  justify-content: space-between;
 }
 
 /* =========================================
@@ -78,21 +123,21 @@
 
 .testimonial-swiper-container .swiper-pagination {
   position: relative;
-  margin-top: 28px;
+  margin-top: 36px;
 }
 
 .testimonial-swiper-container .swiper-pagination-bullet {
-  background: #cbd5e1;
+  background: rgba(255,255,255,0.35);
   opacity: 1;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   margin: 0 6px;
   transition: all 0.3s ease;
 }
 
 .testimonial-swiper-container .swiper-pagination-bullet-active {
-  background: var(--apollo-yellow);
-  width: 20px;
+  background: #FDB931;
+  width: 22px;
   border-radius: 20px;
 }
 
@@ -101,11 +146,11 @@
    ========================================= */
 
 @media (max-width: 768px) {
-  .testimonial-swiper-container {
-    padding: 0 20px;
+  .testimonial-swiper-section {
+    padding: 70px 20px;
   }
 
   .testimonial-swiper-title {
-    font-size: 24px;
+    font-size: 26px;
   }
 }

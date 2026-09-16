@@ -1,6 +1,6 @@
 // =============================================
 // 📁 src/components/OPDDoctors.jsx
-// Clean Swiper OPD doctor slider
+// Premium OPD Doctor Swiper Section
 // =============================================
 
 import { useEffect, useState } from "react";
@@ -8,7 +8,6 @@ import api from "../services/api";
 import DoctorCardOPD from "./DoctorCardOPD";
 import "./CSS/OPDDoctorComp.css";
 
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -42,17 +41,20 @@ export default function OPDDoctors({
   return (
     <section className="opd-swiper-section">
 
-      {title && (
+      {/* Section Header */}
+      <div className="opd-section-header">
+        <span className="opd-section-label">Our Specialists</span>
         <h2 className="opd-swiper-title">
-          {title}
+          {title.split(" ").slice(0, -1).join(" ")}{" "}
+          <span>{title.split(" ").slice(-1)}</span>
         </h2>
-      )}
+        <div className="opd-section-divider" />
+      </div>
 
       <div className="opd-swiper-container">
-
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
+          spaceBetween={24}
           slidesPerView={2}
           pagination={{ clickable: true }}
           autoplay={{
@@ -62,29 +64,18 @@ export default function OPDDoctors({
           }}
           loop={doctors.length > 2}
           breakpoints={{
-            0: {
-              slidesPerView: 1
-            },
-            640: {
-              slidesPerView: 1
-            },
-            768: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 2
-            }
+            0:    { slidesPerView: 1 },
+            640:  { slidesPerView: 1 },
+            768:  { slidesPerView: 2 },
+            1024: { slidesPerView: 2 },
           }}
         >
-
           {doctors.map((doctor) => (
             <SwiperSlide key={doctor._id}>
               <DoctorCardOPD doctor={doctor} />
             </SwiperSlide>
           ))}
-
         </Swiper>
-
       </div>
 
     </section>

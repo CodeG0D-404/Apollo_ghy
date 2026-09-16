@@ -49,7 +49,7 @@ export default function DoctorCardOPD({ doctor }) {
 
                 {/* META */}
                 <div className="opd-card-meta">
-                    {doctor.experience} yrs • {doctor.language?.join(", ")}
+                    {doctor.experience} yrs • {Array.isArray(doctor.language) ? doctor.language.join(", ") : ""}
                 </div>
 
             </div>

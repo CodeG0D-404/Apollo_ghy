@@ -41,9 +41,11 @@ useEffect(() => {
     <section className="testimonial-swiper-section">
 
       {title && (
-        <h2 className="testimonial-swiper-title">
-          {title}
-        </h2>
+        <div className="testimonial-header">
+          <span className="testimonial-label">Patient Stories</span>
+          <h2 className="testimonial-swiper-title">{title}</h2>
+          <div className="testimonial-divider" />
+        </div>
       )}
 
       <div className="testimonial-swiper-container">
