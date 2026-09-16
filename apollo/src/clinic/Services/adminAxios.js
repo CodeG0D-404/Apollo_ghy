@@ -220,7 +220,10 @@ function getMockAdminFallback(url = "", method = "get") {
   if (u.includes("/hospital-request")) return { requests: [], total: 0, pages: 1 };
 
   // ── Inquiry CTA ───────────────────────────────────────────
-  if (u.includes("/inquiry") || u.includes("/cta")) return { inquiries: [], total: 0, pages: 1 };
+  // InquiryCTAList handles its own demo data, return empty to let it fallback
+  if (u.includes("/inquiry") || u.includes("/cta")) {
+    return { inquiries: [], pagination: { pages: 1, totalPages: 1, total: 0 } };
+  }
 
   // ── Mutating endpoints (POST/PATCH/PUT/DELETE) ────────────
   if (["post", "patch", "put", "delete"].includes(method)) {

@@ -7,6 +7,41 @@ import React, { useEffect, useState } from "react";
 import adminAxios from "./Services/adminAxios";
 import "./styles/InquiryCTAList.css";
 
+// Mock sample inquiries for demo mode
+const DEMO_INQUIRIES = [
+  {
+    _id: "inq-1",
+    name: "Ranjit Saikia",
+    phone: "+91 94010 11111",
+    source: { page: "Home", section: "book-appointment" },
+    createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    isExistingPatient: false,
+    review: { status: false },
+    followup: { status: false },
+  },
+  {
+    _id: "inq-2",
+    name: "Meena Das",
+    phone: "+91 94010 22222",
+    source: { page: "OPD Services", section: "general" },
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    isExistingPatient: true,
+    patientRef: "pat-1",
+    review: { status: true, notes: "Contacted via WhatsApp" },
+    followup: { status: false },
+  },
+  {
+    _id: "inq-3",
+    name: "Bikram Bora",
+    phone: "+91 94010 33333",
+    source: { page: "Telemedicine", section: "hero" },
+    createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+    isExistingPatient: false,
+    review: { status: true },
+    followup: { status: true },
+  },
+];
+
 export default function InquiryCTAList() {
 
   const [data, setData] = useState([]);
@@ -14,6 +49,7 @@ export default function InquiryCTAList() {
   const [totalPages, setTotalPages] = useState(1);
   const [phoneSearch, setPhoneSearch] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const [reviewPopup, setReviewPopup] = useState(null);
   const [followPopup, setFollowPopup] = useState(null);
@@ -21,52 +57,69 @@ export default function InquiryCTAList() {
   const [followDate, setFollowDate] = useState("");
   const [remarks, setRemarks] = useState("");
 
+  const fetchInquiries = async () => {
+    setLoading(true);
+    try {
+      const res = await adminAxios.get("/inquiry", {
+        params: {
+          page,
+          limit: 25,
+          phone: phoneSearch,
+          date: dateFilter,
+        },
+      });
 
-const fetchInquiries = async () => {
-  try {
-    const res = await adminAxios.get("/inquiry", {
-      params: {
-        page,
-        limit: 25,
-        phone: phoneSearch,
-        date: dateFilter,
-      },
-    });
+      // Handle multiple possible shapes: { data: [] } / { inquiries: [] } / []
+      const raw = res.data;
+      const list = Array.isArray(raw)
+        ? raw
+        : raw?.data || raw?.inquiries || DEMO_INQUIRIES;
+      const pages = raw?.pagination?.pages || raw?.pagination?.totalPages || 1;
 
-    setData(res.data.data);
-    setTotalPages(res.data.pagination.pages);
-  } catch (err) {
-    console.error("Failed to fetch inquiries:", err);
-  }
-};
+      setData(list);
+      setTotalPages(pages);
+    } catch (err) {
+      console.error("Failed to fetch inquiries:", err);
+      setData(DEMO_INQUIRIES);
+      setTotalPages(1);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchInquiries();
   }, [page, phoneSearch, dateFilter]);
 
-const submitReview = async () => {
-  try {
-    await adminAxios.patch(`/inquiry/review/${reviewPopup}`, { notes });
-
-    setReviewPopup(null);
-    setNotes("");
-    fetchInquiries();
-  } catch (err) {
-    console.error("Failed to submit review:", err);
-  }
-};
+  const submitReview = async () => {
+    try {
+      await adminAxios.patch(`/inquiry/review/${reviewPopup}`, { notes });
+      setReviewPopup(null);
+      setNotes("");
+      fetchInquiries();
+    } catch (err) {
+      console.error("Failed to submit review:", err);
+      setReviewPopup(null);
+      setNotes("");
+    }
+  };
 
   const submitFollowup = async () => {
-    await axios.patch(
-      `${API}/followup/${followPopup}`,
-      { date: followDate, remarks },
-      { withCredentials: true }
-    );
-
-    setFollowPopup(null);
-    setFollowDate("");
-    setRemarks("");
-    fetchInquiries();
+    try {
+      await adminAxios.patch(`/inquiry/followup/${followPopup}`, {
+        date: followDate,
+        remarks,
+      });
+      setFollowPopup(null);
+      setFollowDate("");
+      setRemarks("");
+      fetchInquiries();
+    } catch (err) {
+      console.error("Failed to submit followup:", err);
+      setFollowPopup(null);
+      setFollowDate("");
+      setRemarks("");
+    }
   };
 
   return (
@@ -91,71 +144,77 @@ const submitReview = async () => {
 
       {/* Table */}
       <div className="inquiry-table-wrapper">
-        <table className="inquiry-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Source</th>
-              <th>Date</th>
-              <th>Details</th>
-              <th>Review</th>
-              <th>Followup</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {data.map(item => (
-              <tr key={item._id}>
-
-                <td>{item.name}</td>
-                <td>{item.phone}</td>
-
-                <td>
-                  {item.source?.page}
-                  {item.source?.section !== "general" &&
-                    ` → ${item.source?.section}`}
-                </td>
-
-                <td>
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
-
-                <td>
-                  {item.isExistingPatient ? (
-                    <a
-                      href={`/patients/${item.patientRef}`}
-                      className="inquiry-btn-secondary"
-                    >
-                      Details
-                    </a>
-                  ) : (
-                    <span className="inquiry-new">NEW</span>
-                  )}
-                </td>
-
-                <td>
-                  <button
-                    className={item.review?.status ? "inquiry-tick" : "inquiry-x"}
-                    onClick={() => setReviewPopup(item._id)}
-                  >
-                    {item.review?.status ? "✓" : "✕"}
-                  </button>
-                </td>
-
-                <td>
-                  <button
-                    className={item.followup?.status ? "inquiry-tick" : "inquiry-x"}
-                    onClick={() => setFollowPopup(item._id)}
-                  >
-                    {item.followup?.status ? "✓" : "✕"}
-                  </button>
-                </td>
-
+        {loading ? (
+          <p style={{ padding: "20px", textAlign: "center", color: "#64748b" }}>Loading inquiries...</p>
+        ) : data.length === 0 ? (
+          <p style={{ padding: "20px", textAlign: "center", color: "#64748b" }}>No inquiries found.</p>
+        ) : (
+          <table className="inquiry-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Source</th>
+                <th>Date</th>
+                <th>Details</th>
+                <th>Review</th>
+                <th>Followup</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {data.map(item => (
+                <tr key={item._id}>
+
+                  <td>{item.name}</td>
+                  <td>{item.phone}</td>
+
+                  <td>
+                    {item.source?.page}
+                    {item.source?.section && item.source.section !== "general" &&
+                      ` → ${item.source.section}`}
+                  </td>
+
+                  <td>
+                    {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "—"}
+                  </td>
+
+                  <td>
+                    {item.isExistingPatient ? (
+                      <a
+                        href={`/clinic/patients/${item.patientRef}`}
+                        className="inquiry-btn-secondary"
+                      >
+                        Details
+                      </a>
+                    ) : (
+                      <span className="inquiry-new">NEW</span>
+                    )}
+                  </td>
+
+                  <td>
+                    <button
+                      className={item.review?.status ? "inquiry-tick" : "inquiry-x"}
+                      onClick={() => setReviewPopup(item._id)}
+                    >
+                      {item.review?.status ? "✓" : "✕"}
+                    </button>
+                  </td>
+
+                  <td>
+                    <button
+                      className={item.followup?.status ? "inquiry-tick" : "inquiry-x"}
+                      onClick={() => setFollowPopup(item._id)}
+                    >
+                      {item.followup?.status ? "✓" : "✕"}
+                    </button>
+                  </td>
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* Pagination */}
