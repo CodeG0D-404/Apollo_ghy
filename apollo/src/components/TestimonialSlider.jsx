@@ -22,10 +22,19 @@ export default function TestimonialSlider({ title }) {
 useEffect(() => {
   api
     .get("/api/testimonials/public")
-    .then((res) => setTestimonials(res.data || []))
-    .catch(() => setTestimonials([]));
-}, []);
+    .then((res) => {
+      const testimonialsData = Array.isArray(res.data)
+        ? res.data
+        : Array.isArray(res.data?.testimonials)
+        ? res.data.testimonials
+        : [];
 
+      setTestimonials(testimonialsData);
+    })
+    .catch(() => {
+      setTestimonials([]);
+    });
+}, []);
   if (!testimonials.length) return null;
 
   return (
